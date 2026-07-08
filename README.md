@@ -27,15 +27,6 @@ Starknet Gamers is presented as the coordination hub for the gaming side of Star
 - Creative / Social: [ART/PEACE](https://x.com/art_peace_sn)
 - Infrastructure: [Dojo Engine](https://x.com/ohayo_dojo), [Cartridge](https://x.com/cartridge_gg)
 
-## Run locally
-
-Open `index.html` directly in a browser, or serve the folder with any static server.
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000`.
 
 ## Updating entries
 
