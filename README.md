@@ -1,21 +1,48 @@
-# Starknet Game Registry
+# Starknet Gaming
 
-A living, maintained directory of every onchain game shipping on Starknet — built and run by [Starknet Gaming](https://x.com/StarknetGaming).
+The home of Starknet gaming: a hub for players, builders, projects, news, recaps, updates, and community.
 
-## What this is
+## What is included
 
-There is no single, regularly updated source of truth for Starknet's onchain gaming ecosystem. Players have no easy way to discover what's live; gaming projects have no shared, neutral channel to reach players outside their own following.
+- Responsive landing page and game directory in `index.html`
+- Homepage positioning based on the official X bio: "The home of Starknet gaming | Your hub for players, builders & projects | News, Recaps, Updates & Community"
+- Search and status filters for Live, New, and Soon games
+- Category grouping across strategy, roguelike, card, PvP, puzzle, casual, and creative games
+- Starknet Gamers community mission section for players, developers, founders, and newcomers
+- News, recaps, updates, and community media section
+- Separate verification section for recently spotted projects
+- Ecosystem infrastructure section for Dojo Engine and Cartridge
 
-This registry tracks every onchain game on Starknet, organized by category (Strategy/MMO, Roguelike/Dungeon, Card Games, Action/PvP, Puzzle/Casual, Creative/Social), tagged by status (Live/New/Soon), searchable and filterable.
+## Community mission
 
-## Status
+Starknet Gamers is presented as the coordination hub for the gaming side of Starknet: a place where players discover games and news, projects share updates and find playtesters, and the wider ecosystem can coordinate around gaming recaps, reviews, updates, and digests.
 
-MVP stage — currently a single static page with live search/filter. Live onchain data integration and a community submission form for new listings are planned next.
+## Current source list
+
+- Strategy / MMO: [ZAP Football](https://x.com/playzapfc), [Realms Blitz](https://x.com/LootRealms), [Ponziland](https://x.com/ponzidotland), [Influence](https://x.com/influenceth)
+- Rogue-like / Dungeon: [Loot Survivor](https://x.com/LootSurvivor), [Dark Shuffle](https://x.com/darkshuffle_gg), [Abyss](https://x.com/abyssdotfun)
+- Card Games: [Jokers of Neon](https://x.com/jokers_of_neon), [Dope Wars](https://x.com/Dopewarsx)
+- Action / PvP: [Blob Arena](https://x.com/Blobarena), [Pistols at Dawn](https://x.com/Pistols_gg), [Corsair](https://x.com/PlayCorsair), [Brove Royale](https://x.com/just_brove_it)
+- Puzzle / Casual: [zKube](https://x.com/zKube_game), [GM NFT](https://x.com/GuessmyNft), [Nums](https://x.com/numsgg)
+- Creative / Social: [ART/PEACE](https://x.com/art_peace_sn)
+- Infrastructure: [Dojo Engine](https://x.com/ohayo_dojo), [Cartridge](https://x.com/cartridge_gg)
+
+## Run locally
+
+Open `index.html` directly in a browser, or serve the folder with any static server.
+
+```bash
+python3 -m http.server 8000
+```
+
+Then visit `http://localhost:8000`.
+
+## Updating entries
+
+Game data lives in the `GAMES` and `PENDING` arrays inside `index.html`. Add new confirmed games to `GAMES`; keep unverified projects in `PENDING` until their status and links are confirmed.
 
 ## Maintained by
 
-[@StarknetGaming](https://x.com/StarknetGaming) on X · Telegram community https://t.me/Starknet_Gaming for Starknet gaming players, builders, and founders.
-
-## Contributing
-
-Spotted a missing game, a wrong status, or an outdated link? Reach out via [@StarknetGaming](https://x.com/StarknetGaming) on X.
+- [Telegram Channel](https://t.me/channel_starknet_gaming)
+- [Official X](https://x.com/StarknetGaming)
+- [Telegram Group](https://t.me/Starknet_Gaming)
