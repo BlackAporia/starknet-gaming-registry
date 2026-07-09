@@ -338,6 +338,10 @@
   .game-stage{position:relative;overflow:hidden;border:1px solid rgba(157,77,255,.38);border-radius:28px;background:linear-gradient(180deg,#090d28,#110c2d 58%,#080912);box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 70px rgba(157,77,255,.16);}
   .game-stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.38) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:stars-drift 16s linear infinite;pointer-events:none;}
   #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;}
+  .game-result{position:absolute;z-index:3;left:50%;top:50%;display:none;width:min(320px,calc(100% - 32px));transform:translate(-50%,-50%);padding:20px;border:1px solid rgba(255,106,0,.42);border-radius:20px;background:rgba(8,8,18,.92);box-shadow:0 24px 70px rgba(0,0,0,.5),0 0 38px rgba(255,106,0,.22);text-align:center;backdrop-filter:blur(12px);}
+  .game-result.is-visible{display:grid;gap:10px;}
+  .game-result strong{font-size:32px;line-height:1;color:#fff;letter-spacing:-.05em;}
+  .game-result span{color:var(--muted);font-size:13px;}
   .game-panel{display:flex;flex-direction:column;gap:12px;border:1px solid rgba(157,77,255,.32);border-radius:28px;background:rgba(10,8,24,.86);padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.38);}
   .game-panel h2{margin:0;font-size:28px;line-height:1;letter-spacing:-.05em;}
   .game-panel p{margin:0;color:var(--muted);font-size:13px;}
@@ -730,6 +734,11 @@
     <div class="game-shell" role="dialog" aria-modal="true" aria-label="Rocket Jump mini game">
       <div class="game-stage">
         <canvas id="jump-game" width="760" height="680"></canvas>
+        <div class="game-result" id="game-result" role="status" aria-live="polite">
+          <strong class="display" id="game-result-title">You lost</strong>
+          <span id="game-result-copy">The rocket touched the floor.</span>
+          <button class="game-action compact" id="game-result-restart" type="button">Play again</button>
+        </div>
       </div>
       <aside class="game-panel">
         <div>
@@ -877,13 +886,13 @@ Object.entries(SHARED_EXTRA_TRANSLATIONS).forEach(([language, strings]) => {
 });
 
 const ROCKET_GAME_TRANSLATIONS = {
-  zh:{"Nickname":"昵称","Enter nickname":"输入昵称","Save":"保存","Enter a nickname before launch.":"发射前请输入昵称。","Playing as":"玩家","Combo":"连击","Orbs":"能量球","Shield":"护盾","Local":"本地","Public":"公开","Syncing":"同步中","Offline":"离线","Refresh leaderboard":"刷新排行榜"},
-  ko:{"Nickname":"닉네임","Enter nickname":"닉네임 입력","Save":"저장","Enter a nickname before launch.":"시작 전에 닉네임을 입력하세요.","Playing as":"플레이어","Combo":"콤보","Orbs":"오브","Shield":"실드","Local":"로컬","Public":"공개","Syncing":"동기화 중","Offline":"오프라인","Refresh leaderboard":"리더보드 새로고침"},
-  tr:{"Nickname":"Takma ad","Enter nickname":"Takma ad gir","Save":"Kaydet","Enter a nickname before launch.":"Baslamadan once takma ad gir.","Playing as":"Oyuncu","Combo":"Kombo","Orbs":"Kureler","Shield":"Kalkan","Local":"Yerel","Public":"Herkese acik","Syncing":"Esitleniyor","Offline":"Cevrimdisi","Refresh leaderboard":"Lider tablosunu yenile"},
-  ru:{"Nickname":"Никнейм","Enter nickname":"Введите никнейм","Save":"Сохранить","Enter a nickname before launch.":"Введите никнейм перед стартом.","Playing as":"Игрок","Combo":"Комбо","Orbs":"Орбы","Shield":"Щит","Local":"Локально","Public":"Публично","Syncing":"Синхронизация","Offline":"Офлайн","Refresh leaderboard":"Обновить таблицу"},
-  hi:{"Nickname":"निकनेम","Enter nickname":"निकनेम डालें","Save":"सेव","Enter a nickname before launch.":"शुरू करने से पहले निकनेम डालें।","Playing as":"खिलाड़ी","Combo":"कॉम्बो","Orbs":"ऑर्ब्स","Shield":"शील्ड","Local":"लोकल","Public":"पब्लिक","Syncing":"सिंक हो रहा","Offline":"ऑफलाइन","Refresh leaderboard":"लीडरबोर्ड रिफ्रेश करें"},
-  uk:{"Nickname":"Нікнейм","Enter nickname":"Введи нікнейм","Save":"Зберегти","Enter a nickname before launch.":"Введи нікнейм перед стартом.","Playing as":"Гравець","Combo":"Комбо","Orbs":"Орби","Shield":"Щит","Local":"Локально","Public":"Публічно","Syncing":"Синхронізація","Offline":"Офлайн","Refresh leaderboard":"Оновити таблицю"},
-  es:{"Nickname":"Nickname","Enter nickname":"Ingresa nickname","Save":"Guardar","Enter a nickname before launch.":"Ingresa un nickname antes de despegar.","Playing as":"Jugador","Combo":"Combo","Orbs":"Orbes","Shield":"Escudo","Local":"Local","Public":"Publico","Syncing":"Sincronizando","Offline":"Offline","Refresh leaderboard":"Actualizar clasificacion"}
+  zh:{"Nickname":"昵称","Enter nickname":"输入昵称","Save":"保存","Enter a nickname before launch.":"发射前请输入昵称。","Playing as":"玩家","Combo":"连击","Orbs":"能量球","Shield":"护盾","Local":"本地","Public":"公开","Syncing":"同步中","Offline":"离线","Refresh leaderboard":"刷新排行榜","You lost":"你输了","The rocket touched the floor.":"火箭碰到了底部。"},
+  ko:{"Nickname":"닉네임","Enter nickname":"닉네임 입력","Save":"저장","Enter a nickname before launch.":"시작 전에 닉네임을 입력하세요.","Playing as":"플레이어","Combo":"콤보","Orbs":"오브","Shield":"실드","Local":"로컬","Public":"공개","Syncing":"동기화 중","Offline":"오프라인","Refresh leaderboard":"리더보드 새로고침","You lost":"패배","The rocket touched the floor.":"로켓이 바닥에 닿았습니다."},
+  tr:{"Nickname":"Takma ad","Enter nickname":"Takma ad gir","Save":"Kaydet","Enter a nickname before launch.":"Baslamadan once takma ad gir.","Playing as":"Oyuncu","Combo":"Kombo","Orbs":"Kureler","Shield":"Kalkan","Local":"Yerel","Public":"Herkese acik","Syncing":"Esitleniyor","Offline":"Cevrimdisi","Refresh leaderboard":"Lider tablosunu yenile","You lost":"Kaybettin","The rocket touched the floor.":"Roket zemine dokundu."},
+  ru:{"Nickname":"Никнейм","Enter nickname":"Введите никнейм","Save":"Сохранить","Enter a nickname before launch.":"Введите никнейм перед стартом.","Playing as":"Игрок","Combo":"Комбо","Orbs":"Орбы","Shield":"Щит","Local":"Локально","Public":"Публично","Syncing":"Синхронизация","Offline":"Офлайн","Refresh leaderboard":"Обновить таблицу","You lost":"Вы проиграли","The rocket touched the floor.":"Ракета коснулась дна."},
+  hi:{"Nickname":"निकनेम","Enter nickname":"निकनेम डालें","Save":"सेव","Enter a nickname before launch.":"शुरू करने से पहले निकनेम डालें।","Playing as":"खिलाड़ी","Combo":"कॉम्बो","Orbs":"ऑर्ब्स","Shield":"शील्ड","Local":"लोकल","Public":"पब्लिक","Syncing":"सिंक हो रहा","Offline":"ऑफलाइन","Refresh leaderboard":"लीडरबोर्ड रिफ्रेश करें","You lost":"आप हार गए","The rocket touched the floor.":"रॉकेट फर्श से टकरा गया।"},
+  uk:{"Nickname":"Нікнейм","Enter nickname":"Введи нікнейм","Save":"Зберегти","Enter a nickname before launch.":"Введи нікнейм перед стартом.","Playing as":"Гравець","Combo":"Комбо","Orbs":"Орби","Shield":"Щит","Local":"Локально","Public":"Публічно","Syncing":"Синхронізація","Offline":"Офлайн","Refresh leaderboard":"Оновити таблицю","You lost":"Ви програли","The rocket touched the floor.":"Ракета торкнулася дна."},
+  es:{"Nickname":"Nickname","Enter nickname":"Ingresa nickname","Save":"Guardar","Enter a nickname before launch.":"Ingresa un nickname antes de despegar.","Playing as":"Jugador","Combo":"Combo","Orbs":"Orbes","Shield":"Escudo","Local":"Local","Public":"Publico","Syncing":"Sincronizando","Offline":"Offline","Refresh leaderboard":"Actualizar clasificacion","You lost":"Perdiste","The rocket touched the floor.":"El cohete toco el suelo."}
 };
 
 Object.entries(ROCKET_GAME_TRANSLATIONS).forEach(([language, strings]) => {
@@ -1420,6 +1429,10 @@ const playerNameInput = document.getElementById("player-name");
 const playerStatus = document.getElementById("player-status");
 const leaderboardStatus = document.getElementById("leaderboard-status");
 const leaderboardRefresh = document.getElementById("leaderboard-refresh");
+const gameResult = document.getElementById("game-result");
+const gameResultTitle = document.getElementById("game-result-title");
+const gameResultCopy = document.getElementById("game-result-copy");
+const gameResultRestart = document.getElementById("game-result-restart");
 
 const LEADERBOARD_ENDPOINT = window.ROCKET_LEADERBOARD_ENDPOINT || "api/leaderboard";
 const LEADERBOARD_LIMIT = 10;
@@ -1487,6 +1500,16 @@ function queueGameFrame(){
   jumpGame.frameId = requestAnimationFrame(updateGame);
 }
 
+function showGameResult(title, copy){
+  gameResultTitle.textContent = t(title);
+  gameResultCopy.textContent = t(copy);
+  gameResult.classList.add("is-visible");
+}
+
+function hideGameResult(){
+  gameResult.classList.remove("is-visible");
+}
+
 function randomBetween(min, max){
   return min + Math.random() * (max - min);
 }
@@ -1549,6 +1572,7 @@ function createPlatform(y, guaranteed = false){
 function resetGame(){
   if(!ensurePlayerName()) return;
   stopGameLoop();
+  hideGameResult();
   resizeGameCanvas();
   jumpGame.running = true;
   jumpGame.keys.clear();
@@ -1683,6 +1707,11 @@ function updateGame(now){
   if(player.x > gameCanvas.width + 20) player.x = -player.w;
   if(player.x < -player.w - 20) player.x = gameCanvas.width;
 
+  if(player.y - jumpGame.camera + player.h >= gameCanvas.height){
+    endGame("Lost");
+    return;
+  }
+
   jumpGame.platforms.forEach(platform => {
     if(platform.type === "moving"){
       platform.x += platform.dir * platform.speed * (1 + jumpGame.difficulty * .12);
@@ -1750,8 +1779,8 @@ function updateGame(now){
   });
   jumpGame.particles = jumpGame.particles.filter(particle => particle.life > 0);
 
-  if(player.y - jumpGame.camera > gameCanvas.height + 80 || jumpGame.time <= 0){
-    endGame(player.y - jumpGame.camera > gameCanvas.height + 80 ? "Fell" : "Time");
+  if(jumpGame.time <= 0){
+    endGame("Time");
     return;
   }
 
@@ -2001,8 +2030,10 @@ function endGame(reason){
   jumpGame.running = false;
   jumpGame.keys.clear();
   jumpGame.pointerDirection = null;
-  gameState.textContent = t(reason === "Time" ? "Time" : "Fell");
+  const lostByFloor = reason === "Lost";
+  gameState.textContent = t(lostByFloor ? "You lost" : "Time");
   gameStart.textContent = t("Play again");
+  showGameResult(lostByFloor ? "You lost" : "Time", lostByFloor ? "The rocket touched the floor." : "Time");
   saveLeaderboard();
   playTone(220, .2, "sawtooth", .035);
   drawGame();
@@ -2034,6 +2065,7 @@ gameProfile.addEventListener("submit", event => {
   ensurePlayerName();
 });
 leaderboardRefresh.addEventListener("click", loadLeaderboard);
+gameResultRestart.addEventListener("click", resetGame);
 gameClose.addEventListener("click", closeGame);
 gameMute.addEventListener("click", () => {
   jumpGame.muted = !jumpGame.muted;
