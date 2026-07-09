@@ -74,7 +74,7 @@
     background:rgba(9,8,12,.76);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0;}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:-.03em;}
   .brand-mark{
     width:48px;height:48px;border-radius:16px;
@@ -88,7 +88,7 @@
   .brand:hover .brand-mark{transform:translateY(-1px) scale(1.04);box-shadow:0 14px 40px rgba(157,77,255,.44),0 0 0 1px rgba(214,60,255,.28),inset 0 0 0 1px rgba(255,255,255,.08);}
   .brand-mark img{display:block;width:100%;height:100%;object-fit:contain;padding:1px;}
   .brand span:last-child{font-size:15px;}
-  .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+  .nav-links{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;justify-content:flex-end;}
   .nav-links a{
     color:var(--muted);
     text-decoration:none;
@@ -96,6 +96,7 @@
     font-weight:700;
     padding:9px 12px;
     border-radius:999px;
+    white-space:nowrap;
     transition:background .15s,color .15s;
   }
   .nav-links a:hover{background:rgba(255,244,223,.08);color:var(--paper);}
@@ -103,6 +104,12 @@
   .nav-links .social-link:hover{background:rgba(157,77,255,.2);border-color:rgba(214,60,255,.68);color:#fff;box-shadow:0 0 24px rgba(157,77,255,.28);}
   .social-icon{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:7px;background:linear-gradient(135deg,var(--violet),var(--magenta));color:#fff;line-height:1;box-shadow:0 0 14px rgba(157,77,255,.28);}
   .social-icon svg{display:block;width:13px;height:13px;fill:currentColor;}
+  .language-switcher{display:inline-flex;align-items:center;gap:7px;height:37px;padding:0 9px;border:1px solid rgba(157,77,255,.3);border-radius:999px;background:rgba(157,77,255,.1);box-shadow:0 0 18px rgba(157,77,255,.12);white-space:nowrap;}
+  .language-icon{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:7px;background:linear-gradient(135deg,var(--violet),var(--sage));color:#fff;box-shadow:0 0 14px rgba(157,77,255,.28);}
+  .language-icon svg{display:block;width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .language-select{max-width:108px;border:0;background:transparent;color:#f3dcff;font-weight:800;font-size:12px;outline:none;cursor:pointer;}
+  .language-select option{background:#11132b;color:#f7f2ff;}
+  .language-switcher:hover{background:rgba(157,77,255,.2);border-color:rgba(214,60,255,.68);box-shadow:0 0 24px rgba(157,77,255,.28);}
   .nav-links .cta{background:var(--paper);color:#15120f;}
   .nav-links .cta:hover{background:#fff;color:#15120f;}
 
@@ -176,8 +183,10 @@
     transition:transform .18s,border-color .18s,background .18s,box-shadow .18s;
   }
   .featured-game:hover{transform:translateY(-2px);border-color:rgba(157,77,255,.52);background:rgba(157,77,255,.11);box-shadow:0 14px 36px rgba(157,77,255,.18);}
-  .game-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:#11100d;}
-  .game-icon img{display:block;width:100%;height:100%;object-fit:contain;padding:4px;}
+  .game-icon{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-weight:900;overflow:hidden;transition:transform .18s,box-shadow .18s;}
+  .game-icon img{display:block;width:100%;height:100%;object-fit:contain;padding:4px;transition:transform .18s;}
+  .featured-game:hover .game-icon{transform:rotate(-2deg) scale(1.06);box-shadow:0 0 24px color-mix(in srgb,var(--accent) 30%,transparent);}
+  .featured-game:hover .game-icon img{transform:scale(1.08);}
   .featured-game strong{display:block;font-size:14px;}
   .featured-game small{display:block;color:var(--muted-soft);font-size:12px;margin-top:2px;}
   .status-chip{font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:6px 8px;}
@@ -294,6 +303,41 @@
   .footer-links{display:flex;gap:10px;flex-wrap:wrap;}
   .footer-links a{color:var(--paper);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:800;}
   .footer-links a:hover{background:rgba(255,244,223,.08);}
+  .contact-strip{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:28px;padding:18px;border:1px solid rgba(157,77,255,.26);border-radius:22px;background:linear-gradient(135deg,rgba(157,77,255,.13),rgba(73,240,255,.055));box-shadow:0 18px 46px rgba(157,77,255,.12);}
+  .contact-strip strong{margin:0;font-size:22px;letter-spacing:-.04em;}
+  .contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+  .contact-button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid rgba(157,77,255,.34);border-radius:999px;background:rgba(157,77,255,.12);color:#fff;text-decoration:none;font-size:13px;font-weight:900;box-shadow:0 0 18px rgba(157,77,255,.14);transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+  .contact-button:hover{transform:translateY(-2px);background:rgba(157,77,255,.22);border-color:rgba(214,60,255,.72);box-shadow:0 0 26px rgba(157,77,255,.28);}
+
+  .rocket-button{position:fixed;left:18px;top:74%;z-index:60;width:56px;height:56px;border:1px solid rgba(157,77,255,.46);border-radius:18px;background:linear-gradient(135deg,rgba(17,19,43,.88),rgba(157,77,255,.22));color:#fff;cursor:pointer;box-shadow:0 18px 46px rgba(157,77,255,.28);animation:rocket-float 8s ease-in-out infinite;transition:transform .18s,box-shadow .18s,border-color .18s;}
+  .rocket-button:hover{transform:scale(1.08) rotate(-6deg);border-color:rgba(73,240,255,.72);box-shadow:0 0 34px rgba(73,240,255,.34),0 18px 46px rgba(157,77,255,.32);}
+  .rocket-button span{display:block;font-size:30px;filter:drop-shadow(0 0 12px rgba(73,240,255,.72));}
+  .rocket-button::after{content:"Play";position:absolute;left:50%;top:calc(100% + 7px);transform:translateX(-50%);padding:4px 8px;border-radius:999px;background:rgba(5,7,18,.82);color:var(--sage);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .game-overlay{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:20px;background:radial-gradient(circle at 50% 20%,rgba(157,77,255,.34),transparent 34rem),rgba(3,4,12,.92);backdrop-filter:blur(18px);}
+  .game-overlay.is-open{display:grid;}
+  .game-shell{width:min(1120px,100%);height:min(760px,calc(100vh - 40px));display:grid;grid-template-columns:minmax(300px,1fr) 280px;gap:16px;}
+  .game-stage{position:relative;overflow:hidden;border:1px solid rgba(157,77,255,.38);border-radius:28px;background:linear-gradient(180deg,#090d28,#110c2d 58%,#080912);box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 70px rgba(157,77,255,.16);}
+  .game-stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.38) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:stars-drift 16s linear infinite;pointer-events:none;}
+  #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;}
+  .game-panel{display:flex;flex-direction:column;gap:12px;border:1px solid rgba(157,77,255,.32);border-radius:28px;background:rgba(10,8,24,.86);padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.38);}
+  .game-panel h2{margin:0;font-size:28px;line-height:1;letter-spacing:-.05em;}
+  .game-panel p{margin:0;color:var(--muted);font-size:13px;}
+  .game-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .game-stat{padding:12px;border:1px solid var(--line);border-radius:16px;background:rgba(247,242,255,.045);}
+  .game-stat b{display:block;font-size:22px;line-height:1;}
+  .game-stat span{display:block;margin-top:5px;color:var(--muted-soft);font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;}
+  .game-actions{display:grid;gap:9px;margin-top:2px;}
+  .game-action{min-height:42px;border:1px solid rgba(157,77,255,.38);border-radius:14px;background:rgba(157,77,255,.13);color:#fff;font-weight:900;cursor:pointer;transition:transform .15s,background .15s,border-color .15s;}
+  .game-action:hover{transform:translateY(-2px);background:rgba(157,77,255,.24);border-color:rgba(73,240,255,.56);}
+  .game-action.primary{background:linear-gradient(135deg,var(--violet),var(--magenta));border-color:transparent;}
+  .leaderboard{display:grid;gap:7px;margin-top:4px;}
+  .leaderboard h3{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);}
+  .leaderboard ol{margin:0;padding-left:22px;color:var(--muted);font-size:13px;}
+  .leaderboard li{margin:5px 0;}
+  .game-help{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:var(--muted-soft);}
+
+  @keyframes rocket-float{0%,100%{transform:translate(0,0) rotate(-8deg);}25%{transform:translate(22px,-80px) rotate(8deg);}50%{transform:translate(8px,-150px) rotate(-3deg);}75%{transform:translate(30px,-70px) rotate(10deg);}}
+  @keyframes stars-drift{from{background-position:0 0;}to{background-position:80px 120px;}}
 
   @keyframes card-rise{
     from{opacity:0;transform:translateY(14px);}
@@ -309,6 +353,8 @@
     .stats,.value-grid{grid-template-columns:repeat(2,1fr);}
     .game-grid,.media-grid{grid-template-columns:repeat(2,1fr);}
     .section-head{align-items:flex-start;flex-direction:column;}
+    .nav{align-items:flex-start;flex-direction:column;}
+    .nav-links{justify-content:flex-start;flex-wrap:wrap;}
   }
   @media (max-width:720px){
     .wrap{width:min(100% - 28px,1160px);}
@@ -323,6 +369,10 @@
     body{background-attachment:scroll;}
     .world-copy{left:18px;right:18px;bottom:18px;}
     .world-copy h3{font-size:26px;}
+    .contact-strip{align-items:flex-start;flex-direction:column;}
+    .contact-actions{justify-content:flex-start;}
+    .game-shell{height:calc(100vh - 28px);grid-template-columns:1fr;grid-template-rows:1fr auto;}
+    .game-panel{max-height:320px;overflow:auto;}
   }
 </style>
 </head>
@@ -341,6 +391,19 @@
         <a class="social-link" href="https://t.me/channel_starknet_gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Channel</span></a>
         <a class="social-link" href="https://x.com/StarknetGaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.8l4.7 6.2L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z"/></svg></span><span>Official X</span></a>
         <a class="social-link" href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Group</span></a>
+        <label class="language-switcher" aria-label="Select language">
+          <span class="language-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span>
+          <select class="language-select" id="language-select">
+            <option value="en">🇬🇧 English</option>
+            <option value="zh">🇨🇳 Chinese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="tr">🇹🇷 Turkish</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="uk">🇺🇦 Українська</option>
+            <option value="es">🇪🇸 Spanish</option>
+          </select>
+        </label>
       </div>
     </nav>
   </header>
@@ -575,10 +638,94 @@
         <a href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener">Telegram Group</a>
         <a href="https://starknet-ecosystem.com/" target="_blank" rel="noopener">Starknet Ecosystem</a>
       </div>
+      <div class="contact-strip">
+        <strong class="display">Support</strong>
+        <div class="contact-actions">
+          <a class="contact-button" href="https://x.com/BlackAporia" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.8l4.7 6.2L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z"/></svg></span><span>X</span></a>
+          <a class="contact-button" href="https://t.me/BlackAporia" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram</span></a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <button class="rocket-button" id="rocket-button" type="button" aria-label="Open Rocket Jump mini game"><span aria-hidden="true">🚀</span></button>
+
+  <div class="game-overlay" id="game-overlay" aria-hidden="true">
+    <div class="game-shell" role="dialog" aria-modal="true" aria-label="Rocket Jump mini game">
+      <div class="game-stage">
+        <canvas id="jump-game" width="760" height="680"></canvas>
+      </div>
+      <aside class="game-panel">
+        <div>
+          <p class="eyebrow mono">Mini game</p>
+          <h2 class="display">Rocket Jump</h2>
+          <p>Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.</p>
+        </div>
+        <div class="game-stats">
+          <div class="game-stat"><b id="game-score">0</b><span>Score</span></div>
+          <div class="game-stat"><b id="game-time">60</b><span>Timer</span></div>
+          <div class="game-stat"><b id="game-best">0</b><span>Best</span></div>
+          <div class="game-stat"><b id="game-state">Ready</b><span>Status</span></div>
+        </div>
+        <div class="game-actions">
+          <button class="game-action primary" id="game-start" type="button">Start game</button>
+          <button class="game-action" id="game-mute" type="button">Melody: on</button>
+          <button class="game-action" id="game-close" type="button">Close</button>
+        </div>
+        <div class="leaderboard">
+          <h3 class="mono">Leaderboard</h3>
+          <ol id="game-leaderboard"></ol>
+        </div>
+        <p class="game-help">Controls: ← → or A/D. On mobile, tap left or right side of the game field.</p>
+      </aside>
+    </div>
+  </div>
+
 <script>
+const TRANSLATIONS = {
+  zh:{"Why it exists":"为什么存在","Community":"社区","Updates":"更新","Registry":"目录","Telegram Channel":"Telegram 频道","Official X":"官方 X","Telegram Group":"Telegram 群组","The home of Starknet gaming":"Starknet 游戏之家","One hub for players, builders, projects, and onchain games.":"玩家、开发者、项目和链上游戏的统一中心。","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming 将生态聚合在一起：发现游戏、关注项目更新、加入社区讨论，并追踪推动 Starknet 游戏前进的新闻与回顾。","News":"新闻","Recaps":"回顾","Join the community":"加入社区","Explore games":"探索游戏","Follow X updates":"关注 X 更新","Games tracked":"已跟踪游戏","Categories":"类别","Live now":"正在上线","News & community":"新闻与社区","Ecosystem Hub":"生态中心","Starknet Gaming":"Starknet Gaming","Players":"玩家","discover + compete":"发现 + 竞技","Builders":"开发者","updates + feedback":"更新 + 反馈","Projects":"项目","visibility + playtests":"曝光 + 测试","news + recaps":"新闻 + 回顾","Featured games":"精选游戏","Built as the front door for Starknet gaming.":"Starknet 游戏生态的入口。","For players":"面向玩家","For builders":"面向开发者","For communities":"面向社区","Community mission":"社区使命","Join Telegram Group":"加入 Telegram 群组","Read Announcements":"阅读公告","Centralize activity":"集中活动","Help projects find players":"帮助项目找到玩家","Make onboarding easier":"让入门更简单","Grow ecosystem media":"发展生态媒体","Shared world":"共享世界","Search games, mechanics, categories...":"搜索游戏、机制、类别...","ALL":"全部","LIVE":"上线","NEW":"新","SOON":"即将","Infrastructure":"基础设施","Player onboarding":"玩家入门","Website":"网站","Support":"支持"},
+  ko:{"Why it exists":"존재 이유","Community":"커뮤니티","Updates":"업데이트","Registry":"레지스트리","Telegram Channel":"텔레그램 채널","Official X":"공식 X","Telegram Group":"텔레그램 그룹","The home of Starknet gaming":"Starknet 게이밍의 홈","One hub for players, builders, projects, and onchain games.":"플레이어, 빌더, 프로젝트, 온체인 게임을 위한 하나의 허브.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming은 생태계를 하나로 모아 게임 발견, 프로젝트 업데이트, 커뮤니티 대화, 뉴스와 리캡을 제공합니다.","News":"뉴스","Recaps":"리캡","Join the community":"커뮤니티 참여","Explore games":"게임 탐색","Follow X updates":"X 업데이트 팔로우","Games tracked":"추적 중인 게임","Categories":"카테고리","Live now":"라이브","News & community":"뉴스와 커뮤니티","Ecosystem Hub":"생태계 허브","Players":"플레이어","discover + compete":"발견 + 경쟁","Builders":"빌더","updates + feedback":"업데이트 + 피드백","Projects":"프로젝트","visibility + playtests":"노출 + 플레이테스트","news + recaps":"뉴스 + 리캡","Featured games":"추천 게임","Built as the front door for Starknet gaming.":"Starknet 게이밍의 관문.","For players":"플레이어를 위해","For builders":"빌더를 위해","For communities":"커뮤니티를 위해","Community mission":"커뮤니티 미션","Join Telegram Group":"텔레그램 그룹 참여","Read Announcements":"공지 읽기","Centralize activity":"활동 통합","Help projects find players":"프로젝트가 플레이어를 찾도록 지원","Make onboarding easier":"온보딩을 쉽게","Grow ecosystem media":"생태계 미디어 성장","Shared world":"공유 세계","Search games, mechanics, categories...":"게임, 메커니즘, 카테고리 검색...","ALL":"전체","LIVE":"라이브","NEW":"신규","SOON":"예정","Infrastructure":"인프라","Player onboarding":"플레이어 온보딩","Website":"웹사이트","Support":"지원"},
+  tr:{"Why it exists":"Neden var","Community":"Topluluk","Updates":"Güncellemeler","Registry":"Kayıt","Telegram Channel":"Telegram Kanalı","Official X":"Resmi X","Telegram Group":"Telegram Grubu","The home of Starknet gaming":"Starknet gaming'in evi","One hub for players, builders, projects, and onchain games.":"Oyuncular, geliştiriciler, projeler ve onchain oyunlar için tek merkez.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming ekosistemi bir araya getirir: oyunları keşfet, proje güncellemelerini takip et ve topluluğa katıl.","News":"Haberler","Recaps":"Özetler","Join the community":"Topluluğa katıl","Explore games":"Oyunları keşfet","Follow X updates":"X güncellemelerini takip et","Games tracked":"Takip edilen oyunlar","Categories":"Kategoriler","Live now":"Canlı","News & community":"Haberler ve topluluk","Ecosystem Hub":"Ekosistem merkezi","Players":"Oyuncular","discover + compete":"keşfet + rekabet et","Builders":"Geliştiriciler","updates + feedback":"güncellemeler + geri bildirim","Projects":"Projeler","visibility + playtests":"görünürlük + testler","news + recaps":"haberler + özetler","Featured games":"Öne çıkan oyunlar","Built as the front door for Starknet gaming.":"Starknet gaming için ana giriş.","For players":"Oyuncular için","For builders":"Geliştiriciler için","For communities":"Topluluklar için","Community mission":"Topluluk misyonu","Join Telegram Group":"Telegram grubuna katıl","Read Announcements":"Duyuruları oku","Centralize activity":"Aktiviteyi merkezileştir","Help projects find players":"Projelerin oyuncu bulmasına yardım et","Make onboarding easier":"Başlamayı kolaylaştır","Grow ecosystem media":"Ekosistem medyasını büyüt","Shared world":"Ortak dünya","Search games, mechanics, categories...":"Oyun, mekanik, kategori ara...","ALL":"TÜMÜ","LIVE":"CANLI","NEW":"YENİ","SOON":"YAKINDA","Infrastructure":"Altyapı","Player onboarding":"Oyuncu başlangıcı","Website":"Web sitesi","Support":"Destek"},
+  ru:{"Why it exists":"Зачем это","Community":"Сообщество","Updates":"Обновления","Registry":"Реестр","Telegram Channel":"Telegram канал","Official X":"Официальный X","Telegram Group":"Telegram группа","The home of Starknet gaming":"Дом Starknet Gaming","One hub for players, builders, projects, and onchain games.":"Единый хаб для игроков, билдеров, проектов и ончейн-игр.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming объединяет экосистему: игры, обновления проектов, сообщество, новости и итоги.","News":"Новости","Recaps":"Итоги","Join the community":"Вступить в сообщество","Explore games":"Смотреть игры","Follow X updates":"Следить в X","Games tracked":"Игр в списке","Categories":"Категории","Live now":"Уже live","News & community":"Новости и сообщество","Ecosystem Hub":"Хаб экосистемы","Players":"Игроки","discover + compete":"искать + соревноваться","Builders":"Билдеры","updates + feedback":"обновления + фидбек","Projects":"Проекты","visibility + playtests":"видимость + тесты","news + recaps":"новости + итоги","Featured games":"Избранные игры","Built as the front door for Starknet gaming.":"Главный вход в Starknet Gaming.","For players":"Для игроков","For builders":"Для билдеров","For communities":"Для сообществ","Community mission":"Миссия сообщества","Join Telegram Group":"Войти в Telegram группу","Read Announcements":"Читать анонсы","Centralize activity":"Собрать активность","Help projects find players":"Помочь проектам найти игроков","Make onboarding easier":"Упростить вход","Grow ecosystem media":"Развивать медиа экосистемы","Shared world":"Общий мир","Search games, mechanics, categories...":"Искать игры, механики, категории...","ALL":"ВСЕ","LIVE":"LIVE","NEW":"NEW","SOON":"СКОРО","Infrastructure":"Инфраструктура","Player onboarding":"Онбординг игроков","Website":"Сайт","Support":"Поддержка"},
+  hi:{"Why it exists":"यह क्यों है","Community":"समुदाय","Updates":"अपडेट","Registry":"रजिस्ट्री","Telegram Channel":"Telegram चैनल","Official X":"आधिकारिक X","Telegram Group":"Telegram ग्रुप","The home of Starknet gaming":"Starknet गेमिंग का घर","One hub for players, builders, projects, and onchain games.":"खिलाड़ियों, बिल्डरों, प्रोजेक्ट्स और ऑनचेन गेम्स के लिए एक हब।","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming इकोसिस्टम को जोड़ता है: गेम खोजें, अपडेट देखें और समुदाय से जुड़ें।","News":"समाचार","Recaps":"रीकैप","Join the community":"समुदाय से जुड़ें","Explore games":"गेम देखें","Follow X updates":"X अपडेट फॉलो करें","Games tracked":"ट्रैक गेम्स","Categories":"श्रेणियां","Live now":"लाइव","News & community":"समाचार और समुदाय","Ecosystem Hub":"इकोसिस्टम हब","Players":"खिलाड़ी","discover + compete":"खोजें + मुकाबला करें","Builders":"बिल्डर","updates + feedback":"अपडेट + फीडबैक","Projects":"प्रोजेक्ट्स","visibility + playtests":"दिखाई देना + टेस्ट","news + recaps":"समाचार + रीकैप","Featured games":"फीचर्ड गेम्स","Built as the front door for Starknet gaming.":"Starknet गेमिंग का मुख्य प्रवेश।","For players":"खिलाड़ियों के लिए","For builders":"बिल्डरों के लिए","For communities":"समुदायों के लिए","Community mission":"समुदाय मिशन","Join Telegram Group":"Telegram ग्रुप से जुड़ें","Read Announcements":"घोषणाएं पढ़ें","Centralize activity":"गतिविधि केंद्रीकृत करें","Help projects find players":"प्रोजेक्ट्स को खिलाड़ी दिलाएं","Make onboarding easier":"ऑनबोर्डिंग आसान बनाएं","Grow ecosystem media":"इकोसिस्टम मीडिया बढ़ाएं","Shared world":"साझा दुनिया","Search games, mechanics, categories...":"गेम, मैकेनिक्स, श्रेणियां खोजें...","ALL":"सभी","LIVE":"लाइव","NEW":"नया","SOON":"जल्द","Infrastructure":"इन्फ्रास्ट्रक्चर","Player onboarding":"प्लेयर ऑनबोर्डिंग","Website":"वेबसाइट","Support":"सपोर्ट"},
+  uk:{"Why it exists":"Навіщо це","Community":"Спільнота","Updates":"Оновлення","Registry":"Реєстр","Telegram Channel":"Telegram канал","Official X":"Офіційний X","Telegram Group":"Telegram група","The home of Starknet gaming":"Дім Starknet Gaming","One hub for players, builders, projects, and onchain games.":"Єдиний хаб для гравців, білдерів, проєктів та ончейн-ігор.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming об'єднує екосистему: відкривай ігри, слідкуй за оновленнями, долучайся до спільноти та новин.","News":"Новини","Recaps":"Підсумки","Join the community":"Доєднатися","Explore games":"Переглянути ігри","Follow X updates":"Стежити в X","Games tracked":"Ігор у списку","Categories":"Категорії","Live now":"Live зараз","News & community":"Новини і спільнота","Ecosystem Hub":"Хаб екосистеми","Players":"Гравці","discover + compete":"відкривати + змагатись","Builders":"Білдери","updates + feedback":"оновлення + фідбек","Projects":"Проєкти","visibility + playtests":"видимість + тести","news + recaps":"новини + підсумки","Featured games":"Обрані ігри","Built as the front door for Starknet gaming.":"Головний вхід у Starknet Gaming.","For players":"Для гравців","For builders":"Для білдерів","For communities":"Для спільнот","Community mission":"Місія спільноти","Join Telegram Group":"Доєднатись до Telegram","Read Announcements":"Читати анонси","Centralize activity":"Об'єднати активність","Help projects find players":"Допомогти проєктам знайти гравців","Make onboarding easier":"Спростити онбординг","Grow ecosystem media":"Розвивати медіа екосистеми","Shared world":"Спільний світ","Search games, mechanics, categories...":"Пошук ігор, механік, категорій...","ALL":"ВСІ","LIVE":"LIVE","NEW":"NEW","SOON":"СКОРО","Infrastructure":"Інфраструктура","Player onboarding":"Онбординг гравців","Website":"Сайт","Support":"Підтримка"},
+  es:{"Why it exists":"Por qué existe","Community":"Comunidad","Updates":"Actualizaciones","Registry":"Registro","Telegram Channel":"Canal de Telegram","Official X":"X oficial","Telegram Group":"Grupo de Telegram","The home of Starknet gaming":"El hogar de Starknet Gaming","One hub for players, builders, projects, and onchain games.":"Un hub para jugadores, builders, proyectos y juegos onchain.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming une el ecosistema: descubre juegos, sigue actualizaciones y participa en la comunidad.","News":"Noticias","Recaps":"Resúmenes","Join the community":"Unirse a la comunidad","Explore games":"Explorar juegos","Follow X updates":"Seguir en X","Games tracked":"Juegos listados","Categories":"Categorías","Live now":"En vivo","News & community":"Noticias y comunidad","Ecosystem Hub":"Hub del ecosistema","Players":"Jugadores","discover + compete":"descubrir + competir","Builders":"Builders","updates + feedback":"actualizaciones + feedback","Projects":"Proyectos","visibility + playtests":"visibilidad + pruebas","news + recaps":"noticias + resúmenes","Featured games":"Juegos destacados","Built as the front door for Starknet gaming.":"La puerta de entrada a Starknet Gaming.","For players":"Para jugadores","For builders":"Para builders","For communities":"Para comunidades","Community mission":"Misión de la comunidad","Join Telegram Group":"Unirse al grupo Telegram","Read Announcements":"Leer anuncios","Centralize activity":"Centralizar actividad","Help projects find players":"Ayudar proyectos a encontrar jugadores","Make onboarding easier":"Facilitar el onboarding","Grow ecosystem media":"Impulsar medios del ecosistema","Shared world":"Mundo compartido","Search games, mechanics, categories...":"Buscar juegos, mecánicas, categorías...","ALL":"TODO","LIVE":"LIVE","NEW":"NUEVO","SOON":"PRONTO","Infrastructure":"Infraestructura","Player onboarding":"Onboarding de jugadores","Website":"Sitio web","Support":"Soporte"}
+};
+
+const originalText = new WeakMap();
+
+function translateNodeText(language){
+  const dictionary = TRANSLATIONS[language] || {};
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      if(!node.textContent.trim()) return NodeFilter.FILTER_REJECT;
+      if(["SCRIPT", "STYLE", "OPTION"].includes(node.parentElement?.tagName)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    if(!originalText.has(node)) originalText.set(node, node.textContent);
+    const original = originalText.get(node);
+    const trimmed = original.trim();
+    const translated = language === "en" ? trimmed : dictionary[trimmed];
+    if(!translated) return;
+    node.textContent = original.replace(trimmed, translated);
+  });
+}
+
+function applyLanguage(language){
+  document.documentElement.lang = language === "zh" ? "zh-CN" : language;
+  translateNodeText(language);
+  const searchInput = document.getElementById("search");
+  const placeholder = "Search games, mechanics, categories...";
+  searchInput.placeholder = language === "en" ? placeholder : TRANSLATIONS[language]?.[placeholder] || placeholder;
+  localStorage.setItem("site-language", language);
+}
+
 const GAMES = [
   {name:"ZAP Football", cat:"Strategy / MMO", status:"new", desc:"Football strategy game with real onchain gameplay and squad-level decisions.", twitter:"playzapfc", website:"https://playzap.vercel.app/", logo:"assets/logos/zap-football.jpg"},
   {name:"Realms Blitz", cat:"Strategy / MMO", status:"new", desc:"Fast two-hour matches running on the same mechanics as Realms Eternum.", twitter:"LootRealms", website:"https://realms.world/blitz", logo:"assets/logos/realms-blitz.svg"},
@@ -673,8 +820,8 @@ function renderFeatured(){
   const featuredNames = ["Brove Royale", "ZAP Football", "Corsair", "Loot Survivor", "GM NFT"];
   const featured = featuredNames.map(name => GAMES.find(game => game.name === name)).filter(Boolean);
   document.getElementById("featured-stack").innerHTML = featured.map((game, index) => `
-    <div class="featured-game">
-      <span class="game-icon display" style="background:${accents[index % accents.length]}">${game.logo ? `<img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async">` : initials(game.name)}</span>
+    <div class="featured-game" style="--accent:${accents[index % accents.length]}">
+      <span class="game-icon display">${game.logo ? `<img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async">` : initials(game.name)}</span>
       <span><strong>${escapeHTML(game.name)}</strong><small>${escapeHTML(game.cat)}</small></span>
       <span class="status-chip ${game.status} mono">${statusLabel(game.status).toUpperCase()}</span>
     </div>
@@ -716,15 +863,358 @@ document.querySelectorAll(".pill").forEach(button => {
     activeFilter = button.dataset.filter;
     document.querySelectorAll(".pill").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
     renderRegistry(activeFilter, search.value);
+    applyLanguage(document.getElementById("language-select").value);
   });
 });
 
-search.addEventListener("input", event => renderRegistry(activeFilter, event.target.value));
+search.addEventListener("input", event => {
+  renderRegistry(activeFilter, event.target.value);
+  applyLanguage(document.getElementById("language-select").value);
+});
+
+document.getElementById("language-select").addEventListener("change", event => {
+  applyLanguage(event.target.value);
+});
 
 updateStats();
 renderFeatured();
 renderRegistry();
 renderPending();
+
+const savedLanguage = localStorage.getItem("site-language") || "en";
+document.getElementById("language-select").value = savedLanguage;
+applyLanguage(savedLanguage);
+
+const rocketButton = document.getElementById("rocket-button");
+const gameOverlay = document.getElementById("game-overlay");
+const gameCanvas = document.getElementById("jump-game");
+const gameCtx = gameCanvas.getContext("2d");
+const gameScore = document.getElementById("game-score");
+const gameTime = document.getElementById("game-time");
+const gameBest = document.getElementById("game-best");
+const gameState = document.getElementById("game-state");
+const gameStart = document.getElementById("game-start");
+const gameMute = document.getElementById("game-mute");
+const gameClose = document.getElementById("game-close");
+const gameLeaderboard = document.getElementById("game-leaderboard");
+
+const jumpGame = {
+  running:false,
+  muted:false,
+  keys:new Set(),
+  score:0,
+  best:Number(localStorage.getItem("rocket-jump-best") || 0),
+  time:60,
+  lastTime:0,
+  camera:0,
+  difficulty:1,
+  melodyStep:0,
+  melodyTimer:0,
+  audio:null,
+  player:{x:360,y:540,w:34,h:42,vx:0,vy:-12,onBoost:false},
+  platforms:[],
+  particles:[]
+};
+
+function resizeGameCanvas(){
+  const rect = gameCanvas.getBoundingClientRect();
+  gameCanvas.width = Math.max(320, Math.floor(rect.width));
+  gameCanvas.height = Math.max(420, Math.floor(rect.height));
+}
+
+function randomBetween(min, max){
+  return min + Math.random() * (max - min);
+}
+
+function createPlatform(y, guaranteed = false){
+  const width = Math.max(58, 118 - jumpGame.difficulty * 7 + randomBetween(-16, 16));
+  const movingChance = guaranteed ? 0 : Math.min(.38, .06 + jumpGame.difficulty * .035);
+  const fragileChance = guaranteed ? 0 : Math.min(.3, .02 + jumpGame.difficulty * .025);
+  const boostChance = guaranteed ? 0 : Math.max(.04, .16 - jumpGame.difficulty * .01);
+  const typeRoll = Math.random();
+  const type = typeRoll < fragileChance ? "fragile" : typeRoll < fragileChance + movingChance ? "moving" : "normal";
+  return {
+    x:randomBetween(18, gameCanvas.width - width - 18),
+    y,
+    w:width,
+    h:12,
+    type,
+    dir:Math.random() > .5 ? 1 : -1,
+    speed:randomBetween(.55, 1.4 + jumpGame.difficulty * .12),
+    boost:Math.random() < boostChance
+  };
+}
+
+function resetGame(){
+  resizeGameCanvas();
+  jumpGame.running = true;
+  jumpGame.score = 0;
+  jumpGame.time = 60;
+  jumpGame.camera = 0;
+  jumpGame.difficulty = 1;
+  jumpGame.lastTime = performance.now();
+  jumpGame.player = {x:gameCanvas.width / 2 - 17,y:gameCanvas.height - 140,w:34,h:42,vx:0,vy:-13,onBoost:false};
+  jumpGame.platforms = [{x:gameCanvas.width / 2 - 70,y:gameCanvas.height - 70,w:140,h:14,type:"normal",dir:1,speed:0,boost:false}];
+  for(let y = gameCanvas.height - 150; y > -2200; y -= 82){
+    jumpGame.platforms.push(createPlatform(y, y > gameCanvas.height - 420));
+  }
+  jumpGame.particles = [];
+  gameState.textContent = "Go";
+  gameStart.textContent = "Restart";
+  startMelody();
+  requestAnimationFrame(updateGame);
+}
+
+function ensurePlatforms(){
+  const highest = Math.min(...jumpGame.platforms.map(platform => platform.y));
+  for(let y = highest - 86; y > jumpGame.camera - gameCanvas.height - 900; y -= Math.max(58, 88 - jumpGame.difficulty * 3)){
+    jumpGame.platforms.push(createPlatform(y));
+  }
+  jumpGame.platforms = jumpGame.platforms.filter(platform => platform.y < jumpGame.camera + gameCanvas.height + 140);
+}
+
+function addParticles(x, y, color, count = 10){
+  for(let i = 0; i < count; i++){
+    jumpGame.particles.push({x,y,vx:randomBetween(-2.4,2.4),vy:randomBetween(-3,1),life:randomBetween(.35,.8),color});
+  }
+}
+
+function playTone(freq, duration = .08, type = "sine", gain = .035){
+  if(jumpGame.muted) return;
+  if(!jumpGame.audio) jumpGame.audio = new AudioContext();
+  const osc = jumpGame.audio.createOscillator();
+  const volume = jumpGame.audio.createGain();
+  osc.type = type;
+  osc.frequency.value = freq;
+  volume.gain.value = gain;
+  osc.connect(volume).connect(jumpGame.audio.destination);
+  osc.start();
+  volume.gain.exponentialRampToValueAtTime(.0001, jumpGame.audio.currentTime + duration);
+  osc.stop(jumpGame.audio.currentTime + duration);
+}
+
+function startMelody(){
+  if(jumpGame.audio?.state === "suspended") jumpGame.audio.resume();
+  playTone(660, .09, "triangle", .025);
+}
+
+function updateMelody(delta){
+  if(jumpGame.muted || !jumpGame.running) return;
+  jumpGame.melodyTimer -= delta;
+  if(jumpGame.melodyTimer > 0) return;
+  const notes = [523,659,784,988,784,659,587,740];
+  playTone(notes[jumpGame.melodyStep % notes.length], .07, "triangle", .018);
+  jumpGame.melodyStep++;
+  jumpGame.melodyTimer = Math.max(.16, .32 - jumpGame.difficulty * .015);
+}
+
+function updateGame(now){
+  if(!jumpGame.running) return;
+  const delta = Math.min(.033, (now - jumpGame.lastTime) / 1000);
+  jumpGame.lastTime = now;
+  jumpGame.time -= delta;
+  updateMelody(delta);
+
+  const player = jumpGame.player;
+  const move = (jumpGame.keys.has("ArrowRight") || jumpGame.keys.has("d") ? 1 : 0) - (jumpGame.keys.has("ArrowLeft") || jumpGame.keys.has("a") ? 1 : 0);
+  player.vx += move * (34 + jumpGame.difficulty * 1.4) * delta;
+  player.vx *= .9;
+  player.vy += (24 + jumpGame.difficulty * .75) * delta;
+  player.x += player.vx;
+  player.y += player.vy;
+
+  if(player.x > gameCanvas.width + 20) player.x = -player.w;
+  if(player.x < -player.w - 20) player.x = gameCanvas.width;
+
+  jumpGame.platforms.forEach(platform => {
+    if(platform.type === "moving"){
+      platform.x += platform.dir * platform.speed * (1 + jumpGame.difficulty * .12);
+      if(platform.x < 12 || platform.x + platform.w > gameCanvas.width - 12) platform.dir *= -1;
+    }
+  });
+
+  if(player.vy > 0){
+    jumpGame.platforms.forEach(platform => {
+      const hitX = player.x + player.w > platform.x && player.x < platform.x + platform.w;
+      const hitY = player.y + player.h > platform.y && player.y + player.h < platform.y + platform.h + 18;
+      if(hitX && hitY){
+        player.vy = platform.boost ? -22 : -15.5;
+        player.onBoost = platform.boost;
+        addParticles(player.x + player.w / 2, platform.y, platform.boost ? "#49f0ff" : "#d63cff", platform.boost ? 20 : 8);
+        playTone(platform.boost ? 1046 : 740, platform.boost ? .14 : .07, "triangle", platform.boost ? .05 : .025);
+        if(platform.type === "fragile") platform.dead = true;
+        platform.boost = false;
+      }
+    });
+  }
+
+  jumpGame.platforms = jumpGame.platforms.filter(platform => !platform.dead);
+
+  const screenTopTarget = gameCanvas.height * .38;
+  if(player.y - jumpGame.camera < screenTopTarget){
+    jumpGame.camera = player.y - screenTopTarget;
+  }
+
+  jumpGame.score = Math.max(jumpGame.score, Math.floor(Math.abs(Math.min(0, jumpGame.camera))));
+  jumpGame.difficulty = 1 + Math.floor(jumpGame.score / 700);
+  ensurePlatforms();
+
+  jumpGame.particles.forEach(particle => {
+    particle.x += particle.vx;
+    particle.y += particle.vy;
+    particle.vy += .08;
+    particle.life -= delta;
+  });
+  jumpGame.particles = jumpGame.particles.filter(particle => particle.life > 0);
+
+  if(player.y - jumpGame.camera > gameCanvas.height + 80 || jumpGame.time <= 0){
+    endGame(player.y - jumpGame.camera > gameCanvas.height + 80 ? "Fell" : "Time");
+    return;
+  }
+
+  drawGame();
+  updateGameHud();
+  requestAnimationFrame(updateGame);
+}
+
+function drawGame(){
+  const ctx = gameCtx;
+  ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  const gradient = ctx.createLinearGradient(0, 0, 0, gameCanvas.height);
+  gradient.addColorStop(0, "#0b1031");
+  gradient.addColorStop(1, "#080912");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+  ctx.fillStyle = "rgba(73,240,255,.12)";
+  for(let i = 0; i < 55; i++){
+    const x = (i * 137 + jumpGame.score * .12) % gameCanvas.width;
+    const y = (i * 91 + jumpGame.score * .26) % gameCanvas.height;
+    ctx.beginPath();
+    ctx.arc(x, y, i % 3 === 0 ? 2 : 1, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  jumpGame.platforms.forEach(platform => {
+    const y = platform.y - jumpGame.camera;
+    if(y < -40 || y > gameCanvas.height + 40) return;
+    ctx.fillStyle = platform.type === "fragile" ? "#ff6a00" : platform.type === "moving" ? "#49f0ff" : "#9d4dff";
+    ctx.shadowColor = ctx.fillStyle;
+    ctx.shadowBlur = 16;
+    ctx.beginPath();
+    ctx.roundRect(platform.x, y, platform.w, platform.h, 8);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    if(platform.boost){
+      ctx.fillStyle = "#ffb000";
+      ctx.beginPath();
+      ctx.arc(platform.x + platform.w / 2, y - 10, 7, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  });
+
+  jumpGame.particles.forEach(particle => {
+    ctx.globalAlpha = Math.max(0, particle.life);
+    ctx.fillStyle = particle.color;
+    ctx.beginPath();
+    ctx.arc(particle.x, particle.y - jumpGame.camera, 3, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+
+  const player = jumpGame.player;
+  const py = player.y - jumpGame.camera;
+  ctx.save();
+  ctx.translate(player.x + player.w / 2, py + player.h / 2);
+  ctx.rotate(player.vx * .015);
+  ctx.font = "38px system-ui";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.shadowColor = player.onBoost ? "#49f0ff" : "#d63cff";
+  ctx.shadowBlur = 18;
+  ctx.fillText("🚀", 0, 0);
+  ctx.restore();
+  player.onBoost = false;
+
+  ctx.fillStyle = "rgba(247,242,255,.72)";
+  ctx.font = "700 13px Inter, sans-serif";
+  ctx.fillText(`Level ${jumpGame.difficulty}`, 18, 28);
+}
+
+function updateGameHud(){
+  gameScore.textContent = jumpGame.score;
+  gameTime.textContent = Math.max(0, Math.ceil(jumpGame.time));
+  gameBest.textContent = jumpGame.best;
+  gameState.textContent = `Lv ${jumpGame.difficulty}`;
+}
+
+function getLeaderboard(){
+  return JSON.parse(localStorage.getItem("rocket-jump-leaderboard") || "[]");
+}
+
+function renderLeaderboard(){
+  const scores = getLeaderboard();
+  gameLeaderboard.innerHTML = scores.length ? scores.map(item => `<li>${item.score} pts · Lv ${item.level}</li>`).join("") : "<li>No runs yet</li>";
+  gameBest.textContent = jumpGame.best;
+}
+
+function saveLeaderboard(){
+  const scores = getLeaderboard();
+  scores.push({score:jumpGame.score, level:jumpGame.difficulty, date:Date.now()});
+  scores.sort((a, b) => b.score - a.score);
+  localStorage.setItem("rocket-jump-leaderboard", JSON.stringify(scores.slice(0, 5)));
+  if(jumpGame.score > jumpGame.best){
+    jumpGame.best = jumpGame.score;
+    localStorage.setItem("rocket-jump-best", String(jumpGame.best));
+  }
+  renderLeaderboard();
+}
+
+function endGame(reason){
+  jumpGame.running = false;
+  gameState.textContent = reason === "Time" ? "Time" : "Fell";
+  gameStart.textContent = "Play again";
+  saveLeaderboard();
+  playTone(220, .2, "sawtooth", .035);
+  drawGame();
+}
+
+function openGame(){
+  gameOverlay.classList.add("is-open");
+  gameOverlay.setAttribute("aria-hidden", "false");
+  resizeGameCanvas();
+  renderLeaderboard();
+  drawGame();
+}
+
+function closeGame(){
+  jumpGame.running = false;
+  gameOverlay.classList.remove("is-open");
+  gameOverlay.setAttribute("aria-hidden", "true");
+}
+
+rocketButton.addEventListener("click", openGame);
+gameStart.addEventListener("click", resetGame);
+gameClose.addEventListener("click", closeGame);
+gameMute.addEventListener("click", () => {
+  jumpGame.muted = !jumpGame.muted;
+  gameMute.textContent = `Melody: ${jumpGame.muted ? "off" : "on"}`;
+});
+window.addEventListener("keydown", event => {
+  if(["ArrowLeft", "ArrowRight", "a", "d"].includes(event.key)) jumpGame.keys.add(event.key);
+  if(event.key === "Escape" && gameOverlay.classList.contains("is-open")) closeGame();
+});
+window.addEventListener("keyup", event => jumpGame.keys.delete(event.key));
+gameCanvas.addEventListener("pointerdown", event => {
+  const rect = gameCanvas.getBoundingClientRect();
+  jumpGame.keys.add(event.clientX - rect.left > rect.width / 2 ? "ArrowRight" : "ArrowLeft");
+});
+gameCanvas.addEventListener("pointerup", () => {
+  jumpGame.keys.delete("ArrowRight");
+  jumpGame.keys.delete("ArrowLeft");
+});
+window.addEventListener("resize", resizeGameCanvas);
+renderLeaderboard();
 </script>
 </body>
 </html>
