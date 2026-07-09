@@ -110,6 +110,13 @@
   .language-select{max-width:108px;border:0;background:transparent;color:#f3dcff;font-weight:800;font-size:12px;outline:none;cursor:pointer;}
   .language-select option{background:#11132b;color:#f7f2ff;}
   .language-switcher:hover{background:rgba(157,77,255,.2);border-color:rgba(214,60,255,.68);box-shadow:0 0 24px rgba(157,77,255,.28);}
+  .contact-menu{position:relative;}
+  .contact-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:37px;padding:0 14px;border:1px solid rgba(157,77,255,.3);border-radius:999px;background:rgba(157,77,255,.1);color:#f3dcff;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 0 18px rgba(157,77,255,.12);transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;}
+  .contact-toggle:hover,.contact-toggle[aria-expanded="true"]{transform:translateY(-1px);background:rgba(157,77,255,.2);border-color:rgba(214,60,255,.68);box-shadow:0 0 24px rgba(157,77,255,.28);}
+  .contact-popover{position:absolute;right:0;top:calc(100% + 10px);display:none;min-width:220px;padding:10px;border:1px solid rgba(157,77,255,.3);border-radius:18px;background:rgba(11,13,33,.96);backdrop-filter:blur(14px);box-shadow:0 22px 56px rgba(0,0,0,.36),0 0 34px rgba(157,77,255,.16);}
+  .contact-popover.is-open{display:grid;gap:8px;}
+  .contact-popover a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(157,77,255,.2);border-radius:12px;background:rgba(157,77,255,.08);color:var(--paper);text-decoration:none;font-size:13px;font-weight:800;}
+  .contact-popover a:hover{background:rgba(157,77,255,.16);border-color:rgba(214,60,255,.46);}
   .nav-links .cta{background:var(--paper);color:#15120f;}
   .nav-links .cta:hover{background:#fff;color:#15120f;}
 
@@ -296,6 +303,18 @@
   .pending-card p,.infra-card p{margin:0;color:var(--muted);font-size:14px;}
   .pending-meta{display:inline-flex;margin-bottom:14px;color:var(--amber);font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
 
+  .partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .partner-card{position:relative;overflow:hidden;padding:24px;border:1px solid rgba(157,77,255,.28);border-radius:26px;background:linear-gradient(145deg,rgba(17,19,43,.86),rgba(12,10,16,.78));box-shadow:0 18px 52px rgba(0,0,0,.22);backdrop-filter:blur(14px);transition:transform .18s,border-color .18s,box-shadow .18s;}
+  .partner-card::after{content:"";position:absolute;right:-48px;bottom:-62px;width:150px;height:150px;border-radius:50%;background:var(--partner-accent);opacity:.14;pointer-events:none;transition:opacity .18s,transform .18s;}
+  .partner-card:hover{transform:translateY(-4px);border-color:rgba(157,77,255,.62);box-shadow:0 24px 64px rgba(157,77,255,.18);}
+  .partner-card:hover::after{opacity:.22;transform:scale(1.08);}
+  .partner-head{position:relative;z-index:1;display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .partner-logo{width:62px;height:62px;border-radius:18px;object-fit:contain;padding:6px;background:rgba(247,242,255,.08);border:1px solid rgba(247,242,255,.14);box-shadow:0 0 24px color-mix(in srgb,var(--partner-accent) 22%,transparent);}
+  .partner-head strong{display:block;font-size:24px;line-height:1;letter-spacing:-.045em;}
+  .partner-card p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:14px;min-height:66px;}
+  .partner-card .card-foot{margin-top:20px;}
+  .partner-card .project-links{display:flex;justify-content:flex-end;}
+
   .footer{padding:38px 0 58px;border-top:1px solid var(--line);}
   .footer-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   .footer p{margin:0;color:var(--muted-soft);font-size:13px;}
@@ -315,13 +334,20 @@
   .rocket-button::after{content:"Play";position:absolute;left:50%;top:calc(100% + 7px);transform:translateX(-50%);padding:4px 8px;border-radius:999px;background:rgba(5,7,18,.82);color:var(--sage);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
   .game-overlay{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:20px;background:radial-gradient(circle at 50% 20%,rgba(157,77,255,.34),transparent 34rem),rgba(3,4,12,.92);backdrop-filter:blur(18px);}
   .game-overlay.is-open{display:grid;}
-  .game-shell{width:min(1120px,100%);height:min(760px,calc(100vh - 40px));display:grid;grid-template-columns:minmax(300px,1fr) 280px;gap:16px;}
+  .game-shell{width:min(1180px,100%);height:min(780px,calc(100vh - 40px));display:grid;grid-template-columns:minmax(300px,1fr) 310px;gap:16px;}
   .game-stage{position:relative;overflow:hidden;border:1px solid rgba(157,77,255,.38);border-radius:28px;background:linear-gradient(180deg,#090d28,#110c2d 58%,#080912);box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 70px rgba(157,77,255,.16);}
   .game-stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.38) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:stars-drift 16s linear infinite;pointer-events:none;}
-  #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;}
+  #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;}
   .game-panel{display:flex;flex-direction:column;gap:12px;border:1px solid rgba(157,77,255,.32);border-radius:28px;background:rgba(10,8,24,.86);padding:18px;box-shadow:0 24px 70px rgba(0,0,0,.38);}
   .game-panel h2{margin:0;font-size:28px;line-height:1;letter-spacing:-.05em;}
   .game-panel p{margin:0;color:var(--muted);font-size:13px;}
+  .game-profile{display:grid;gap:8px;padding:12px;border:1px solid rgba(73,240,255,.24);border-radius:16px;background:rgba(73,240,255,.055);}
+  .game-player-label{color:var(--sage);font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;}
+  .game-name-row{display:grid;grid-template-columns:1fr auto;gap:8px;}
+  .game-input{width:100%;height:40px;border:1px solid rgba(157,77,255,.36);border-radius:12px;background:rgba(5,7,18,.64);color:var(--paper);padding:0 12px;font-size:13px;outline:none;}
+  .game-input::placeholder{color:var(--muted-soft);}
+  .game-input:focus{border-color:rgba(73,240,255,.76);box-shadow:0 0 0 3px rgba(73,240,255,.12);}
+  .game-profile p{font-size:11px;color:var(--muted-soft);}
   .game-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
   .game-stat{padding:12px;border:1px solid var(--line);border-radius:16px;background:rgba(247,242,255,.045);}
   .game-stat b{display:block;font-size:22px;line-height:1;}
@@ -330,10 +356,21 @@
   .game-action{min-height:42px;border:1px solid rgba(157,77,255,.38);border-radius:14px;background:rgba(157,77,255,.13);color:#fff;font-weight:900;cursor:pointer;transition:transform .15s,background .15s,border-color .15s;}
   .game-action:hover{transform:translateY(-2px);background:rgba(157,77,255,.24);border-color:rgba(73,240,255,.56);}
   .game-action.primary{background:linear-gradient(135deg,var(--violet),var(--magenta));border-color:transparent;}
+  .game-action.compact{min-height:40px;padding:0 12px;border-radius:12px;font-size:12px;}
   .leaderboard{display:grid;gap:7px;margin-top:4px;}
+  .leaderboard-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
   .leaderboard h3{margin:0;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);}
-  .leaderboard ol{margin:0;padding-left:22px;color:var(--muted);font-size:13px;}
-  .leaderboard li{margin:5px 0;}
+  .leaderboard-status{display:inline-flex;align-items:center;min-height:24px;padding:0 8px;border:1px solid rgba(157,77,255,.28);border-radius:999px;background:rgba(157,77,255,.1);color:var(--muted);font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;}
+  .leaderboard-status[data-mode="public"]{border-color:rgba(73,240,255,.42);background:rgba(73,240,255,.12);color:var(--sage);}
+  .leaderboard-status[data-mode="syncing"]{border-color:rgba(255,176,0,.36);background:rgba(255,176,0,.1);color:var(--amber);}
+  .leaderboard-status[data-mode="offline"]{border-color:rgba(255,106,0,.42);background:rgba(255,106,0,.1);color:#ffb06e;}
+  .leaderboard ol{display:grid;gap:7px;margin:0;padding-left:22px;color:var(--muted);font-size:13px;}
+  .leaderboard li{padding:7px 0 7px 2px;border-bottom:1px solid rgba(247,242,255,.08);}
+  .leaderboard li:last-child{border-bottom:0;}
+  .leaderboard-entry{display:grid;gap:2px;}
+  .leaderboard-entry strong{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--paper);font-size:13px;}
+  .leaderboard-entry span{color:var(--muted-soft);font-size:11px;}
+  .leaderboard-tools{display:grid;grid-template-columns:1fr;gap:8px;}
   .game-help{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:12px;color:var(--muted-soft);}
 
   @keyframes rocket-float{0%,100%{transform:translate(0,0) rotate(-8deg);}25%{transform:translate(22px,-80px) rotate(8deg);}50%{transform:translate(8px,-150px) rotate(-3deg);}75%{transform:translate(30px,-70px) rotate(10deg);}}
@@ -360,10 +397,11 @@
     .wrap{width:min(100% - 28px,1160px);}
     .nav{align-items:flex-start;}
     .nav-links a:not(.cta){display:none;}
+    .nav-links .contact-popover a{display:flex;}
     .hero{padding:56px 0 40px;}
     .controls{grid-template-columns:1fr;}
     .filters{justify-content:flex-start;}
-    .game-grid,.pending-grid,.infra-grid,.stats,.value-grid,.mission-panel,.media-grid{grid-template-columns:1fr;}
+    .game-grid,.pending-grid,.infra-grid,.partners-grid,.stats,.value-grid,.mission-panel,.media-grid{grid-template-columns:1fr;}
     .featured-game{grid-template-columns:40px 1fr;}
     .featured-game .status-chip{grid-column:2;justify-self:start;}
     body{background-attachment:scroll;}
@@ -388,6 +426,14 @@
         <a href="#community">Community</a>
         <a href="#updates">Updates</a>
         <a href="#registry">Registry</a>
+        <a href="#partners">Partners</a>
+        <div class="contact-menu">
+          <button class="contact-toggle" id="contact-toggle" type="button" aria-expanded="false" aria-controls="contact-popover">Contact</button>
+          <div class="contact-popover" id="contact-popover" aria-label="Contact links">
+            <a href="https://t.me/BlackAporia" target="_blank" rel="noopener"><span>Telegram</span><span class="mono">@BlackAporia</span></a>
+            <a href="https://x.com/BlackAporia" target="_blank" rel="noopener"><span>X</span><span class="mono">@BlackAporia</span></a>
+          </div>
+        </div>
         <a class="social-link" href="https://t.me/channel_starknet_gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Channel</span></a>
         <a class="social-link" href="https://x.com/StarknetGaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.8l4.7 6.2L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z"/></svg></span><span>Official X</span></a>
         <a class="social-link" href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Group</span></a>
@@ -624,6 +670,43 @@
         </article>
       </div>
     </section>
+
+    <section class="wrap section" id="partners">
+      <div class="section-head">
+        <h2 class="section-title display">Partners</h2>
+        <p class="section-copy">Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.</p>
+      </div>
+      <div class="partners-grid">
+        <article class="partner-card" style="--partner-accent:var(--sage)">
+          <span class="pending-meta mono">Analytics partner</span>
+          <div class="partner-head">
+            <img class="partner-logo" src="assets/logos/aegis.jpg" alt="Aegis logo" loading="lazy" decoding="async">
+            <strong class="display">Aegis</strong>
+          </div>
+          <p>Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.</p>
+          <div class="card-foot">
+            <span class="tag mono">Starknet analytics</span>
+            <span class="project-links">
+              <a class="project-link site-link" href="https://www.aegisanalytics.xyz/" target="_blank" rel="noopener"><span class="site-icon" aria-hidden="true"></span><span>Website</span></a>
+            </span>
+          </div>
+        </article>
+        <article class="partner-card" style="--partner-accent:var(--amber)">
+          <span class="pending-meta mono">AI relay partner</span>
+          <div class="partner-head">
+            <img class="partner-logo" src="assets/logos/StarkRelayHQ.png" alt="StarkRelayHQ logo" loading="lazy" decoding="async">
+            <strong class="display">StarkRelayHQ</strong>
+          </div>
+          <p>Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.</p>
+          <div class="card-foot">
+            <span class="tag mono">Starknet AI access</span>
+            <span class="project-links">
+              <a class="project-link site-link" href="https://starkrelay.bond/" target="_blank" rel="noopener"><span class="site-icon" aria-hidden="true"></span><span>Website</span></a>
+            </span>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -637,13 +720,6 @@
         <a href="https://x.com/StarknetGaming" target="_blank" rel="noopener">Official X</a>
         <a href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener">Telegram Group</a>
         <a href="https://starknet-ecosystem.com/" target="_blank" rel="noopener">Starknet Ecosystem</a>
-      </div>
-      <div class="contact-strip">
-        <strong class="display">Support</strong>
-        <div class="contact-actions">
-          <a class="contact-button" href="https://x.com/BlackAporia" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.8l4.7 6.2L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z"/></svg></span><span>X</span></a>
-          <a class="contact-button" href="https://t.me/BlackAporia" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram</span></a>
-        </div>
       </div>
     </div>
   </footer>
@@ -661,11 +737,21 @@
           <h2 class="display">Rocket Jump</h2>
           <p>Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.</p>
         </div>
+        <form class="game-profile" id="game-profile" autocomplete="off">
+          <label class="game-player-label mono" for="player-name">Nickname</label>
+          <div class="game-name-row">
+            <input class="game-input mono" id="player-name" name="player-name" type="text" minlength="2" maxlength="16" placeholder="Enter nickname" autocomplete="nickname" spellcheck="false">
+            <button class="game-action compact" id="game-save-name" type="submit">Save</button>
+          </div>
+          <p id="player-status">Enter a nickname before launch.</p>
+        </form>
         <div class="game-stats">
           <div class="game-stat"><b id="game-score">0</b><span>Score</span></div>
           <div class="game-stat"><b id="game-time">60</b><span>Timer</span></div>
           <div class="game-stat"><b id="game-best">0</b><span>Best</span></div>
           <div class="game-stat"><b id="game-state">Ready</b><span>Status</span></div>
+          <div class="game-stat"><b id="game-combo">x1</b><span>Combo</span></div>
+          <div class="game-stat"><b id="game-orbs">0</b><span>Orbs</span></div>
         </div>
         <div class="game-actions">
           <button class="game-action primary" id="game-start" type="button">Start game</button>
@@ -673,8 +759,14 @@
           <button class="game-action" id="game-close" type="button">Close</button>
         </div>
         <div class="leaderboard">
-          <h3 class="mono">Leaderboard</h3>
+          <div class="leaderboard-head">
+            <h3 class="mono">Leaderboard</h3>
+            <span class="leaderboard-status mono" id="leaderboard-status" data-mode="local">Local</span>
+          </div>
           <ol id="game-leaderboard"></ol>
+          <div class="leaderboard-tools">
+            <button class="game-action compact" id="leaderboard-refresh" type="button">Refresh leaderboard</button>
+          </div>
         </div>
         <p class="game-help">Controls: ← → or A/D. On mobile, tap left or right side of the game field.</p>
       </aside>
@@ -692,9 +784,390 @@ const TRANSLATIONS = {
   es:{"Why it exists":"Por qué existe","Community":"Comunidad","Updates":"Actualizaciones","Registry":"Registro","Telegram Channel":"Canal de Telegram","Official X":"X oficial","Telegram Group":"Grupo de Telegram","The home of Starknet gaming":"El hogar de Starknet Gaming","One hub for players, builders, projects, and onchain games.":"Un hub para jugadores, builders, proyectos y juegos onchain.","Starknet Gaming brings the ecosystem together: discover games, follow project updates, join community conversations, and track the news, recaps, and moments that move Starknet gaming forward.":"Starknet Gaming une el ecosistema: descubre juegos, sigue actualizaciones y participa en la comunidad.","News":"Noticias","Recaps":"Resúmenes","Join the community":"Unirse a la comunidad","Explore games":"Explorar juegos","Follow X updates":"Seguir en X","Games tracked":"Juegos listados","Categories":"Categorías","Live now":"En vivo","News & community":"Noticias y comunidad","Ecosystem Hub":"Hub del ecosistema","Players":"Jugadores","discover + compete":"descubrir + competir","Builders":"Builders","updates + feedback":"actualizaciones + feedback","Projects":"Proyectos","visibility + playtests":"visibilidad + pruebas","news + recaps":"noticias + resúmenes","Featured games":"Juegos destacados","Built as the front door for Starknet gaming.":"La puerta de entrada a Starknet Gaming.","For players":"Para jugadores","For builders":"Para builders","For communities":"Para comunidades","Community mission":"Misión de la comunidad","Join Telegram Group":"Unirse al grupo Telegram","Read Announcements":"Leer anuncios","Centralize activity":"Centralizar actividad","Help projects find players":"Ayudar proyectos a encontrar jugadores","Make onboarding easier":"Facilitar el onboarding","Grow ecosystem media":"Impulsar medios del ecosistema","Shared world":"Mundo compartido","Search games, mechanics, categories...":"Buscar juegos, mecánicas, categorías...","ALL":"TODO","LIVE":"LIVE","NEW":"NUEVO","SOON":"PRONTO","Infrastructure":"Infraestructura","Player onboarding":"Onboarding de jugadores","Website":"Sitio web","Support":"Soporte"}
 };
 
+const EXTRA_TRANSLATIONS = {
+  zh:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"生态需要的不只是一份列表，而是一个清晰的入口，让游戏、社区、更新、测试和生态故事集中呈现。",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"不用在分散的聊天中寻找，就能找到游戏、社区、新闻和关注链上游戏的人。",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"向已经关注游戏的受众分享公告、上线更新、测试招募和产品反馈。",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"通过回顾、评测、生态摘要和共同推进，让 Starknet 游戏成为可见且协同的运动。",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers 是生态交流的地方。",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"面向玩家、开发者、创始人、影响者和新人，用于围绕 Starknet 游戏协作的 Telegram 群组。",
+    "Respect, hype, competition, and real gamer energy.":"尊重、热度、竞争和真正的玩家能量。",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"这个群组让生态更有声量、更实用、更容易进入。玩家发现游戏和伙伴，开发者分享更新、寻找测试玩家，并获得真实玩家的反馈。没有门槛，只有一个让 Starknet 游戏成长的共同空间。",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Starknet 游戏新闻、社区、项目公告和玩家讨论的统一中心。",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"团队可以分享更新、招募测试玩家、收集反馈，并建立真正的社区势能。",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"新人可以在一个清晰的地方了解玩什么、关注谁以及在哪里提问。",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"未来包括 X 回顾、项目评测、每周或每月游戏摘要，以及更广泛的生态支持。",
+    "A visible home for every Starknet gaming community.":"每个 Starknet 游戏社区都能被看见的家。",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"玩家、开发者、创始人和创作者需要一个地方，在下一次测试、回顾、发布或赛事前相遇。",
+    "News, recaps, updates, and community signal.":"新闻、回顾、更新和社区信号。",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"目标是让 Starknet 游戏更容易跟进：项目发布、生态摘要、测试机会、评测以及相关讨论。",
+    "Fresh launches and announcements":"最新发布和公告",
+    "Surface what teams are shipping so players and builders do not miss important moments.":"呈现团队正在发布的内容，让玩家和开发者不错过重要时刻。",
+    "Weekly and monthly ecosystem summaries":"每周和每月生态摘要",
+    "Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"把分散的更新变成易读的 Starknet 游戏变化快照。",
+    "Project progress and playtests":"项目进展和测试",
+    "Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"为游戏提供专门渠道来寻找测试者、收集反馈并保持势能可见。",
+    "A real gamer coordination layer":"真正的玩家协作层",
+    "Connect players, developers, founders, influencers, and newcomers around shared goals.":"围绕共同目标连接玩家、开发者、创始人、影响者和新人。",
+    "Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"按游戏名称或描述搜索，再按上线状态筛选。条目按类型分组，便于浏览。",
+    "No games match this search yet. Try another keyword or send Starknet Gaming an update.":"没有匹配的游戏。请尝试其他关键词，或向 Starknet Gaming 发送更新。",
+    "Recently spotted":"最近发现",
+    "Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"以下项目正在跟踪并核实细节，因此与已确认目录分开显示。",
+    "Ecosystem rails":"生态基础设施",
+    "Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"多数完全链上的 Starknet 游戏共享基础设施，使 Cairo 玩法、钱包和基于会话的入门更实用。",
+    "The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"许多完全链上 Starknet 团队用于用 Cairo 构建世界、系统和可证明玩法的游戏引擎。",
+    "Onchain gaming":"链上游戏",
+    "Wallet tooling":"钱包工具",
+    "Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"钱包和会话密钥工具，让玩家以更顺畅的交互进入游戏，减少加密原生操作打断。",
+    "Partners":"合作伙伴",
+    "Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"帮助 Starknet Gaming 连接生态数据、工具、支付和社区发现的项目。",
+    "Analytics partner":"分析合作伙伴",
+    "Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"Starknet 分析平台，提供协议指标、DeFi 洞察、交易监控和持有人分布情报。",
+    "AI relay partner":"AI 中继合作伙伴",
+    "Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"Starknet 原生 AI 模型访问中继，用户可连接钱包、用 Starknet 资产支付并使用 Claude、GPT 等。",
+    "maintained by Starknet Gaming":"由 Starknet Gaming 维护",
+    "Living directory. Last refreshed":"动态目录。最后刷新",
+    "Links and statuses should be reported when outdated.":"链接和状态过期时请报告。",
+    "Starknet Ecosystem":"Starknet 生态",
+    "Timer":"计时器","Best":"最佳","Status":"状态","Ready":"就绪","Start game":"开始游戏","Melody: on":"旋律：开","Melody: off":"旋律：关","Close":"关闭","Leaderboard":"排行榜","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"控制：← → 或 A/D。移动端点击游戏区域左侧或右侧。","Go":"开始","Restart":"重新开始","Play again":"再玩一次","Fell":"掉落","Time":"时间","No runs yet":"还没有记录","pts":"分","Level":"等级","link pending":"链接待定","Live":"上线","New":"新","Soon":"即将","Verifying":"验证中","Primary navigation":"主导航","Starknet Gaming home":"Starknet Gaming 首页","Select language":"选择语言","Starknet Gaming focus areas":"Starknet Gaming 重点领域","Registry statistics":"目录统计","Starknet Gaming hub overview":"Starknet Gaming 中心概览","Web3 gaming on Starknet visual":"Starknet 上的 Web3 游戏视觉图","Web3 gaming on Starknet banner":"Starknet 上的 Web3 游戏横幅","Community plans":"社区计划","Search games":"搜索游戏","Filter games by status":"按状态筛选游戏","Open Rocket Jump mini game":"打开 Rocket Jump 小游戏","Rocket Jump mini game":"Rocket Jump 小游戏","Purple and orange Starknet gaming landscape with a glowing portal":"带有发光传送门的紫橙色 Starknet 游戏景观","Dojo Engine logo":"Dojo Engine 标志","Cartridge logo":"Cartridge 标志","Aegis logo":"Aegis 标志","StarkRelayHQ logo":"StarkRelayHQ 标志","Open {name} on X":"在 X 上打开 {name}","Open {name} website":"打开 {name} 网站",
+    "Strategy / MMO":"策略 / MMO","Roguelike / Dungeon":"Roguelike / 地牢","Card Games":"卡牌游戏","Action / PvP":"动作 / PvP","Puzzle / Casual":"益智 / 休闲","Creative / Social":"创作 / 社交"
+  },
+  ko:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"생태계에는 목록 이상의 것이 필요합니다. 게임, 커뮤니티, 업데이트, 플레이테스트, 생태계 이야기를 함께 찾을 수 있는 분명한 홈이 필요합니다.",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"흩어진 채팅을 뒤지지 않고 온체인 게임에 관심 있는 게임, 커뮤니티, 뉴스, 사람들을 찾을 수 있습니다.",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"이미 게임에 집중한 사람들에게 공지, 출시 업데이트, 플레이테스트 모집, 제품 피드백을 공유합니다.",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"리캡, 리뷰, 생태계 다이제스트와 공동의 흐름으로 Starknet 게이밍을 눈에 보이는 협력적 움직임으로 만듭니다.",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers는 생태계가 대화하는 곳입니다.",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"플레이어, 빌더, 창업자, 인플루언서, 신규 사용자가 Starknet 게이밍을 중심으로 협력하는 Telegram 그룹입니다.",
+    "Respect, hype, competition, and real gamer energy.":"존중, 열기, 경쟁, 진짜 게이머 에너지.",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"이 그룹은 생태계를 더 크게 알리고, 더 유용하게 만들며, 진입을 쉽게 하기 위해 존재합니다. 플레이어는 게임과 사람을 발견하고, 개발자는 업데이트를 공유하고 플레이테스터를 찾으며 실제 플레이어의 반응을 얻습니다. 장벽 없이 Starknet 게이밍이 성장하는 공동 공간입니다.",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Starknet 게임 뉴스, 커뮤니티, 프로젝트 공지, 플레이어 대화를 위한 단일 허브입니다.",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"팀은 업데이트를 공유하고 플레이테스터를 모집하며 피드백을 모으고 실제 커뮤니티 흐름을 만들 수 있습니다.",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"신규 사용자는 무엇을 플레이할지, 누구를 팔로우할지, 어디에서 질문할지 한 곳에서 이해할 수 있습니다.",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"앞으로 X 리캡, 프로젝트 리뷰, 주간 또는 월간 게임 다이제스트, 더 넓은 생태계 지원을 포함합니다.",
+    "A visible home for every Starknet gaming community.":"모든 Starknet 게임 커뮤니티를 위한 보이는 홈.",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"플레이어, 빌더, 창업자, 크리에이터는 다음 플레이테스트, 리캡, 출시, 토너먼트 전에 만날 한 곳이 필요합니다.",
+    "News, recaps, updates, and community signal.":"뉴스, 리캡, 업데이트, 커뮤니티 신호.",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"목표는 Starknet 게이밍을 더 쉽게 따라가게 하는 것입니다: 프로젝트 공개, 생태계 요약, 플레이테스트 기회, 리뷰와 관련 대화.",
+    "Fresh launches and announcements":"새로운 출시와 공지","Surface what teams are shipping so players and builders do not miss important moments.":"팀이 출시하는 내용을 보여 주어 플레이어와 빌더가 중요한 순간을 놓치지 않게 합니다.","Weekly and monthly ecosystem summaries":"주간 및 월간 생태계 요약","Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"흩어진 업데이트를 Starknet 게이밍 변화의 읽기 쉬운 스냅샷으로 바꿉니다.","Project progress and playtests":"프로젝트 진행과 플레이테스트","Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"게임이 테스터를 찾고 피드백을 모으며 흐름을 보이게 유지할 집중 채널을 제공합니다.","A real gamer coordination layer":"진짜 게이머 협업 레이어","Connect players, developers, founders, influencers, and newcomers around shared goals.":"공유 목표를 중심으로 플레이어, 개발자, 창업자, 인플루언서, 신규 사용자를 연결합니다.",
+    "Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"게임 이름이나 설명으로 검색한 뒤 출시 상태로 필터링하세요. 항목은 장르별로 묶여 쉽게 살펴볼 수 있습니다.","No games match this search yet. Try another keyword or send Starknet Gaming an update.":"이 검색과 일치하는 게임이 없습니다. 다른 키워드를 시도하거나 Starknet Gaming에 업데이트를 보내세요.","Recently spotted":"최근 발견","Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"아래 프로젝트는 세부 정보를 확인하는 동안 추적 중이며, 확인된 레지스트리와 분리되어 있습니다.","Ecosystem rails":"생태계 기반","Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"대부분의 완전 온체인 Starknet 게임은 Cairo 게임플레이, 지갑, 세션 기반 온보딩을 실용적으로 만드는 인프라를 공유합니다.","The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"많은 완전 온체인 Starknet 팀이 Cairo로 월드, 시스템, 증명 가능한 게임플레이를 만들 때 사용하는 게임 엔진입니다.","Onchain gaming":"온체인 게이밍","Wallet tooling":"지갑 도구","Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"플레이어가 더 부드러운 상호작용과 적은 크립토식 중단으로 게임에 들어가도록 돕는 지갑 및 세션 키 도구입니다.","Partners":"파트너","Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"Starknet Gaming이 생태계 데이터, 도구, 결제, 커뮤니티 발견을 연결하도록 돕는 프로젝트입니다.","Analytics partner":"분석 파트너","Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"프로토콜 지표, DeFi 인사이트, 거래 모니터링, 보유자 분포 정보를 제공하는 Starknet 분석 플랫폼입니다.","AI relay partner":"AI 릴레이 파트너","Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"사용자가 지갑을 연결하고 Starknet 자산으로 결제해 Claude, GPT 등을 사용할 수 있게 하는 Starknet 네이티브 AI 모델 접속 릴레이입니다.","maintained by Starknet Gaming":"Starknet Gaming에서 관리","Living directory. Last refreshed":"라이브 디렉터리. 마지막 업데이트","Links and statuses should be reported when outdated.":"링크와 상태가 오래되면 알려 주세요.","Starknet Ecosystem":"Starknet 생태계",
+    "Timer":"타이머","Best":"최고","Status":"상태","Ready":"준비","Start game":"게임 시작","Melody: on":"멜로디: 켬","Melody: off":"멜로디: 끔","Close":"닫기","Leaderboard":"리더보드","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"조작: ← → 또는 A/D. 모바일에서는 게임 필드의 왼쪽이나 오른쪽을 탭하세요.","Go":"시작","Restart":"다시 시작","Play again":"다시 플레이","Fell":"낙하","Time":"시간","No runs yet":"기록 없음","pts":"점","Level":"레벨","link pending":"링크 대기","Live":"라이브","New":"신규","Soon":"예정","Verifying":"확인 중","Primary navigation":"기본 탐색","Starknet Gaming home":"Starknet Gaming 홈","Select language":"언어 선택","Starknet Gaming focus areas":"Starknet Gaming 핵심 영역","Registry statistics":"레지스트리 통계","Starknet Gaming hub overview":"Starknet Gaming 허브 개요","Web3 gaming on Starknet visual":"Starknet 위 Web3 게이밍 비주얼","Web3 gaming on Starknet banner":"Starknet 위 Web3 게이밍 배너","Community plans":"커뮤니티 계획","Search games":"게임 검색","Filter games by status":"상태별 게임 필터","Open Rocket Jump mini game":"Rocket Jump 미니 게임 열기","Rocket Jump mini game":"Rocket Jump 미니 게임","Purple and orange Starknet gaming landscape with a glowing portal":"빛나는 포털이 있는 보라색과 주황색 Starknet 게이밍 풍경","Dojo Engine logo":"Dojo Engine 로고","Cartridge logo":"Cartridge 로고","Aegis logo":"Aegis 로고","StarkRelayHQ logo":"StarkRelayHQ 로고","Open {name} on X":"X에서 {name} 열기","Open {name} website":"{name} 웹사이트 열기","Strategy / MMO":"전략 / MMO","Roguelike / Dungeon":"로그라이크 / 던전","Card Games":"카드 게임","Action / PvP":"액션 / PvP","Puzzle / Casual":"퍼즐 / 캐주얼","Creative / Social":"창작 / 소셜"
+  }
+};
+
+Object.entries(EXTRA_TRANSLATIONS).forEach(([language, strings]) => {
+  TRANSLATIONS[language] = {...(TRANSLATIONS[language] || {}), ...strings};
+});
+
+const FALLBACK_TRANSLATIONS = {
+  tr:"tr", ru:"ru", hi:"hi", uk:"uk", es:"es"
+};
+
+const SHARED_EXTRA_TRANSLATIONS = {
+  tr:{"Timer":"Süre","Best":"En iyi","Status":"Durum","Ready":"Hazır","Start game":"Oyunu başlat","Melody: on":"Melodi: açık","Melody: off":"Melodi: kapalı","Close":"Kapat","Leaderboard":"Lider tablosu","Go":"Başla","Restart":"Yeniden başlat","Play again":"Tekrar oyna","Fell":"Düştü","Time":"Süre","No runs yet":"Henüz oyun yok","pts":"puan","Level":"Seviye","link pending":"bağlantı bekliyor","Live":"Canlı","New":"Yeni","Soon":"Yakında","Verifying":"Doğrulanıyor","Strategy / MMO":"Strateji / MMO","Roguelike / Dungeon":"Roguelike / Zindan","Card Games":"Kart oyunları","Action / PvP":"Aksiyon / PvP","Puzzle / Casual":"Bulmaca / Casual","Creative / Social":"Yaratıcı / Sosyal","Partners":"Ortaklar","Starknet Ecosystem":"Starknet Ekosistemi","maintained by Starknet Gaming":"Starknet Gaming tarafından yönetilir","Living directory. Last refreshed":"Canlı dizin. Son güncelleme","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"Kontroller: ← → veya A/D. Mobilde oyun alanının sol ya da sağ tarafına dokunun.","Primary navigation":"Birincil gezinme","Starknet Gaming home":"Starknet Gaming ana sayfası","Select language":"Dil seç","Starknet Gaming focus areas":"Starknet Gaming odak alanları","Registry statistics":"Kayıt istatistikleri","Starknet Gaming hub overview":"Starknet Gaming merkez özeti","Web3 gaming on Starknet visual":"Starknet üzerinde Web3 oyun görseli","Web3 gaming on Starknet banner":"Starknet üzerinde Web3 oyun afişi","Community plans":"Topluluk planları","Search games":"Oyun ara","Filter games by status":"Oyunları duruma göre filtrele","Open Rocket Jump mini game":"Rocket Jump mini oyununu aç","Rocket Jump mini game":"Rocket Jump mini oyunu","Purple and orange Starknet gaming landscape with a glowing portal":"Parlayan portallı mor ve turuncu Starknet oyun manzarası","Dojo Engine logo":"Dojo Engine logosu","Cartridge logo":"Cartridge logosu","Aegis logo":"Aegis logosu","StarkRelayHQ logo":"StarkRelayHQ logosu","Open {name} on X":"{name} için X bağlantısını aç","Open {name} website":"{name} web sitesini aç"},
+  ru:{"Timer":"Таймер","Best":"Рекорд","Status":"Статус","Ready":"Готово","Start game":"Начать игру","Melody: on":"Мелодия: вкл","Melody: off":"Мелодия: выкл","Close":"Закрыть","Leaderboard":"Таблица лидеров","Go":"Старт","Restart":"Перезапуск","Play again":"Играть снова","Fell":"Падение","Time":"Время","No runs yet":"Пока нет попыток","pts":"очков","Level":"Уровень","link pending":"ссылка ожидается","Live":"Запущено","New":"Новое","Soon":"Скоро","Verifying":"Проверяется","Strategy / MMO":"Стратегия / MMO","Roguelike / Dungeon":"Рогалик / Подземелье","Card Games":"Карточные игры","Action / PvP":"Экшен / PvP","Puzzle / Casual":"Головоломки / Казуальные","Creative / Social":"Творчество / Социальные","Partners":"Партнеры","Starknet Ecosystem":"Экосистема Starknet","maintained by Starknet Gaming":"поддерживается Starknet Gaming","Living directory. Last refreshed":"Живой каталог. Последнее обновление","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"Управление: ← → или A/D. На мобильном устройстве нажимайте левую или правую сторону игрового поля.","Primary navigation":"Основная навигация","Starknet Gaming home":"Главная Starknet Gaming","Select language":"Выбрать язык","Starknet Gaming focus areas":"Ключевые направления Starknet Gaming","Registry statistics":"Статистика реестра","Starknet Gaming hub overview":"Обзор хаба Starknet Gaming","Web3 gaming on Starknet visual":"Иллюстрация Web3-гейминга на Starknet","Web3 gaming on Starknet banner":"Баннер Web3-гейминга на Starknet","Community plans":"Планы сообщества","Search games":"Искать игры","Filter games by status":"Фильтровать игры по статусу","Open Rocket Jump mini game":"Открыть мини-игру Rocket Jump","Rocket Jump mini game":"Мини-игра Rocket Jump","Purple and orange Starknet gaming landscape with a glowing portal":"Фиолетово-оранжевый ландшафт Starknet gaming со светящимся порталом","Dojo Engine logo":"Логотип Dojo Engine","Cartridge logo":"Логотип Cartridge","Aegis logo":"Логотип Aegis","StarkRelayHQ logo":"Логотип StarkRelayHQ","Open {name} on X":"Открыть {name} в X","Open {name} website":"Открыть сайт {name}"},
+  hi:{"Timer":"टाइमर","Best":"सर्वश्रेष्ठ","Status":"स्थिति","Ready":"तैयार","Start game":"गेम शुरू करें","Melody: on":"धुन: चालू","Melody: off":"धुन: बंद","Close":"बंद करें","Leaderboard":"लीडरबोर्ड","Go":"शुरू","Restart":"फिर शुरू करें","Play again":"फिर खेलें","Fell":"गिर गए","Time":"समय","No runs yet":"अभी कोई रन नहीं","pts":"अंक","Level":"लेवल","link pending":"लिंक लंबित","Live":"लाइव","New":"नया","Soon":"जल्द","Verifying":"सत्यापन","Strategy / MMO":"रणनीति / MMO","Roguelike / Dungeon":"रोगलाइक / डंजन","Card Games":"कार्ड गेम्स","Action / PvP":"एक्शन / PvP","Puzzle / Casual":"पज़ल / कैज़ुअल","Creative / Social":"क्रिएटिव / सोशल","Partners":"पार्टनर्स","Starknet Ecosystem":"Starknet इकोसिस्टम","maintained by Starknet Gaming":"Starknet Gaming द्वारा संचालित","Living directory. Last refreshed":"लाइव डायरेक्टरी. अंतिम अपडेट","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"कंट्रोल: ← → या A/D. मोबाइल पर गेम फ़ील्ड के बाएं या दाएं हिस्से पर टैप करें.","Primary navigation":"मुख्य नेविगेशन","Starknet Gaming home":"Starknet Gaming होम","Select language":"भाषा चुनें","Starknet Gaming focus areas":"Starknet Gaming के फोकस क्षेत्र","Registry statistics":"रजिस्ट्री आँकड़े","Starknet Gaming hub overview":"Starknet Gaming हब अवलोकन","Web3 gaming on Starknet visual":"Starknet पर Web3 गेमिंग दृश्य","Web3 gaming on Starknet banner":"Starknet पर Web3 गेमिंग बैनर","Community plans":"समुदाय की योजनाएँ","Search games":"गेम खोजें","Filter games by status":"स्थिति के अनुसार गेम फ़िल्टर करें","Open Rocket Jump mini game":"Rocket Jump मिनी गेम खोलें","Rocket Jump mini game":"Rocket Jump मिनी गेम","Purple and orange Starknet gaming landscape with a glowing portal":"चमकते पोर्टल के साथ बैंगनी और नारंगी Starknet गेमिंग परिदृश्य","Dojo Engine logo":"Dojo Engine लोगो","Cartridge logo":"Cartridge लोगो","Aegis logo":"Aegis लोगो","StarkRelayHQ logo":"StarkRelayHQ लोगो","Open {name} on X":"X पर {name} खोलें","Open {name} website":"{name} वेबसाइट खोलें"},
+  uk:{"Timer":"Таймер","Best":"Рекорд","Status":"Статус","Ready":"Готово","Start game":"Почати гру","Melody: on":"Мелодія: увімкнено","Melody: off":"Мелодія: вимкнено","Close":"Закрити","Leaderboard":"Таблиця лідерів","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"Керування: ← → або A/D. На мобільному натискай ліву або праву частину ігрового поля.","Go":"Старт","Restart":"Перезапустити","Play again":"Грати ще","Fell":"Падіння","Time":"Час","No runs yet":"Спроб ще немає","pts":"очок","Level":"Рівень","link pending":"посилання очікується","Live":"Запущено","New":"Нове","Soon":"Скоро","Verifying":"Перевіряється","Strategy / MMO":"Стратегія / MMO","Roguelike / Dungeon":"Рогалик / Підземелля","Card Games":"Карткові ігри","Action / PvP":"Екшн / PvP","Puzzle / Casual":"Головоломки / Казуальні","Creative / Social":"Творчість / Соціальні","Partners":"Партнери","Starknet Ecosystem":"Екосистема Starknet","maintained by Starknet Gaming":"підтримується Starknet Gaming","Living directory. Last refreshed":"Живий каталог. Останнє оновлення","Links and statuses should be reported when outdated.":"Повідомляйте, якщо посилання або статуси застаріли.","Primary navigation":"Основна навігація","Starknet Gaming home":"Головна Starknet Gaming","Select language":"Обрати мову","Starknet Gaming focus areas":"Ключові напрями Starknet Gaming","Registry statistics":"Статистика реєстру","Starknet Gaming hub overview":"Огляд хабу Starknet Gaming","Web3 gaming on Starknet visual":"Візуал Web3-геймінгу на Starknet","Web3 gaming on Starknet banner":"Банер Web3-геймінгу на Starknet","Community plans":"Плани спільноти","Search games":"Шукати ігри","Filter games by status":"Фільтрувати ігри за статусом","Open Rocket Jump mini game":"Відкрити мінігру Rocket Jump","Rocket Jump mini game":"Мінігра Rocket Jump","Purple and orange Starknet gaming landscape with a glowing portal":"Фіолетово-помаранчевий ігровий ландшафт Starknet зі сяючим порталом","Dojo Engine logo":"Логотип Dojo Engine","Cartridge logo":"Логотип Cartridge","Aegis logo":"Логотип Aegis","StarkRelayHQ logo":"Логотип StarkRelayHQ","Open {name} on X":"Відкрити {name} у X","Open {name} website":"Відкрити сайт {name}"},
+  es:{"Timer":"Temporizador","Best":"Mejor","Status":"Estado","Ready":"Listo","Start game":"Iniciar juego","Melody: on":"Melodía: activada","Melody: off":"Melodía: desactivada","Close":"Cerrar","Leaderboard":"Clasificación","Go":"Vamos","Restart":"Reiniciar","Play again":"Jugar otra vez","Fell":"Caída","Time":"Tiempo","No runs yet":"Aún no hay partidas","pts":"pts","Level":"Nivel","link pending":"enlace pendiente","Live":"En vivo","New":"Nuevo","Soon":"Pronto","Verifying":"Verificando","Strategy / MMO":"Estrategia / MMO","Roguelike / Dungeon":"Roguelike / Mazmorra","Card Games":"Juegos de cartas","Action / PvP":"Acción / PvP","Puzzle / Casual":"Puzzle / Casual","Creative / Social":"Creativo / Social","Partners":"Socios","Starknet Ecosystem":"Ecosistema Starknet","maintained by Starknet Gaming":"mantenido por Starknet Gaming","Living directory. Last refreshed":"Directorio vivo. Última actualización","Controls: ← → or A/D. On mobile, tap left or right side of the game field.":"Controles: ← → o A/D. En móvil, toca el lado izquierdo o derecho del campo de juego.","Primary navigation":"Navegación principal","Starknet Gaming home":"Inicio de Starknet Gaming","Select language":"Seleccionar idioma","Starknet Gaming focus areas":"Áreas clave de Starknet Gaming","Registry statistics":"Estadísticas del registro","Starknet Gaming hub overview":"Resumen del hub Starknet Gaming","Web3 gaming on Starknet visual":"Visual de gaming Web3 en Starknet","Web3 gaming on Starknet banner":"Banner de gaming Web3 en Starknet","Community plans":"Planes de la comunidad","Search games":"Buscar juegos","Filter games by status":"Filtrar juegos por estado","Open Rocket Jump mini game":"Abrir minijuego Rocket Jump","Rocket Jump mini game":"Minijuego Rocket Jump","Purple and orange Starknet gaming landscape with a glowing portal":"Paisaje de Starknet gaming morado y naranja con un portal brillante","Dojo Engine logo":"Logotipo de Dojo Engine","Cartridge logo":"Logotipo de Cartridge","Aegis logo":"Logotipo de Aegis","StarkRelayHQ logo":"Logotipo de StarkRelayHQ","Open {name} on X":"Abrir {name} en X","Open {name} website":"Abrir sitio web de {name}"}
+};
+
+Object.entries(SHARED_EXTRA_TRANSLATIONS).forEach(([language, strings]) => {
+  TRANSLATIONS[language] = {...(TRANSLATIONS[language] || {}), ...strings};
+});
+
+const ROCKET_GAME_TRANSLATIONS = {
+  zh:{"Nickname":"昵称","Enter nickname":"输入昵称","Save":"保存","Enter a nickname before launch.":"发射前请输入昵称。","Playing as":"玩家","Combo":"连击","Orbs":"能量球","Shield":"护盾","Local":"本地","Public":"公开","Syncing":"同步中","Offline":"离线","Refresh leaderboard":"刷新排行榜"},
+  ko:{"Nickname":"닉네임","Enter nickname":"닉네임 입력","Save":"저장","Enter a nickname before launch.":"시작 전에 닉네임을 입력하세요.","Playing as":"플레이어","Combo":"콤보","Orbs":"오브","Shield":"실드","Local":"로컬","Public":"공개","Syncing":"동기화 중","Offline":"오프라인","Refresh leaderboard":"리더보드 새로고침"},
+  tr:{"Nickname":"Takma ad","Enter nickname":"Takma ad gir","Save":"Kaydet","Enter a nickname before launch.":"Baslamadan once takma ad gir.","Playing as":"Oyuncu","Combo":"Kombo","Orbs":"Kureler","Shield":"Kalkan","Local":"Yerel","Public":"Herkese acik","Syncing":"Esitleniyor","Offline":"Cevrimdisi","Refresh leaderboard":"Lider tablosunu yenile"},
+  ru:{"Nickname":"Никнейм","Enter nickname":"Введите никнейм","Save":"Сохранить","Enter a nickname before launch.":"Введите никнейм перед стартом.","Playing as":"Игрок","Combo":"Комбо","Orbs":"Орбы","Shield":"Щит","Local":"Локально","Public":"Публично","Syncing":"Синхронизация","Offline":"Офлайн","Refresh leaderboard":"Обновить таблицу"},
+  hi:{"Nickname":"निकनेम","Enter nickname":"निकनेम डालें","Save":"सेव","Enter a nickname before launch.":"शुरू करने से पहले निकनेम डालें।","Playing as":"खिलाड़ी","Combo":"कॉम्बो","Orbs":"ऑर्ब्स","Shield":"शील्ड","Local":"लोकल","Public":"पब्लिक","Syncing":"सिंक हो रहा","Offline":"ऑफलाइन","Refresh leaderboard":"लीडरबोर्ड रिफ्रेश करें"},
+  uk:{"Nickname":"Нікнейм","Enter nickname":"Введи нікнейм","Save":"Зберегти","Enter a nickname before launch.":"Введи нікнейм перед стартом.","Playing as":"Гравець","Combo":"Комбо","Orbs":"Орби","Shield":"Щит","Local":"Локально","Public":"Публічно","Syncing":"Синхронізація","Offline":"Офлайн","Refresh leaderboard":"Оновити таблицю"},
+  es:{"Nickname":"Nickname","Enter nickname":"Ingresa nickname","Save":"Guardar","Enter a nickname before launch.":"Ingresa un nickname antes de despegar.","Playing as":"Jugador","Combo":"Combo","Orbs":"Orbes","Shield":"Escudo","Local":"Local","Public":"Publico","Syncing":"Sincronizando","Offline":"Offline","Refresh leaderboard":"Actualizar clasificacion"}
+};
+
+Object.entries(ROCKET_GAME_TRANSLATIONS).forEach(([language, strings]) => {
+  TRANSLATIONS[language] = {...(TRANSLATIONS[language] || {}), ...strings};
+});
+
+const GAME_DESC_TRANSLATIONS = {
+  zh:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"具有真实链上玩法和阵容级决策的足球策略游戏。",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"基于与 Realms Eternum 相同机制的快节奏两小时对局。",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"土地、邻居、税收，再加一个核按钮。纯粹的链上混乱。",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"以 25 万颗程序生成小行星为舞台的策略 MMO。",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"带有真实永久死亡且无法复活的 Roguelike 地牢探索游戏。",
+    "Deck-building roguelike fought across procedurally generated maps.":"在程序生成地图上战斗的构筑牌组 Roguelike。",
+    "Poker-driven strategy with a combo system and weekly leagues.":"以扑克为核心的策略游戏，带有连招系统和每周联赛。",
+    "Street trading and empire-building, fully onchain.":"街头交易与帝国扩张，完全链上。",
+    "Pokemon-style creature battles with real community tournaments.":"宝可梦风格的生物对战，配有真实社区锦标赛。",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"承诺揭示机制的 PvP 决斗：手枪或军刀，由你选择。",
+    "Sea-faring adventure with daily challenges from its creator.":"由开发者持续推出每日挑战的航海冒险游戏。",
+    "Battle royale built by an independent team in the community.":"由社区中的独立团队打造的大逃杀游戏。",
+    "Onchain Tetris with special abilities and combo bonuses.":"带有特殊能力和连击加成的链上俄罗斯方块。",
+    "Casual guessing game built around the community's own NFTs.":"围绕社区自身 NFT 打造的轻松竞猜游戏。",
+    "Quick-fire number puzzle game, easy to learn and replay.":"节奏明快的数字解谜游戏，易上手也适合反复游玩。",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"协作式链上像素画布。数百万笔交易，共同完成一幅作品。"
+  },
+  ko:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"실제 온체인 플레이와 스쿼드 단위 의사결정을 담은 축구 전략 게임입니다.",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Realms Eternum과 같은 메커니즘으로 진행되는 빠른 2시간 매치입니다.",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"땅, 이웃, 세금, 그리고 핵 버튼까지. 순수한 온체인 혼돈입니다.",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"25만 개의 절차 생성 소행성을 무대로 한 전략 MMO입니다.",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"진짜 영구 사망과 부활 불가를 갖춘 로그라이크 던전 크롤러입니다.",
+    "Deck-building roguelike fought across procedurally generated maps.":"절차 생성 맵에서 전투를 벌이는 덱빌딩 로그라이크입니다.",
+    "Poker-driven strategy with a combo system and weekly leagues.":"콤보 시스템과 주간 리그를 갖춘 포커 기반 전략 게임입니다.",
+    "Street trading and empire-building, fully onchain.":"거리 거래와 제국 건설을 완전 온체인으로 구현했습니다.",
+    "Pokemon-style creature battles with real community tournaments.":"실제 커뮤니티 토너먼트가 열리는 포켓몬 스타일 크리처 배틀입니다.",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"커밋-리빌 방식의 PvP 결투로, 권총과 사브르 중 선택할 수 있습니다.",
+    "Sea-faring adventure with daily challenges from its creator.":"제작자가 매일 새로운 도전을 내놓는 항해 어드벤처입니다.",
+    "Battle royale built by an independent team in the community.":"커뮤니티의 독립 팀이 만든 배틀로얄입니다.",
+    "Onchain Tetris with special abilities and combo bonuses.":"특수 능력과 콤보 보너스가 있는 온체인 테트리스입니다.",
+    "Casual guessing game built around the community's own NFTs.":"커뮤니티 자체 NFT를 중심으로 만든 캐주얼 추리 게임입니다.",
+    "Quick-fire number puzzle game, easy to learn and replay.":"빠르게 즐기는 숫자 퍼즐 게임으로, 배우기 쉽고 다시 하기 좋습니다.",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"협업형 온체인 픽셀 캔버스입니다. 수백만 건의 거래가 하나의 공동 그림을 만듭니다."
+  },
+  tr:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"Gercek onchain oynanis ve kadro duzeyinde kararlar sunan futbol strateji oyunu.",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Realms Eternum ile ayni mekanikleri kullanan hizli iki saatlik maclar.",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"Arazi, komsular, vergiler ve bir nukleer dugme. Tam anlamiyla onchain kaos.",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"Prosedurel olarak uretilmis 250.000 asteroidde gecen stratejik MMO.",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"Gercek kalici olum ve yeniden dogma olmadan oynanan roguelike zindan oyunu.",
+    "Deck-building roguelike fought across procedurally generated maps.":"Prosedurel uretilen haritalarda savasilan deste kurmali roguelike.",
+    "Poker-driven strategy with a combo system and weekly leagues.":"Kombo sistemi ve haftalik liglerle desteklenen poker odakli strateji.",
+    "Street trading and empire-building, fully onchain.":"Sokak ticareti ve imparatorluk kurma, tamamen onchain.",
+    "Pokemon-style creature battles with real community tournaments.":"Gercek topluluk turnuvalariyla Pokemon tarzi yaratik savaslari.",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"Commit-reveal PvP duellolari: tabanca ya da kilic, secim senin.",
+    "Sea-faring adventure with daily challenges from its creator.":"Yapimcisinin gunluk meydan okumalar sundugu deniz macerasi.",
+    "Battle royale built by an independent team in the community.":"Topluluktaki bagimsiz bir ekip tarafindan yapilan battle royale.",
+    "Onchain Tetris with special abilities and combo bonuses.":"Ozel yetenekler ve kombo bonuslari iceren onchain Tetris.",
+    "Casual guessing game built around the community's own NFTs.":"Toplulugun kendi NFT'leri etrafinda kurulu casual tahmin oyunu.",
+    "Quick-fire number puzzle game, easy to learn and replay.":"Hizli tempolu sayi bulmaca oyunu; ogrenmesi ve tekrar oynamasi kolay.",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"Is birlikci onchain piksel tuvali. Milyonlarca islem, tek bir ortak cizim."
+  },
+  ru:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"Футбольная стратегия с настоящим ончейн-геймплеем и решениями на уровне состава.",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Быстрые двухчасовые матчи на тех же механиках, что и в Realms Eternum.",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"Земля, соседи, налоги и ядерная кнопка. Чистый ончейн-хаос.",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"Стратегическая MMO на 250 000 процедурно сгенерированных астероидах.",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"Roguelike-подземелье с настоящей перманентной смертью и без возрождений.",
+    "Deck-building roguelike fought across procedurally generated maps.":"Deck-building roguelike с боями на процедурно сгенерированных картах.",
+    "Poker-driven strategy with a combo system and weekly leagues.":"Стратегия на базе покера с комбо-системой и еженедельными лигами.",
+    "Street trading and empire-building, fully onchain.":"Уличная торговля и строительство империи, полностью onchain.",
+    "Pokemon-style creature battles with real community tournaments.":"Бои существ в стиле Pokemon с настоящими турнирами сообщества.",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"PvP-дуэли по commit-reveal: пистолет или сабля, выбор за тобой.",
+    "Sea-faring adventure with daily challenges from its creator.":"Морское приключение с ежедневными испытаниями от создателя.",
+    "Battle royale built by an independent team in the community.":"Battle royale, созданная независимой командой внутри сообщества.",
+    "Onchain Tetris with special abilities and combo bonuses.":"Onchain Tetris со специальными способностями и бонусами за комбо.",
+    "Casual guessing game built around the community's own NFTs.":"Казуальная игра на угадывание, построенная вокруг NFT самого сообщества.",
+    "Quick-fire number puzzle game, easy to learn and replay.":"Быстрая числовая головоломка, которую легко освоить и приятно запускать снова.",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"Совместное onchain-полотно из пикселей. Миллионы транзакций, один общий рисунок."
+  },
+  hi:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"वास्तविक ऑनचेन गेमप्ले और स्क्वाड-स्तर के फैसलों वाला फुटबॉल रणनीति गेम।",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Realms Eternum जैसी ही मैकेनिक्स पर चलने वाले तेज दो घंटे के मैच।",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"जमीन, पड़ोसी, टैक्स और एक न्यूक्लियर बटन। शुद्ध ऑनचेन अराजकता।",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"2,50,000 प्रक्रियात्मक रूप से बने क्षुद्रग्रहों में फैला एक रणनीतिक MMO।",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"वास्तविक स्थायी मृत्यु और बिना रिस्पॉन वाला रोग-लाइक डंजन क्रॉलर।",
+    "Deck-building roguelike fought across procedurally generated maps.":"प्रक्रियात्मक रूप से बने मैप्स पर लड़ा जाने वाला डेक-बिल्डिंग रोगुलाइक।",
+    "Poker-driven strategy with a combo system and weekly leagues.":"कॉम्बो सिस्टम और साप्ताहिक लीग्स के साथ पोकर-आधारित रणनीति।",
+    "Street trading and empire-building, fully onchain.":"सड़क-स्तरीय ट्रेडिंग और साम्राज्य निर्माण, पूरी तरह ऑनचेन।",
+    "Pokemon-style creature battles with real community tournaments.":"वास्तविक सामुदायिक टूर्नामेंट्स के साथ पोकेमोन-शैली के जीवों की लड़ाइयाँ।",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"कमिट-रिवील PvP द्वंद्व: पिस्तौल या तलवार, चुनाव आपका।",
+    "Sea-faring adventure with daily challenges from its creator.":"इसके निर्माता की रोज़ाना चुनौतियों वाला समुद्री साहसिक खेल।",
+    "Battle royale built by an independent team in the community.":"समुदाय की एक स्वतंत्र टीम द्वारा बनाया गया बैटल रॉयल।",
+    "Onchain Tetris with special abilities and combo bonuses.":"विशेष क्षमताओं और कॉम्बो बोनस के साथ ऑनचेन टेट्रिस।",
+    "Casual guessing game built around the community's own NFTs.":"समुदाय के अपने NFT के इर्द-गिर्द बना कैज़ुअल अनुमान लगाने वाला गेम।",
+    "Quick-fire number puzzle game, easy to learn and replay.":"तेज रफ्तार नंबर पज़ल गेम, सीखने और बार-बार खेलने में आसान।",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"सहयोगी ऑनचेन पिक्सेल कैनवस। लाखों ट्रांजैक्शन्स, एक साझा चित्र।"
+  },
+  uk:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"Футбольна стратегія з реальним ончейн-геймплеєм і рішеннями на рівні складу.",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Швидкі двогодинні матчі на тих самих механіках, що й у Realms Eternum.",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"Земля, сусіди, податки та ядерна кнопка. Чистий ончейн-хаос.",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"Стратегічна MMO, розгорнута на 250 000 процедурно згенерованих астероїдах.",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"Rogue-like данжен-кроулер зі справжньою перманентною смертю та без респавнів.",
+    "Deck-building roguelike fought across procedurally generated maps.":"Deck-building roguelike, де бої проходять на процедурно згенерованих мапах.",
+    "Poker-driven strategy with a combo system and weekly leagues.":"Стратегія на базі покеру з комбо-системою та щотижневими лігами.",
+    "Street trading and empire-building, fully onchain.":"Вулична торгівля та побудова імперії, повністю onchain.",
+    "Pokemon-style creature battles with real community tournaments.":"Битви істот у стилі Pokemon з реальними турнірами спільноти.",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"PvP-дуелі на commit-reveal: пістоль чи шабля, вибір за тобою.",
+    "Sea-faring adventure with daily challenges from its creator.":"Морська пригода з щоденними викликами від її творця.",
+    "Battle royale built by an independent team in the community.":"Battle royale, створена незалежною командою всередині спільноти.",
+    "Onchain Tetris with special abilities and combo bonuses.":"Onchain Tetris зі спеціальними здібностями та бонусами за комбо.",
+    "Casual guessing game built around the community's own NFTs.":"Казуальна гра на вгадування, побудована навколо власних NFT спільноти.",
+    "Quick-fire number puzzle game, easy to learn and replay.":"Швидка числова головоломка, яку легко освоїти й хочеться запускати знову.",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"Спільне onchain-полотно з пікселів. Мільйони транзакцій, один спільний малюнок."
+  },
+  es:{
+    "Football strategy game with real onchain gameplay and squad-level decisions.":"Juego de estrategia de futbol con gameplay onchain real y decisiones a nivel de plantilla.",
+    "Fast two-hour matches running on the same mechanics as Realms Eternum.":"Partidas rapidas de dos horas con las mismas mecanicas que Realms Eternum.",
+    "Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.":"Tierras, vecinos, impuestos y un boton nuclear. Caos onchain puro.",
+    "Strategic MMO set across 250,000 procedurally generated asteroids.":"MMO estrategico ambientado en 250.000 asteroides generados proceduralmente.",
+    "Rogue-like dungeon crawler with real permadeath and no respawns.":"Dungeon crawler roguelike con permadeath real y sin respawns.",
+    "Deck-building roguelike fought across procedurally generated maps.":"Roguelike de construccion de mazos que se juega en mapas generados proceduralmente.",
+    "Poker-driven strategy with a combo system and weekly leagues.":"Estrategia basada en poker con sistema de combos y ligas semanales.",
+    "Street trading and empire-building, fully onchain.":"Comercio callejero y construccion de imperio, totalmente onchain.",
+    "Pokemon-style creature battles with real community tournaments.":"Batallas de criaturas al estilo Pokemon con torneos reales de la comunidad.",
+    "Commit-reveal PvP duels: pistol and sabre, your choice.":"Duelos PvP con commit-reveal: pistola o sable, tu eliges.",
+    "Sea-faring adventure with daily challenges from its creator.":"Aventura maritima con desafios diarios de su creador.",
+    "Battle royale built by an independent team in the community.":"Battle royale creado por un equipo independiente de la comunidad.",
+    "Onchain Tetris with special abilities and combo bonuses.":"Tetris onchain con habilidades especiales y bonos por combo.",
+    "Casual guessing game built around the community's own NFTs.":"Juego casual de adivinanzas construido alrededor de los NFT de la propia comunidad.",
+    "Quick-fire number puzzle game, easy to learn and replay.":"Juego rapido de puzzles numericos, facil de aprender y volver a jugar.",
+    "Collaborative onchain pixel canvas. Millions of transactions, one shared drawing.":"Lienzo de pixeles colaborativo onchain. Millones de transacciones, un dibujo compartido."
+  }
+};
+
+Object.entries(GAME_DESC_TRANSLATIONS).forEach(([language, strings]) => {
+  TRANSLATIONS[language] = {...(TRANSLATIONS[language] || {}), ...strings};
+});
+
+const SECTION_TRANSLATIONS = {
+  uk:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"Екосистемі потрібен не просто список, а впізнаваний дім, де разом зібрані ігри, спільноти, оновлення, плейтести та історії екосистеми.",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"Знаходь ігри, спільноти, новини та людей, яким цікаві ончейн-ігри, без пошуку по розкиданих чатах.",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"Ділись анонсами, оновленнями запусків, запрошеннями на плейтести та фідбеком із аудиторією, яка вже сфокусована на іграх.",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"Перетвори Starknet gaming на видимий і скоординований рух із підсумками, оглядами, дайджестами та спільним імпульсом.",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers - місце, де говорить екосистема.",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"Telegram-група для гравців, білдерів, фаундерів, інфлюенсерів і новачків, які координуються навколо Starknet gaming.",
+    "Respect, hype, competition, and real gamer energy.":"Повага, хайп, конкуренція і справжня енергія геймерів.",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"Група існує, щоб зробити екосистему гучнішою, кориснішою та простішою для входу. Гравці знаходять ігри й людей. Розробники діляться оновленнями, шукають тестерів і отримують реальні реакції від реальних гравців. Без гейткіпінгу - просто спільне місце для росту Starknet gaming.",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Єдиний хаб для новин Starknet-ігор, спільнот, анонсів проєктів і розмов гравців.",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"Команди можуть ділитися оновленнями, шукати плейтестерів, збирати фідбек і будувати справжній імпульс спільноти.",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"Новачки отримують одне зрозуміле місце, щоб зрозуміти, у що грати, за ким стежити і де ставити питання.",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"План включає підсумки в X, огляди проєктів, щотижневі або щомісячні ігрові дайджести та ширшу підтримку екосистеми.",
+    "A visible home for every Starknet gaming community.":"Видимий дім для кожної ігрової спільноти Starknet.",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"Гравцям, білдерам, фаундерам і креаторам потрібне одне місце для зустрічі перед наступним плейтестом, підсумком, запуском або турніром.",
+    "News, recaps, updates, and community signal.":"Новини, підсумки, оновлення і сигнал спільноти.",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"Мета - зробити Starknet gaming простішим для відстеження: дропи проєктів, підсумки екосистеми, можливості для плейтестів, огляди та розмови навколо них.",
+    "Fresh launches and announcements":"Нові запуски й анонси",
+    "Surface what teams are shipping so players and builders do not miss important moments.":"Показувати, що випускають команди, щоб гравці й білдери не пропускали важливі моменти.",
+    "Weekly and monthly ecosystem summaries":"Щотижневі й щомісячні підсумки екосистеми",
+    "Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"Перетворювати розкидані оновлення на зрозумілі знімки змін у Starknet gaming.",
+    "Project progress and playtests":"Прогрес проєктів і плейтести",
+    "Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"Дати іграм сфокусований канал для пошуку тестерів, збору фідбеку та видимого імпульсу.",
+    "A real gamer coordination layer":"Справжній координаційний шар для геймерів",
+    "Connect players, developers, founders, influencers, and newcomers around shared goals.":"Об'єднувати гравців, розробників, фаундерів, інфлюенсерів і новачків навколо спільних цілей.",
+    "Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"Шукай за назвою або описом гри, потім фільтруй за статусом запуску. Записи згруповані за жанрами, щоб каталог легко сканувався.",
+    "No games match this search yet. Try another keyword or send Starknet Gaming an update.":"Поки жодна гра не відповідає пошуку. Спробуй інше ключове слово або надішли оновлення Starknet Gaming.",
+    "Ecosystem rails":"Рейки екосистеми",
+    "Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"Більшість повністю ончейн-ігор Starknet використовують спільну інфраструктуру, яка робить Cairo-геймплей, гаманці та сесійний онбординг практичними.",
+    "The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"Ігровий рушій, який багато повністю ончейн-команд Starknet використовують для створення світів, систем і доказового геймплею на Cairo.",
+    "Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"Інструменти гаманця й сесійних ключів, які допомагають гравцям входити в ігри з плавнішими взаємодіями та меншою кількістю крипто-переривань.",
+    "Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"Проєкти, які допомагають Starknet Gaming поєднувати дані екосистеми, інструменти, платежі та пошук спільнот.",
+    "Analytics partner":"Аналітичний партнер",
+    "AI relay partner":"AI relay партнер",
+    "Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"Аналітична платформа Starknet для метрик протоколів, DeFi-інсайтів, моніторингу транзакцій і даних про розподіл холдерів.",
+    "Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"Starknet-native relay для доступу до AI-моделей, де користувачі підключають гаманець, платять активами Starknet і використовують Claude, GPT та інші моделі.",
+    "Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"Стрибай з платформи на платформу, лови бусти й піднімайся якомога вище до завершення часу.",
+    "Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"Проєкти нижче відстежуються, поки перевіряються деталі. Їх навмисно відокремлено від підтвердженого реєстру.",
+    ". Links and statuses should be reported when outdated.":". Якщо посилання або статуси застаріли, повідомте про це.",
+    "Mini game":"Мінігра","Score":"Рахунок","Hub":"Хаб","Onchain gaming":"Ончейн-геймінг","Wallet tooling":"Інструменти гаманця","Starknet analytics":"Аналітика Starknet","Starknet AI access":"Доступ до Starknet AI","Level":"Рівень","Recently spotted":"Нещодавно помічені"
+  },
+  ru:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"Экосистеме нужен не просто список, а узнаваемый дом, где вместе собраны игры, сообщества, обновления, плейтесты и истории экосистемы.",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"Находите игры, сообщества, новости и людей, которым важен ончейн-гейминг, не выискивая их по разрозненным чатам.",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"Делитесь анонсами, обновлениями запусков, приглашениями на плейтесты и отзывами о продукте с аудиторией, уже ориентированной на игры.",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"Превратите Starknet gaming в заметное и скоординированное движение с итогами, обзорами, дайджестами и общим импульсом.",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers - место, где говорит экосистема.",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"Telegram-группа для игроков, билдеров, фаундеров, инфлюенсеров и любознательных новичков, которые координируются вокруг Starknet gaming.",
+    "Respect, hype, competition, and real gamer energy.":"Уважение, хайп, конкуренция и настоящая энергия игроков.",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"Группа существует, чтобы сделать экосистему громче, полезнее и проще для входа. Игроки находят игры и людей. Разработчики делятся обновлениями, находят плейтестеров и получают реальные реакции от реальных игроков. Без гейткипинга - просто общее место для роста Starknet gaming.",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Единый хаб для новостей игр Starknet, сообществ, анонсов проектов и разговоров игроков.",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"Команды могут делиться обновлениями, искать плейтестеров, собирать отзывы и наращивать реальный импульс сообщества.",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"Новички получают одно понятное место, где можно понять, во что играть, за кем следить и где задавать вопросы.",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"План включает итоги в X, обзоры проектов, еженедельные или ежемесячные игровые дайджесты и более широкую поддержку экосистемы.",
+    "A visible home for every Starknet gaming community.":"Видимый дом для каждого игрового сообщества Starknet.",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"Игрокам, билдерам, фаундерам и авторам нужно одно место встречи перед следующим плейтестом, итогом, запуском или турнирным моментом.",
+    "News, recaps, updates, and community signal.":"Новости, итоги, обновления и сигнал сообщества.",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"Цель - сделать Starknet gaming проще для отслеживания: дропы проектов, сводки экосистемы, возможности для плейтестов, обзоры и разговоры вокруг них.",
+    "Fresh launches and announcements":"Новые запуски и анонсы","Surface what teams are shipping so players and builders do not miss important moments.":"Показывать, что выпускают команды, чтобы игроки и билдеры не пропускали важные моменты.","Weekly and monthly ecosystem summaries":"Еженедельные и ежемесячные итоги экосистемы","Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"Превращать разрозненные обновления в понятные снимки того, что изменилось в Starknet gaming.","Project progress and playtests":"Прогресс проектов и плейтесты","Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"Дать играм сфокусированный канал для поиска тестеров, сбора отзывов и видимого импульса.","A real gamer coordination layer":"Настоящий слой координации игроков","Connect players, developers, founders, influencers, and newcomers around shared goals.":"Объединять игроков, разработчиков, фаундеров, инфлюенсеров и новичков вокруг общих целей.","Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"Ищите по названию или описанию игры, затем фильтруйте по статусу запуска. Записи сгруппированы по жанрам, чтобы каталог было легко просматривать.","No games match this search yet. Try another keyword or send Starknet Gaming an update.":"Пока ни одна игра не подходит под этот поиск. Попробуйте другое ключевое слово или отправьте обновление Starknet Gaming.","Recently spotted":"Недавно замечено","Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"Проекты ниже отслеживаются, пока проверяются детали. Они намеренно отделены от подтвержденного реестра.",". Links and statuses should be reported when outdated.":". Если ссылки или статусы устарели, сообщите об этом.","Ecosystem rails":"Рельсы экосистемы","Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"Большинство полностью ончейн-игр Starknet используют общую инфраструктуру, которая делает практичными Cairo-геймплей, кошельки и онбординг на основе сессий.","The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"Игровой движок, который многие полностью ончейн-команды Starknet используют для создания миров, систем и доказуемого геймплея на Cairo.","Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"Инструменты кошелька и сессионных ключей, которые помогают игрокам входить в игры с более плавными взаимодействиями и меньшим числом крипто-барьеров.","Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"Проекты, которые помогают Starknet Gaming связывать данные экосистемы, инструменты, платежи и поиск сообществ.","Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"Аналитическая платформа Starknet для метрик протоколов, DeFi-инсайтов, мониторинга транзакций и анализа распределения держателей.","Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"Starknet-native relay для доступа к AI-моделям, где можно подключить кошелек, оплатить активами Starknet и использовать Claude, GPT и другие модели.","Analytics partner":"Аналитический партнер","AI relay partner":"AI relay партнер","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"Прыгай с платформы на платформу, лови бусты и поднимайся как можно выше до конца времени.","Mini game":"Мини-игра","Score":"Счет","Hub":"Хаб","Onchain gaming":"Ончейн-гейминг","Wallet tooling":"Инструменты кошелька","Starknet analytics":"Аналитика Starknet","Starknet AI access":"Доступ к Starknet AI","Level":"Уровень"
+  },
+  tr:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"Ekosistemin bir listeden fazlasına ihtiyacı var: oyunların, toplulukların, güncellemelerin, playtestlerin ve ekosistem hikayelerinin birlikte bulunduğu tanınır bir merkez.",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"Dağınık sohbetlerde aramadan oyunları, toplulukları, haberleri ve onchain oyunla ilgilenen insanları bulun.",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"Duyuruları, lansman güncellemelerini, playtest çağrılarını ve ürün geri bildirimlerini zaten oyun odaklı bir kitleyle paylaşın.",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"Starknet gaming'i özetler, incelemeler, ekosistem bültenleri ve ortak ivmeyle görünür ve koordineli bir harekete dönüştürün.",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers, ekosistemin konuştuğu yerdir.",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"Starknet gaming etrafında koordinasyon kurmak isteyen oyuncular, geliştiriciler, kurucular, influencer'lar ve meraklı yeni gelenler için bir Telegram grubu.",
+    "Respect, hype, competition, and real gamer energy.":"Saygı, heyecan, rekabet ve gerçek oyuncu enerjisi.",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"Grup, ekosistemi daha görünür, daha faydalı ve giriş için daha kolay hale getirmek için var. Oyuncular oyunları ve insanları keşfeder. Geliştiriciler güncellemelerini paylaşır, playtester bulur ve gerçek oyunculardan gerçek tepkiler alır. Kapı bekçiliği yok; sadece Starknet gaming'in büyümesi için ortak bir alan var.",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Starknet oyun haberleri, topluluklar, proje duyuruları ve oyuncu sohbetleri için tek bir merkez.",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"Ekipler güncellemeleri paylaşabilir, playtester isteyebilir, geri bildirim toplayabilir ve gerçek topluluk ivmesi oluşturabilir.",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"Yeni gelenler, ne oynayacaklarını, kimi takip edeceklerini ve nerede soru soracaklarını anlamak için tek net bir yer bulur.",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"Yol haritası; X özetlerini, proje incelemelerini, haftalık veya aylık oyun bültenlerini ve daha geniş ekosistem desteğini kapsar.",
+    "A visible home for every Starknet gaming community.":"Her Starknet oyun topluluğu için görünür bir yuva.",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"Oyuncuların, geliştiricilerin, kurucuların ve üreticilerin bir sonraki playtest, özet, lansman veya turnuva anından önce buluşacağı tek bir yere ihtiyacı var.",
+    "News, recaps, updates, and community signal.":"Haberler, özetler, güncellemeler ve topluluk sinyali.",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"Amaç, Starknet gaming'i takip etmeyi kolaylaştırmak: proje duyuruları, ekosistem özetleri, playtest fırsatları, incelemeler ve bunların etrafındaki sohbetler.",
+    "Fresh launches and announcements":"Yeni lansmanlar ve duyurular","Surface what teams are shipping so players and builders do not miss important moments.":"Ekiplerin neler yayınladığını görünür kılın ki oyuncular ve geliştiriciler önemli anları kaçırmasın.","Weekly and monthly ecosystem summaries":"Haftalık ve aylık ekosistem özetleri","Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"Dağınık güncellemeleri Starknet gaming genelinde nelerin değiştiğini gösteren okunabilir özetlere dönüştürün.","Project progress and playtests":"Proje ilerlemesi ve playtestler","Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"Oyunlara tester bulmaları, geri bildirim toplamaları ve ivmeyi görünür tutmaları için odaklı bir kanal verin.","A real gamer coordination layer":"Gerçek oyuncu koordinasyon katmanı","Connect players, developers, founders, influencers, and newcomers around shared goals.":"Oyuncuları, geliştiricileri, kurucuları, influencer'ları ve yeni gelenleri ortak hedefler etrafında birleştirin.","Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"Oyun adına veya açıklamasına göre arayın, ardından lansman durumuna göre filtreleyin. Kayıtlar türe göre gruplandığı için dizini taramak kolay kalır.","No games match this search yet. Try another keyword or send Starknet Gaming an update.":"Bu aramayla henüz eşleşen oyun yok. Başka bir anahtar kelime deneyin veya Starknet Gaming'e bir güncelleme gönderin.","Recently spotted":"Yeni fark edilenler","Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"Aşağıdaki projeler ayrıntılar doğrulanırken izleniyor. Bilerek doğrulanmış kayıt listesinden ayrı tutuluyorlar.",". Links and statuses should be reported when outdated.":". Bağlantılar veya durumlar güncelliğini yitirdiğinde bildirilmelidir.","Ecosystem rails":"Ekosistem altyapısı","Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"Tamamen onchain Starknet oyunlarının çoğu, Cairo oynanışını, cüzdanları ve oturum tabanlı onboarding'i pratik hale getiren ortak altyapıyı paylaşır.","The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"Birçok tamamen onchain Starknet ekibinin Cairo'da dünyalar, sistemler ve kanıtlanabilir oynanış kurmak için kullandığı oyun motoru.","Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"Oyuncuların daha akıcı etkileşimlerle ve daha az kripto kaynaklı kesintiyle oyunlara girmesine yardımcı olan cüzdan ve oturum anahtarı araçları.","Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"Starknet Gaming'in ekosistem verilerini, araçları, ödemeleri ve topluluk keşfini bağlamasına yardımcı olan projeler.","Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"Protokol metrikleri, DeFi içgörüleri, işlem izleme ve holder dağılım zekası için Starknet analiz platformu.","Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"AI model erişimi için Starknet-native relay; kullanıcıların cüzdan bağlamasına, Starknet varlıklarıyla ödeme yapmasına ve Claude, GPT ve daha fazlasını kullanmasına olanak tanır.","Analytics partner":"Analitik ortağı","AI relay partner":"AI relay ortağı","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"Platformdan platforma atla, güçlendirmeleri yakala ve süre bitmeden olabildiğince yükseğe çık.","Mini game":"Mini oyun","Score":"Skor","Hub":"Merkez","Onchain gaming":"Onchain oyun","Wallet tooling":"Cüzdan araçları","Starknet analytics":"Starknet analitiği","Starknet AI access":"Starknet AI erişimi","Level":"Seviye"
+  },
+  es:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"El ecosistema necesita más que una lista: un hogar reconocible donde juegos, comunidades, actualizaciones, pruebas e historias del ecosistema estén juntos.",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"Encuentra juegos, comunidades, noticias y personas interesadas en el gaming onchain sin perseguir chats dispersos.",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"Comparte anuncios, actualizaciones de lanzamientos, llamados a playtests y feedback de producto con una audiencia que ya está enfocada en juegos.",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"Convierte Starknet gaming en un movimiento visible y coordinado con resúmenes, reseñas, digestos del ecosistema y momentum compartido.",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers es donde habla el ecosistema.",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"Un grupo de Telegram para jugadores, builders, founders, influencers y recién llegados curiosos que quieran coordinarse alrededor de Starknet gaming.",
+    "Respect, hype, competition, and real gamer energy.":"Respeto, hype, competencia y energía gamer real.",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"El grupo existe para hacer el ecosistema más visible, más útil y más fácil de entrar. Los jugadores descubren juegos y personas. Los desarrolladores comparten avances, encuentran testers y reciben reacciones reales de jugadores reales. Sin gatekeeping, solo un lugar compartido para que Starknet gaming crezca.",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Un único hub para noticias de juegos de Starknet, comunidades, anuncios de proyectos y conversaciones de jugadores.",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"Los equipos pueden compartir actualizaciones, pedir playtesters, recoger feedback y construir un impulso real de comunidad.",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"Los recién llegados tienen un lugar claro para entender qué jugar, a quién seguir y dónde hacer preguntas.",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"La proyección incluye resúmenes en X, reseñas de proyectos, digestos gaming semanales o mensuales y un apoyo más amplio al ecosistema.",
+    "A visible home for every Starknet gaming community.":"Un hogar visible para cada comunidad de gaming en Starknet.",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"Jugadores, builders, founders y creadores necesitan un lugar donde reunirse antes del próximo playtest, resumen, lanzamiento o momento de torneo.",
+    "News, recaps, updates, and community signal.":"Noticias, resúmenes, actualizaciones y señal comunitaria.",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"El objetivo es hacer que Starknet gaming sea más fácil de seguir: lanzamientos de proyectos, resúmenes del ecosistema, oportunidades de playtest, reseñas y las conversaciones alrededor.",
+    "Fresh launches and announcements":"Nuevos lanzamientos y anuncios","Surface what teams are shipping so players and builders do not miss important moments.":"Muestra lo que los equipos están lanzando para que jugadores y builders no se pierdan momentos importantes.","Weekly and monthly ecosystem summaries":"Resúmenes semanales y mensuales del ecosistema","Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"Convierte actualizaciones dispersas en panoramas legibles de lo que cambió en Starknet gaming.","Project progress and playtests":"Progreso de proyectos y pruebas","Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"Da a los juegos un canal enfocado para encontrar testers, recoger feedback y mantener visible el impulso.","A real gamer coordination layer":"Una capa real de coordinación gamer","Connect players, developers, founders, influencers, and newcomers around shared goals.":"Conecta a jugadores, desarrolladores, founders, influencers y recién llegados alrededor de objetivos compartidos.","Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"Busca por nombre o descripción del juego y luego filtra por estado de lanzamiento. Las entradas están agrupadas por género para que el directorio siga siendo fácil de revisar.","No games match this search yet. Try another keyword or send Starknet Gaming an update.":"Aún no hay juegos que coincidan con esta búsqueda. Prueba otra palabra clave o envía una actualización a Starknet Gaming.","Recently spotted":"Visto recientemente","Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"Los proyectos de abajo están siendo seguidos mientras se verifican los detalles. Se separan de forma intencional del registro confirmado.",". Links and statuses should be reported when outdated.":". Los enlaces y estados deben reportarse cuando estén desactualizados.","Ecosystem rails":"Infraestructura del ecosistema","Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"La mayoría de los juegos Starknet totalmente onchain comparten infraestructura que hace práctico el gameplay en Cairo, las wallets y el onboarding basado en sesiones.","The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"El motor de juego que muchos equipos Starknet totalmente onchain usan para construir mundos, sistemas y gameplay comprobable en Cairo.","Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"Herramientas de wallet y claves de sesión que ayudan a los jugadores a entrar en juegos con interacciones más fluidas y menos interrupciones cripto-nativas.","Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"Proyectos que ayudan a Starknet Gaming a conectar datos del ecosistema, herramientas, pagos y descubrimiento de comunidad.","Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"Plataforma analítica de Starknet para métricas de protocolo, insights de DeFi, monitoreo de transacciones e inteligencia sobre la distribución de holders.","Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"Relay nativo de Starknet para acceso a modelos de IA, que permite conectar una wallet, pagar con activos de Starknet y usar Claude, GPT y más.","Analytics partner":"Socio de analítica","AI relay partner":"Socio relay de IA","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"Salta de plataforma en plataforma, toma boosts y sube lo más alto posible antes de que se acabe el tiempo.","Mini game":"Minijuego","Score":"Puntuación","Hub":"Hub","Onchain gaming":"Gaming onchain","Wallet tooling":"Herramientas de wallet","Starknet analytics":"Analítica de Starknet","Starknet AI access":"Acceso a Starknet AI","Level":"Nivel"
+  },
+  hi:{
+    "The ecosystem needs more than a list. It needs one recognizable home where games, communities, updates, playtests, and ecosystem stories can be found together.":"इकोसिस्टम को सिर्फ सूची नहीं, बल्कि ऐसा साफ घर चाहिए जहाँ गेम, समुदाय, अपडेट, प्ले टेस्ट और इकोसिस्टम कहानियाँ साथ मिलें।",
+    "Find games, communities, news, and people who care about onchain gaming without hunting through scattered chats.":"बिखरी हुई चैट्स में खोजे बिना गेम, समुदाय, खबरें और ऑनचेन गेमिंग में रुचि रखने वाले लोगों को खोजें।",
+    "Share announcements, launch updates, playtest calls, and product feedback with an audience that is already gaming-focused.":"घोषणाएँ, लॉन्च अपडेट, प्ले टेस्ट कॉल और प्रोडक्ट फीडबैक ऐसे दर्शकों के साथ साझा करें जो पहले से गेमिंग-केंद्रित हैं।",
+    "Turn Starknet gaming into a visible, coordinated movement with recaps, reviews, ecosystem digests, and shared momentum.":"Starknet gaming को रीकैप, रिव्यू, इकोसिस्टम डाइजेस्ट और साझा गति के साथ एक दिखने वाली, समन्वित चाल में बदलें।",
+    "Starknet Gamers is where the ecosystem talks.":"Starknet Gamers वह जगह है जहाँ इकोसिस्टम बात करता है।",
+    "A Telegram group for players, builders, founders, influencers, and curious newcomers to coordinate around Starknet gaming.":"Starknet gaming के आसपास समन्वय करने वाले खिलाड़ियों, बिल्डरों, संस्थापकों, इन्फ्लुएंसर्स और जिज्ञासु नए लोगों के लिए एक Telegram समूह।",
+    "Respect, hype, competition, and real gamer energy.":"सम्मान, उत्साह, प्रतिस्पर्धा और असली गेमर ऊर्जा।",
+    "The group exists to make the ecosystem louder, more useful, and easier to enter. Players discover games and people. Developers share updates, find playtesters, and get real reactions from real players. No gatekeeping - just a shared place for Starknet gaming to grow.":"यह समूह इकोसिस्टम को अधिक दिखने वाला, उपयोगी और प्रवेश के लिए आसान बनाने के लिए है। खिलाड़ी गेम और लोगों को खोजते हैं। डेवलपर अपडेट साझा करते हैं, प्ले टेस्टर ढूंढते हैं और असली खिलाड़ियों से असली प्रतिक्रियाएँ पाते हैं। कोई gatekeeping नहीं, सिर्फ Starknet gaming की वृद्धि के लिए साझा जगह।",
+    "A single hub for Starknet game news, communities, project announcements, and player conversations.":"Starknet गेम समाचार, समुदायों, प्रोजेक्ट घोषणाओं और खिलाड़ी बातचीत के लिए एक ही हब।",
+    "Teams can share updates, request playtesters, collect feedback, and build real community momentum.":"टीमें अपडेट साझा कर सकती हैं, प्ले टेस्टर मांग सकती हैं, फीडबैक इकट्ठा कर सकती हैं और वास्तविक सामुदायिक गति बना सकती हैं।",
+    "Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.":"नए लोगों को यह समझने के लिए एक साफ जगह मिलती है कि क्या खेलें, किसे फॉलो करें और कहाँ सवाल पूछें।",
+    "The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.":"आगे की दिशा में X रीकैप, प्रोजेक्ट रिव्यू, साप्ताहिक या मासिक गेमिंग डाइजेस्ट और व्यापक इकोसिस्टम समर्थन शामिल है।",
+    "A visible home for every Starknet gaming community.":"हर Starknet gaming समुदाय के लिए एक दिखने वाला घर।",
+    "Players, builders, founders, and creators need one place to meet before the next playtest, recap, launch, or tournament moment.":"खिलाड़ियों, बिल्डरों, संस्थापकों और क्रिएटर्स को अगले प्ले टेस्ट, रीकैप, लॉन्च या टूर्नामेंट पल से पहले मिलने के लिए एक जगह चाहिए।",
+    "News, recaps, updates, and community signal.":"समाचार, रीकैप, अपडेट और समुदाय संकेत।",
+    "The goal is to make Starknet gaming easier to follow: project drops, ecosystem summaries, playtest opportunities, reviews, and the conversations around them.":"लक्ष्य यह है कि Starknet gaming को फॉलो करना आसान बने: प्रोजेक्ट ड्रॉप्स, इकोसिस्टम सारांश, प्ले टेस्ट अवसर, रिव्यू और उनके आसपास की बातचीत।",
+    "Fresh launches and announcements":"नए लॉन्च और घोषणाएँ","Surface what teams are shipping so players and builders do not miss important moments.":"टीमें क्या जारी कर रही हैं, इसे सामने लाएँ ताकि खिलाड़ी और बिल्डर महत्वपूर्ण क्षण न चूकें।","Weekly and monthly ecosystem summaries":"साप्ताहिक और मासिक इकोसिस्टम सारांश","Turn scattered updates into readable snapshots of what changed across Starknet gaming.":"बिखरे हुए अपडेट्स को ऐसे पढ़ने योग्य स्नैपशॉट में बदलें जो Starknet gaming में हुए बदलाव दिखाएँ।","Project progress and playtests":"प्रोजेक्ट प्रगति और प्ले टेस्ट","Give games a focused channel to find testers, collect feedback, and keep momentum visible.":"गेम्स को टेस्टर्स खोजने, फीडबैक इकट्ठा करने और गति को दिखने योग्य रखने के लिए एक केंद्रित चैनल दें।","A real gamer coordination layer":"असली गेमर समन्वय परत","Connect players, developers, founders, influencers, and newcomers around shared goals.":"साझा लक्ष्यों के आसपास खिलाड़ियों, डेवलपर्स, संस्थापकों, इन्फ्लुएंसर्स और नए लोगों को जोड़ें।","Search by game name or description, then filter by launch status. Entries are grouped by genre so the directory stays easy to scan.":"गेम के नाम या विवरण से खोजें, फिर लॉन्च स्थिति के अनुसार फ़िल्टर करें। प्रविष्टियाँ शैली के अनुसार समूहित हैं ताकि डायरेक्टरी आसानी से स्कैन की जा सके।","No games match this search yet. Try another keyword or send Starknet Gaming an update.":"इस खोज से अभी कोई गेम मेल नहीं खाता। कोई दूसरा कीवर्ड आज़माएँ या Starknet Gaming को अपडेट भेजें।","Recently spotted":"हाल ही में दिखे","Projects below are being tracked while details are verified. They are intentionally separated from the confirmed registry.":"नीचे दिए गए प्रोजेक्ट्स का विवरण सत्यापित होने तक ट्रैक रखा जा रहा है। इन्हें जानबूझकर पुष्टि किए गए रजिस्ट्रि से अलग रखा गया है।",". Links and statuses should be reported when outdated.":". लिंक और स्टेटस पुराने होने पर रिपोर्ट किए जाने चाहिए।","Ecosystem rails":"इकोसिस्टम रेल्स","Most fully onchain Starknet games share infrastructure that makes Cairo gameplay, wallets, and session-based onboarding practical.":"अधिकांश पूरी तरह onchain Starknet गेम साझा अवसंरचना का उपयोग करते हैं जो Cairo gameplay, wallets और session-based onboarding को व्यावहारिक बनाती है।","The game engine many fully onchain Starknet teams use to build worlds, systems, and provable gameplay in Cairo.":"वह गेम इंजन जिसका उपयोग कई पूरी तरह onchain Starknet टीमें Cairo में दुनिया, सिस्टम और प्रमाणित gameplay बनाने के लिए करती हैं।","Wallet and session-key tooling that helps players enter games with smoother interactions and fewer crypto-native interruptions.":"वॉलेट और session-key टूलिंग जो खिलाड़ियों को अधिक सहज इंटरैक्शन और कम crypto-native रुकावटों के साथ गेम में प्रवेश करने में मदद करती है।","Projects helping Starknet Gaming connect ecosystem data, tooling, payments, and community discovery.":"वे प्रोजेक्ट्स जो Starknet Gaming को इकोसिस्टम डेटा, टूलिंग, भुगतान और समुदाय खोज से जोड़ने में मदद करते हैं।","Starknet analytics platform for protocol metrics, DeFi insights, transaction monitoring, and holder distribution intelligence.":"प्रोटोकॉल मेट्रिक्स, DeFi इनसाइट्स, ट्रांजैक्शन मॉनिटरिंग और holder वितरण समझ के लिए Starknet एनालिटिक्स प्लेटफ़ॉर्म।","Starknet-native relay for AI model access, letting users connect a wallet, pay with Starknet assets, and use Claude, GPT, and more.":"AI मॉडल एक्सेस के लिए Starknet-native relay, जो उपयोगकर्ताओं को वॉलेट कनेक्ट करने, Starknet एसेट्स से भुगतान करने और Claude, GPT आदि इस्तेमाल करने देता है।","Analytics partner":"एनालिटिक्स पार्टनर","AI relay partner":"AI relay पार्टनर","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"प्लेटफॉर्म से प्लेटफॉर्म पर कूदें, बूस्ट पकड़ें और समय खत्म होने से पहले जितना ऊँचा हो सके चढ़ें।","Mini game":"मिनी गेम","Score":"स्कोर","Hub":"हब","Onchain gaming":"ऑनचेन गेमिंग","Wallet tooling":"वॉलेट टूलिंग","Starknet analytics":"Starknet एनालिटिक्स","Starknet AI access":"Starknet AI एक्सेस","Level":"लेवल"
+  },
+  zh:{
+    "Hub":"枢纽","Starknet analytics":"Starknet 分析","Starknet AI access":"Starknet AI 访问","Mini game":"迷你游戏","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"在平台之间跳跃，抓住增益，在时间结束前尽可能爬得更高。","Score":"得分","Level":"等级",". Links and statuses should be reported when outdated.":"。如果链接或状态已过时，请反馈。"
+  },
+  ko:{
+    "Hub":"허브","Starknet analytics":"Starknet 분석","Starknet AI access":"Starknet AI 액세스","Mini game":"미니 게임","Jump from platform to platform, catch boosts, and climb as high as possible before time runs out.":"플랫폼 사이를 점프하며 부스트를 모으고 시간이 끝나기 전에 최대한 높이 올라가세요.","Score":"점수","Level":"레벨",". Links and statuses should be reported when outdated.":". 링크나 상태가 오래되었다면 알려주세요."
+  }
+};
+
+Object.entries(SECTION_TRANSLATIONS).forEach(([language, strings]) => {
+  TRANSLATIONS[language] = {...(TRANSLATIONS[language] || {}), ...strings};
+});
+
+let currentLanguage = "en";
+
+function t(text){
+  return currentLanguage === "en" ? text : TRANSLATIONS[currentLanguage]?.[text] || text;
+}
+
+function tf(text, values = {}){
+  return Object.entries(values).reduce((result, [key, value]) => result.replaceAll(`{${key}}`, value), t(text));
+}
+
 const originalText = new WeakMap();
+const originalAttributes = new WeakMap();
 
 function translateNodeText(language){
+  currentLanguage = language;
   const dictionary = TRANSLATIONS[language] || {};
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node){
@@ -718,8 +1191,24 @@ function translateNodeText(language){
 }
 
 function applyLanguage(language){
+  currentLanguage = language;
   document.documentElement.lang = language === "zh" ? "zh-CN" : language;
   translateNodeText(language);
+  document.querySelectorAll("[aria-label],[title],[placeholder],img[alt]").forEach(element => {
+    if(!originalAttributes.has(element)){
+      originalAttributes.set(element, {
+        ariaLabel: element.getAttribute("aria-label"),
+        title: element.getAttribute("title"),
+        placeholder: element.getAttribute("placeholder"),
+        alt: element.getAttribute("alt")
+      });
+    }
+    const original = originalAttributes.get(element);
+    if(original.ariaLabel !== null) element.setAttribute("aria-label", t(original.ariaLabel));
+    if(original.title !== null) element.setAttribute("title", t(original.title));
+    if(original.placeholder !== null) element.setAttribute("placeholder", t(original.placeholder));
+    if(original.alt !== null) element.setAttribute("alt", t(original.alt));
+  });
   const searchInput = document.getElementById("search");
   const placeholder = "Search games, mechanics, categories...";
   searchInput.placeholder = language === "en" ? placeholder : TRANSLATIONS[language]?.[placeholder] || placeholder;
@@ -752,7 +1241,7 @@ const initials = name => name.split(" ").map(part => part[0]).slice(0, 2).join("
 const escapeHTML = value => value.replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
 
 function statusLabel(status){
-  return status === "live" ? "Live" : status === "new" ? "New" : "Soon";
+  return t(status === "live" ? "Live" : status === "new" ? "New" : "Soon");
 }
 
 function projectCard(game, index){
@@ -762,10 +1251,10 @@ function projectCard(game, index){
     ? `<div class="badge" aria-hidden="true"><img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async"></div>`
     : `<div class="badge display" aria-hidden="true">${initials(game.name)}</div>`;
   const xLink = game.twitter
-    ? `<a class="project-link" href="https://x.com/${encodeURIComponent(game.twitter)}" target="_blank" rel="noopener" aria-label="Open ${safeName} on X"><span class="x-icon" aria-hidden="true">X</span><span>@${escapeHTML(game.twitter)}</span></a>`
-    : `<span class="missing-link mono">link pending</span>`;
+    ? `<a class="project-link" href="https://x.com/${encodeURIComponent(game.twitter)}" target="_blank" rel="noopener" aria-label="${escapeHTML(tf("Open {name} on X", {name: game.name}))}"><span class="x-icon" aria-hidden="true">X</span><span>@${escapeHTML(game.twitter)}</span></a>`
+    : `<span class="missing-link mono">${escapeHTML(t("link pending"))}</span>`;
   const siteLink = game.website
-    ? `<a class="project-link site-link" href="${escapeHTML(game.website)}" target="_blank" rel="noopener" aria-label="Open ${safeName} website"><span class="site-icon" aria-hidden="true"></span><span>Website</span></a>`
+    ? `<a class="project-link site-link" href="${escapeHTML(game.website)}" target="_blank" rel="noopener" aria-label="${escapeHTML(tf("Open {name} website", {name: game.name}))}"><span class="site-icon" aria-hidden="true"></span><span>${escapeHTML(t("Website"))}</span></a>`
     : "";
 
   return `
@@ -775,9 +1264,9 @@ function projectCard(game, index){
         <span class="led ${game.status} mono"><span class="led-dot"></span>${statusLabel(game.status)}</span>
       </div>
       <h4 class="display">${safeName}</h4>
-      <p>${escapeHTML(game.desc)}</p>
+        <p>${escapeHTML(t(game.desc))}</p>
       <div class="card-foot">
-        <span class="tag mono">${escapeHTML(game.cat)}</span>
+        <span class="tag mono">${escapeHTML(t(game.cat))}</span>
         <span class="project-links">${xLink}${siteLink}</span>
       </div>
     </article>
@@ -802,9 +1291,9 @@ function renderRegistry(filter = "all", term = ""){
     if(!games.length) return "";
     visible += games.length;
     return `
-      <section class="category" aria-label="${escapeHTML(category)}">
+      <section class="category" aria-label="${escapeHTML(t(category))}">
         <div class="category-head">
-          <h3 class="display">${escapeHTML(category)}</h3>
+          <h3 class="display">${escapeHTML(t(category))}</h3>
           <span class="category-line"></span>
           <span class="category-count mono">${games.length}</span>
         </div>
@@ -822,7 +1311,7 @@ function renderFeatured(){
   document.getElementById("featured-stack").innerHTML = featured.map((game, index) => `
     <div class="featured-game" style="--accent:${accents[index % accents.length]}">
       <span class="game-icon display">${game.logo ? `<img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async">` : initials(game.name)}</span>
-      <span><strong>${escapeHTML(game.name)}</strong><small>${escapeHTML(game.cat)}</small></span>
+      <span><strong>${escapeHTML(game.name)}</strong><small>${escapeHTML(t(game.cat))}</small></span>
       <span class="status-chip ${game.status} mono">${statusLabel(game.status).toUpperCase()}</span>
     </div>
   `).join("");
@@ -841,9 +1330,9 @@ function renderPending(){
   section.hidden = false;
   list.innerHTML = PENDING.map(item => `
     <article class="pending-card">
-      <span class="pending-meta mono">Verifying - ${escapeHTML(item.cat)}</span>
+      <span class="pending-meta mono">${escapeHTML(t("Verifying"))} - ${escapeHTML(t(item.cat))}</span>
       <strong class="display">${escapeHTML(item.name)}</strong>
-      <p>${escapeHTML(item.desc)}</p>
+      <p>${escapeHTML(t(item.desc))}</p>
     </article>
   `).join("");
 }
@@ -873,7 +1362,15 @@ search.addEventListener("input", event => {
 });
 
 document.getElementById("language-select").addEventListener("change", event => {
+  currentLanguage = event.target.value;
+  renderFeatured();
+  renderRegistry(activeFilter, search.value);
+  renderPending();
+  renderLeaderboard();
   applyLanguage(event.target.value);
+  updatePlayerStatus();
+  renderLeaderboard();
+  setLeaderboardStatus(jumpGame.leaderboardMode);
 });
 
 updateStats();
@@ -884,6 +1381,25 @@ renderPending();
 const savedLanguage = localStorage.getItem("site-language") || "en";
 document.getElementById("language-select").value = savedLanguage;
 applyLanguage(savedLanguage);
+
+const contactToggle = document.getElementById("contact-toggle");
+const contactPopover = document.getElementById("contact-popover");
+
+function setContactMenu(open){
+  contactToggle.setAttribute("aria-expanded", String(open));
+  contactPopover.classList.toggle("is-open", open);
+}
+
+contactToggle.addEventListener("click", () => {
+  const isOpen = contactToggle.getAttribute("aria-expanded") === "true";
+  setContactMenu(!isOpen);
+});
+
+document.addEventListener("click", event => {
+  if(!contactPopover.classList.contains("is-open")) return;
+  if(event.target.closest(".contact-menu")) return;
+  setContactMenu(false);
+});
 
 const rocketButton = document.getElementById("rocket-button");
 const gameOverlay = document.getElementById("game-overlay");
@@ -897,13 +1413,39 @@ const gameStart = document.getElementById("game-start");
 const gameMute = document.getElementById("game-mute");
 const gameClose = document.getElementById("game-close");
 const gameLeaderboard = document.getElementById("game-leaderboard");
+const gameCombo = document.getElementById("game-combo");
+const gameOrbs = document.getElementById("game-orbs");
+const gameProfile = document.getElementById("game-profile");
+const playerNameInput = document.getElementById("player-name");
+const playerStatus = document.getElementById("player-status");
+const leaderboardStatus = document.getElementById("leaderboard-status");
+const leaderboardRefresh = document.getElementById("leaderboard-refresh");
+
+const LEADERBOARD_ENDPOINT = window.ROCKET_LEADERBOARD_ENDPOINT || "api/leaderboard";
+const LEADERBOARD_LIMIT = 10;
+const LOCAL_LEADERBOARD_KEY = "rocket-jump-leaderboard";
+const PUBLIC_LEADERBOARD_CACHE_KEY = "rocket-jump-public-cache";
+const PLAYER_NAME_KEY = "rocket-jump-player";
+const LEADERBOARD_STATUS_LABELS = {local:"Local", public:"Public", syncing:"Syncing", offline:"Offline"};
 
 const jumpGame = {
   running:false,
   muted:false,
   keys:new Set(),
   score:0,
-  best:Number(localStorage.getItem("rocket-jump-best") || 0),
+  heightScore:0,
+  bonusScore:0,
+  best:0,
+  playerName:localStorage.getItem(PLAYER_NAME_KEY) || "",
+  combo:1,
+  bestCombo:1,
+  comboTimer:0,
+  orbs:0,
+  shield:0,
+  leaderboard:[],
+  leaderboardMode:"local",
+  frameId:0,
+  pointerDirection:null,
   time:60,
   lastTime:0,
   camera:0,
@@ -917,20 +1459,76 @@ const jumpGame = {
 };
 
 function resizeGameCanvas(){
+  const previousWidth = gameCanvas.width || 760;
+  const previousHeight = gameCanvas.height || 680;
   const rect = gameCanvas.getBoundingClientRect();
   gameCanvas.width = Math.max(320, Math.floor(rect.width));
   gameCanvas.height = Math.max(420, Math.floor(rect.height));
+  if(jumpGame.platforms.length){
+    const scaleX = gameCanvas.width / previousWidth;
+    const scaleY = gameCanvas.height / previousHeight;
+    jumpGame.platforms.forEach(platform => {
+      platform.x = Math.min(gameCanvas.width - platform.w - 12, Math.max(12, platform.x * scaleX));
+      platform.y *= scaleY;
+    });
+    jumpGame.player.x = Math.min(gameCanvas.width - jumpGame.player.w, Math.max(0, jumpGame.player.x * scaleX));
+    jumpGame.player.y *= scaleY;
+    jumpGame.camera *= scaleY;
+  }
+}
+
+function stopGameLoop(){
+  if(jumpGame.frameId) cancelAnimationFrame(jumpGame.frameId);
+  jumpGame.frameId = 0;
+}
+
+function queueGameFrame(){
+  stopGameLoop();
+  jumpGame.frameId = requestAnimationFrame(updateGame);
 }
 
 function randomBetween(min, max){
   return min + Math.random() * (max - min);
 }
 
+function sanitizePlayerName(value){
+  return value.trim().replace(/\s+/g, " ").replace(/[<>]/g, "").slice(0, 16);
+}
+
+function ensurePlayerName(){
+  const name = sanitizePlayerName(playerNameInput.value);
+  if(name.length < 2){
+    playerStatus.textContent = t("Enter a nickname before launch.");
+    playerNameInput.focus();
+    return false;
+  }
+  jumpGame.playerName = name;
+  playerNameInput.value = name;
+  localStorage.setItem(PLAYER_NAME_KEY, name);
+  playerStatus.textContent = `${t("Playing as")} ${name}`;
+  return true;
+}
+
+function updatePlayerStatus(){
+  playerNameInput.value = jumpGame.playerName;
+  playerStatus.textContent = jumpGame.playerName ? `${t("Playing as")} ${jumpGame.playerName}` : t("Enter a nickname before launch.");
+}
+
+function platformReward(guaranteed){
+  if(guaranteed) return null;
+  const roll = Math.random();
+  if(roll < .07) return "shield";
+  if(roll < .14) return "time";
+  if(roll < .58) return "orb";
+  return null;
+}
+
 function createPlatform(y, guaranteed = false){
-  const width = Math.max(58, 118 - jumpGame.difficulty * 7 + randomBetween(-16, 16));
+  const width = Math.min(gameCanvas.width - 36, Math.max(58, 118 - jumpGame.difficulty * 7 + randomBetween(-16, 16)));
   const movingChance = guaranteed ? 0 : Math.min(.38, .06 + jumpGame.difficulty * .035);
   const fragileChance = guaranteed ? 0 : Math.min(.3, .02 + jumpGame.difficulty * .025);
   const boostChance = guaranteed ? 0 : Math.max(.04, .16 - jumpGame.difficulty * .01);
+  const hazardChance = guaranteed ? 0 : Math.min(.28, .04 + jumpGame.difficulty * .018);
   const typeRoll = Math.random();
   const type = typeRoll < fragileChance ? "fragile" : typeRoll < fragileChance + movingChance ? "moving" : "normal";
   return {
@@ -941,28 +1539,44 @@ function createPlatform(y, guaranteed = false){
     type,
     dir:Math.random() > .5 ? 1 : -1,
     speed:randomBetween(.55, 1.4 + jumpGame.difficulty * .12),
-    boost:Math.random() < boostChance
+    boost:Math.random() < boostChance,
+    reward:platformReward(guaranteed),
+    rewardCollected:false,
+    hazard:Math.random() < hazardChance
   };
 }
 
 function resetGame(){
+  if(!ensurePlayerName()) return;
+  stopGameLoop();
   resizeGameCanvas();
   jumpGame.running = true;
+  jumpGame.keys.clear();
+  jumpGame.pointerDirection = null;
   jumpGame.score = 0;
+  jumpGame.heightScore = 0;
+  jumpGame.bonusScore = 0;
+  jumpGame.combo = 1;
+  jumpGame.bestCombo = 1;
+  jumpGame.comboTimer = 0;
+  jumpGame.orbs = 0;
+  jumpGame.shield = 0;
   jumpGame.time = 60;
   jumpGame.camera = 0;
   jumpGame.difficulty = 1;
+  jumpGame.melodyStep = 0;
+  jumpGame.melodyTimer = 0;
   jumpGame.lastTime = performance.now();
   jumpGame.player = {x:gameCanvas.width / 2 - 17,y:gameCanvas.height - 140,w:34,h:42,vx:0,vy:-13,onBoost:false};
-  jumpGame.platforms = [{x:gameCanvas.width / 2 - 70,y:gameCanvas.height - 70,w:140,h:14,type:"normal",dir:1,speed:0,boost:false}];
+  jumpGame.platforms = [{x:gameCanvas.width / 2 - 70,y:gameCanvas.height - 70,w:140,h:14,type:"normal",dir:1,speed:0,boost:false,reward:null,rewardCollected:false,hazard:false}];
   for(let y = gameCanvas.height - 150; y > -2200; y -= 82){
     jumpGame.platforms.push(createPlatform(y, y > gameCanvas.height - 420));
   }
   jumpGame.particles = [];
-  gameState.textContent = "Go";
-  gameStart.textContent = "Restart";
+  gameState.textContent = t("Go");
+  gameStart.textContent = t("Restart");
   startMelody();
-  requestAnimationFrame(updateGame);
+  queueGameFrame();
 }
 
 function ensurePlatforms(){
@@ -979,9 +1593,45 @@ function addParticles(x, y, color, count = 10){
   }
 }
 
+function circleHitsPlayer(cx, cy, radius){
+  const player = jumpGame.player;
+  const nearestX = Math.max(player.x, Math.min(cx, player.x + player.w));
+  const nearestY = Math.max(player.y, Math.min(cy, player.y + player.h));
+  return Math.hypot(cx - nearestX, cy - nearestY) <= radius;
+}
+
+function collectReward(platform){
+  if(!platform.reward || platform.rewardCollected) return;
+  const rewardX = platform.x + platform.w / 2;
+  const rewardY = platform.y - 22;
+  if(!circleHitsPlayer(rewardX, rewardY, 16)) return;
+  platform.rewardCollected = true;
+  jumpGame.combo = Math.min(9, jumpGame.combo + 1);
+  jumpGame.bestCombo = Math.max(jumpGame.bestCombo, jumpGame.combo);
+  jumpGame.comboTimer = 4.2;
+  if(platform.reward === "shield"){
+    jumpGame.shield = Math.min(3, jumpGame.shield + 1);
+    jumpGame.bonusScore += 80 * jumpGame.combo;
+    addParticles(rewardX, rewardY, "#49f0ff", 22);
+    playTone(988, .12, "triangle", .04);
+  }else if(platform.reward === "time"){
+    jumpGame.time = Math.min(75, jumpGame.time + 4);
+    jumpGame.bonusScore += 55 * jumpGame.combo;
+    addParticles(rewardX, rewardY, "#ffb000", 20);
+    playTone(880, .12, "sine", .04);
+  }else{
+    jumpGame.orbs++;
+    jumpGame.bonusScore += 35 * jumpGame.combo;
+    addParticles(rewardX, rewardY, "#d63cff", 18);
+    playTone(740 + jumpGame.combo * 35, .08, "triangle", .03);
+  }
+}
+
 function playTone(freq, duration = .08, type = "sine", gain = .035){
   if(jumpGame.muted) return;
-  if(!jumpGame.audio) jumpGame.audio = new AudioContext();
+  const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  if(!AudioEngine) return;
+  if(!jumpGame.audio) jumpGame.audio = new AudioEngine();
   const osc = jumpGame.audio.createOscillator();
   const volume = jumpGame.audio.createGain();
   osc.type = type;
@@ -1009,13 +1659,20 @@ function updateMelody(delta){
 }
 
 function updateGame(now){
+  jumpGame.frameId = 0;
   if(!jumpGame.running) return;
   const delta = Math.min(.033, (now - jumpGame.lastTime) / 1000);
   jumpGame.lastTime = now;
   jumpGame.time -= delta;
   updateMelody(delta);
+  if(jumpGame.comboTimer > 0){
+    jumpGame.comboTimer -= delta;
+  }else{
+    jumpGame.combo = 1;
+  }
 
   const player = jumpGame.player;
+  const previousBottom = player.y + player.h;
   const move = (jumpGame.keys.has("ArrowRight") || jumpGame.keys.has("d") ? 1 : 0) - (jumpGame.keys.has("ArrowLeft") || jumpGame.keys.has("a") ? 1 : 0);
   player.vx += move * (34 + jumpGame.difficulty * 1.4) * delta;
   player.vx *= .9;
@@ -1031,21 +1688,46 @@ function updateGame(now){
       platform.x += platform.dir * platform.speed * (1 + jumpGame.difficulty * .12);
       if(platform.x < 12 || platform.x + platform.w > gameCanvas.width - 12) platform.dir *= -1;
     }
+    collectReward(platform);
   });
 
   if(player.vy > 0){
-    jumpGame.platforms.forEach(platform => {
+    for(const platform of jumpGame.platforms){
       const hitX = player.x + player.w > platform.x && player.x < platform.x + platform.w;
-      const hitY = player.y + player.h > platform.y && player.y + player.h < platform.y + platform.h + 18;
+      const hitY = previousBottom <= platform.y && player.y + player.h >= platform.y && player.y + player.h < platform.y + platform.h + 24;
       if(hitX && hitY){
+        if(platform.hazard){
+          if(jumpGame.shield > 0){
+            jumpGame.shield--;
+            platform.hazard = false;
+            addParticles(player.x + player.w / 2, platform.y, "#49f0ff", 18);
+            playTone(1175, .12, "triangle", .04);
+          }else{
+            player.vy = -11.5;
+            jumpGame.combo = 1;
+            jumpGame.comboTimer = 0;
+            jumpGame.bonusScore = Math.max(0, jumpGame.bonusScore - 80);
+            platform.hazard = false;
+            addParticles(player.x + player.w / 2, platform.y, "#ff6a00", 20);
+            playTone(180, .18, "sawtooth", .035);
+            if(platform.type === "fragile") platform.dead = true;
+            break;
+          }
+        }
         player.vy = platform.boost ? -22 : -15.5;
         player.onBoost = platform.boost;
+        if(platform.boost){
+          jumpGame.combo = Math.min(9, jumpGame.combo + 1);
+          jumpGame.bestCombo = Math.max(jumpGame.bestCombo, jumpGame.combo);
+          jumpGame.comboTimer = 3.4;
+        }
         addParticles(player.x + player.w / 2, platform.y, platform.boost ? "#49f0ff" : "#d63cff", platform.boost ? 20 : 8);
         playTone(platform.boost ? 1046 : 740, platform.boost ? .14 : .07, "triangle", platform.boost ? .05 : .025);
         if(platform.type === "fragile") platform.dead = true;
         platform.boost = false;
+        break;
       }
-    });
+    }
   }
 
   jumpGame.platforms = jumpGame.platforms.filter(platform => !platform.dead);
@@ -1055,8 +1737,9 @@ function updateGame(now){
     jumpGame.camera = player.y - screenTopTarget;
   }
 
-  jumpGame.score = Math.max(jumpGame.score, Math.floor(Math.abs(Math.min(0, jumpGame.camera))));
-  jumpGame.difficulty = 1 + Math.floor(jumpGame.score / 700);
+  jumpGame.heightScore = Math.max(jumpGame.heightScore, Math.floor(Math.abs(Math.min(0, jumpGame.camera))));
+  jumpGame.score = jumpGame.heightScore + jumpGame.bonusScore;
+  jumpGame.difficulty = 1 + Math.floor(jumpGame.heightScore / 700);
   ensurePlatforms();
 
   jumpGame.particles.forEach(particle => {
@@ -1074,7 +1757,7 @@ function updateGame(now){
 
   drawGame();
   updateGameHud();
-  requestAnimationFrame(updateGame);
+  queueGameFrame();
 }
 
 function drawGame(){
@@ -1095,6 +1778,17 @@ function drawGame(){
     ctx.fill();
   }
 
+  if(!jumpGame.running && !jumpGame.platforms.length){
+    ctx.fillStyle = "rgba(247,242,255,.88)";
+    ctx.font = "800 28px Space Grotesk, Inter, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Rocket Jump", gameCanvas.width / 2, gameCanvas.height / 2 - 18);
+    ctx.fillStyle = "rgba(247,242,255,.56)";
+    ctx.font = "700 13px Inter, sans-serif";
+    ctx.fillText(t("Enter a nickname before launch."), gameCanvas.width / 2, gameCanvas.height / 2 + 14);
+    return;
+  }
+
   jumpGame.platforms.forEach(platform => {
     const y = platform.y - jumpGame.camera;
     if(y < -40 || y > gameCanvas.height + 40) return;
@@ -1105,11 +1799,44 @@ function drawGame(){
     ctx.roundRect(platform.x, y, platform.w, platform.h, 8);
     ctx.fill();
     ctx.shadowBlur = 0;
+    if(platform.hazard){
+      ctx.fillStyle = "#ff6a00";
+      ctx.shadowColor = "#ff6a00";
+      ctx.shadowBlur = 14;
+      for(let i = 0; i < Math.max(2, Math.floor(platform.w / 34)); i++){
+        const spikeX = platform.x + 14 + i * 30;
+        ctx.beginPath();
+        ctx.moveTo(spikeX, y);
+        ctx.lineTo(spikeX + 9, y - 17);
+        ctx.lineTo(spikeX + 18, y);
+        ctx.closePath();
+        ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+    }
     if(platform.boost){
       ctx.fillStyle = "#ffb000";
       ctx.beginPath();
       ctx.arc(platform.x + platform.w / 2, y - 10, 7, 0, Math.PI * 2);
       ctx.fill();
+    }
+    if(platform.reward && !platform.rewardCollected){
+      const rewardX = platform.x + platform.w / 2;
+      const rewardY = y - 22;
+      const rewardColor = platform.reward === "shield" ? "#49f0ff" : platform.reward === "time" ? "#ffb000" : "#d63cff";
+      ctx.save();
+      ctx.fillStyle = rewardColor;
+      ctx.shadowColor = rewardColor;
+      ctx.shadowBlur = 18;
+      ctx.beginPath();
+      ctx.arc(rewardX, rewardY, 9 + Math.sin(performance.now() / 130) * 1.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "rgba(5,7,18,.7)";
+      ctx.font = "900 10px JetBrains Mono, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(platform.reward === "shield" ? "S" : platform.reward === "time" ? "+" : "*", rewardX, rewardY + .5);
+      ctx.restore();
     }
   });
 
@@ -1126,6 +1853,15 @@ function drawGame(){
   const py = player.y - jumpGame.camera;
   ctx.save();
   ctx.translate(player.x + player.w / 2, py + player.h / 2);
+  if(jumpGame.shield > 0){
+    ctx.strokeStyle = "rgba(73,240,255,.82)";
+    ctx.lineWidth = 3;
+    ctx.shadowColor = "#49f0ff";
+    ctx.shadowBlur = 18;
+    ctx.beginPath();
+    ctx.arc(0, 0, 30, 0, Math.PI * 2);
+    ctx.stroke();
+  }
   ctx.rotate(player.vx * .015);
   ctx.font = "38px system-ui";
   ctx.textAlign = "center";
@@ -1138,42 +1874,135 @@ function drawGame(){
 
   ctx.fillStyle = "rgba(247,242,255,.72)";
   ctx.font = "700 13px Inter, sans-serif";
-  ctx.fillText(`Level ${jumpGame.difficulty}`, 18, 28);
+  ctx.textAlign = "left";
+  ctx.fillText(`${t("Level")} ${jumpGame.difficulty}`, 18, 28);
+  ctx.fillText(`${jumpGame.score} ${t("pts")}`, 18, 48);
+  ctx.fillText(`${t("Combo")} x${jumpGame.combo} · ${t("Orbs")} ${jumpGame.orbs}`, 18, 68);
+  if(jumpGame.shield > 0) ctx.fillText(`${t("Shield")} ${jumpGame.shield}`, 18, 88);
 }
 
 function updateGameHud(){
   gameScore.textContent = jumpGame.score;
   gameTime.textContent = Math.max(0, Math.ceil(jumpGame.time));
   gameBest.textContent = jumpGame.best;
-  gameState.textContent = `Lv ${jumpGame.difficulty}`;
+  gameState.textContent = `${t("Level")} ${jumpGame.difficulty}`;
+  gameCombo.textContent = `x${jumpGame.combo}`;
+  gameOrbs.textContent = jumpGame.orbs;
 }
 
-function getLeaderboard(){
-  return JSON.parse(localStorage.getItem("rocket-jump-leaderboard") || "[]");
+function normalizeLeaderboard(rawScores){
+  const source = Array.isArray(rawScores) ? rawScores : Array.isArray(rawScores?.scores) ? rawScores.scores : [];
+  return source.map(item => ({
+    id:String(item.id || `${item.name || "Pilot"}-${item.score || 0}-${item.date || 0}`),
+    name:sanitizePlayerName(String(item.name || item.player || "Pilot")) || "Pilot",
+    score:Math.max(0, Math.floor(Number(item.score) || 0)),
+    level:Math.max(1, Math.floor(Number(item.level) || 1)),
+    orbs:Math.max(0, Math.floor(Number(item.orbs) || 0)),
+    combo:Math.max(1, Math.floor(Number(item.combo) || 1)),
+    date:Number(item.date) || Date.now()
+  })).filter(item => Number.isFinite(item.score) && item.score > 0)
+    .sort((a, b) => b.score - a.score || b.combo - a.combo || b.orbs - a.orbs || a.date - b.date)
+    .slice(0, LEADERBOARD_LIMIT);
 }
 
-function renderLeaderboard(){
-  const scores = getLeaderboard();
-  gameLeaderboard.innerHTML = scores.length ? scores.map(item => `<li>${item.score} pts · Lv ${item.level}</li>`).join("") : "<li>No runs yet</li>";
-  gameBest.textContent = jumpGame.best;
-}
-
-function saveLeaderboard(){
-  const scores = getLeaderboard();
-  scores.push({score:jumpGame.score, level:jumpGame.difficulty, date:Date.now()});
-  scores.sort((a, b) => b.score - a.score);
-  localStorage.setItem("rocket-jump-leaderboard", JSON.stringify(scores.slice(0, 5)));
-  if(jumpGame.score > jumpGame.best){
-    jumpGame.best = jumpGame.score;
-    localStorage.setItem("rocket-jump-best", String(jumpGame.best));
+function readScoreList(key){
+  try{
+    return normalizeLeaderboard(JSON.parse(localStorage.getItem(key) || "[]"));
+  }catch(error){
+    localStorage.removeItem(key);
+    return [];
   }
-  renderLeaderboard();
+}
+
+function writeScoreList(key, scores){
+  localStorage.setItem(key, JSON.stringify(normalizeLeaderboard(scores)));
+}
+
+function mergeLeaderboards(...lists){
+  const byId = new Map();
+  lists.flat().forEach(item => {
+    const current = byId.get(item.id);
+    if(!current || item.score > current.score) byId.set(item.id, item);
+  });
+  return normalizeLeaderboard([...byId.values()]);
+}
+
+function setLeaderboardStatus(mode, label = LEADERBOARD_STATUS_LABELS[mode] || "Local"){
+  jumpGame.leaderboardMode = mode;
+  leaderboardStatus.dataset.mode = mode;
+  leaderboardStatus.textContent = t(label);
+}
+
+function renderLeaderboard(scores = jumpGame.leaderboard){
+  const normalized = normalizeLeaderboard(scores);
+  jumpGame.leaderboard = normalized;
+  jumpGame.best = normalized[0]?.score || 0;
+  gameBest.textContent = jumpGame.best;
+  gameLeaderboard.innerHTML = normalized.length ? normalized.map(item => `
+    <li>
+      <span class="leaderboard-entry">
+        <strong><span>${escapeHTML(item.name)}</span><span>${item.score} ${escapeHTML(t("pts"))}</span></strong>
+        <span>${escapeHTML(t("Level"))} ${item.level} · ${escapeHTML(t("Combo"))} x${item.combo} · ${escapeHTML(t("Orbs"))} ${item.orbs}</span>
+      </span>
+    </li>
+  `).join("") : `<li>${escapeHTML(t("No runs yet"))}</li>`;
+}
+
+async function loadLeaderboard(){
+  const localScores = readScoreList(LOCAL_LEADERBOARD_KEY);
+  const cachedPublicScores = readScoreList(PUBLIC_LEADERBOARD_CACHE_KEY);
+  renderLeaderboard(mergeLeaderboards(cachedPublicScores, localScores));
+  setLeaderboardStatus("syncing", "Syncing");
+  try{
+    const response = await fetch(LEADERBOARD_ENDPOINT, {headers:{Accept:"application/json"}, cache:"no-store"});
+    if(!response.ok) throw new Error(`Leaderboard ${response.status}`);
+    const publicScores = normalizeLeaderboard(await response.json());
+    writeScoreList(PUBLIC_LEADERBOARD_CACHE_KEY, publicScores);
+    renderLeaderboard(mergeLeaderboards(publicScores, localScores));
+    setLeaderboardStatus("public", "Public");
+  }catch(error){
+    setLeaderboardStatus(localScores.length || cachedPublicScores.length ? "offline" : "local", localScores.length || cachedPublicScores.length ? "Offline" : "Local");
+  }
+}
+
+async function saveLeaderboard(){
+  if(jumpGame.score <= 0) return;
+  const entry = {
+    id:crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    name:jumpGame.playerName || "Pilot",
+    score:jumpGame.score,
+    level:jumpGame.difficulty,
+    orbs:jumpGame.orbs,
+    combo:jumpGame.bestCombo,
+    date:Date.now()
+  };
+  const localScores = mergeLeaderboards(readScoreList(LOCAL_LEADERBOARD_KEY), [entry]);
+  writeScoreList(LOCAL_LEADERBOARD_KEY, localScores);
+  renderLeaderboard(mergeLeaderboards(jumpGame.leaderboard, localScores));
+  setLeaderboardStatus("syncing", "Syncing");
+  try{
+    const response = await fetch(LEADERBOARD_ENDPOINT, {
+      method:"POST",
+      headers:{"Content-Type":"application/json", Accept:"application/json"},
+      body:JSON.stringify(entry)
+    });
+    if(!response.ok) throw new Error(`Leaderboard ${response.status}`);
+    const publicScores = normalizeLeaderboard(await response.json());
+    writeScoreList(PUBLIC_LEADERBOARD_CACHE_KEY, publicScores);
+    renderLeaderboard(mergeLeaderboards(publicScores, localScores));
+    setLeaderboardStatus("public", "Public");
+  }catch(error){
+    setLeaderboardStatus("offline", "Offline");
+  }
 }
 
 function endGame(reason){
+  stopGameLoop();
   jumpGame.running = false;
-  gameState.textContent = reason === "Time" ? "Time" : "Fell";
-  gameStart.textContent = "Play again";
+  jumpGame.keys.clear();
+  jumpGame.pointerDirection = null;
+  gameState.textContent = t(reason === "Time" ? "Time" : "Fell");
+  gameStart.textContent = t("Play again");
   saveLeaderboard();
   playTone(220, .2, "sawtooth", .035);
   drawGame();
@@ -1183,38 +2012,71 @@ function openGame(){
   gameOverlay.classList.add("is-open");
   gameOverlay.setAttribute("aria-hidden", "false");
   resizeGameCanvas();
-  renderLeaderboard();
+  updatePlayerStatus();
+  loadLeaderboard();
   drawGame();
+  if(!jumpGame.playerName) requestAnimationFrame(() => playerNameInput.focus());
 }
 
 function closeGame(){
+  stopGameLoop();
   jumpGame.running = false;
+  jumpGame.keys.clear();
+  jumpGame.pointerDirection = null;
   gameOverlay.classList.remove("is-open");
   gameOverlay.setAttribute("aria-hidden", "true");
 }
 
 rocketButton.addEventListener("click", openGame);
 gameStart.addEventListener("click", resetGame);
+gameProfile.addEventListener("submit", event => {
+  event.preventDefault();
+  ensurePlayerName();
+});
+leaderboardRefresh.addEventListener("click", loadLeaderboard);
 gameClose.addEventListener("click", closeGame);
 gameMute.addEventListener("click", () => {
   jumpGame.muted = !jumpGame.muted;
-  gameMute.textContent = `Melody: ${jumpGame.muted ? "off" : "on"}`;
+  gameMute.textContent = t(jumpGame.muted ? "Melody: off" : "Melody: on");
 });
 window.addEventListener("keydown", event => {
-  if(["ArrowLeft", "ArrowRight", "a", "d"].includes(event.key)) jumpGame.keys.add(event.key);
-  if(event.key === "Escape" && gameOverlay.classList.contains("is-open")) closeGame();
+  const isOpen = gameOverlay.classList.contains("is-open");
+  if(!isOpen) return;
+  if(event.target === playerNameInput && event.key !== "Escape") return;
+  const key = event.key.toLowerCase();
+  if(["arrowleft", "arrowright", "a", "d"].includes(key)) event.preventDefault();
+  if(["arrowleft", "arrowright", "a", "d"].includes(key)) jumpGame.keys.add(key === "arrowleft" ? "ArrowLeft" : key === "arrowright" ? "ArrowRight" : key);
+  if((event.key === " " || event.key === "Enter") && !jumpGame.running){
+    event.preventDefault();
+    resetGame();
+  }
+  if(event.key === "Escape") closeGame();
 });
-window.addEventListener("keyup", event => jumpGame.keys.delete(event.key));
+window.addEventListener("keyup", event => {
+  const key = event.key.toLowerCase();
+  jumpGame.keys.delete(key === "arrowleft" ? "ArrowLeft" : key === "arrowright" ? "ArrowRight" : key);
+});
 gameCanvas.addEventListener("pointerdown", event => {
+  event.preventDefault();
+  gameCanvas.setPointerCapture?.(event.pointerId);
   const rect = gameCanvas.getBoundingClientRect();
-  jumpGame.keys.add(event.clientX - rect.left > rect.width / 2 ? "ArrowRight" : "ArrowLeft");
+  jumpGame.pointerDirection = event.clientX - rect.left > rect.width / 2 ? "ArrowRight" : "ArrowLeft";
+  jumpGame.keys.add(jumpGame.pointerDirection);
 });
-gameCanvas.addEventListener("pointerup", () => {
-  jumpGame.keys.delete("ArrowRight");
-  jumpGame.keys.delete("ArrowLeft");
+function clearPointerInput(){
+  if(jumpGame.pointerDirection) jumpGame.keys.delete(jumpGame.pointerDirection);
+  jumpGame.pointerDirection = null;
+}
+gameCanvas.addEventListener("pointerup", clearPointerInput);
+gameCanvas.addEventListener("pointercancel", clearPointerInput);
+gameCanvas.addEventListener("pointerleave", clearPointerInput);
+window.addEventListener("resize", () => {
+  if(!gameOverlay.classList.contains("is-open")) return;
+  resizeGameCanvas();
+  if(!jumpGame.running) drawGame();
 });
-window.addEventListener("resize", resizeGameCanvas);
-renderLeaderboard();
+updatePlayerStatus();
+renderLeaderboard(mergeLeaderboards(readScoreList(PUBLIC_LEADERBOARD_CACHE_KEY), readScoreList(LOCAL_LEADERBOARD_KEY)));
 </script>
 </body>
 </html>

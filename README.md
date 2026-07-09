@@ -26,8 +26,7 @@ https://blackaporia.github.io/starknet-gaming/
 - Community and ecosystem mission sections.
 - Dojo and Cartridge infrastructure cards.
 - Language selector with custom translations for selected languages.
-- Fun fullscreen `Rocket Jump` mini game with score, timer, difficulty scaling, melody, and local leaderboard.
-- Public support links for BlackAporia.
+- Fun fullscreen `Rocket Jump` mini game with nickname entry, combo bonuses, powerups, hazards, melody, and a shared leaderboard API with local fallback.
 
 ## Languages
 
@@ -52,6 +51,8 @@ The translation system is local JavaScript. It does not use Google Translate wid
 ├── README.md
 ├── .gitignore
 ├── .nojekyll
+├── api/
+│   └── leaderboard.js
 ├── assets/
 │   ├── brand/
 │   │   ├── background.png
@@ -77,6 +78,8 @@ The translation system is local JavaScript. It does not use Google Translate wid
 │       ├── starknet-gaming.png
 │       ├── zap-football.jpg
 │       └── zkube.png
+├── data/
+│   └── rocket-jump-leaderboard.json
 └── docs/
     └── project-links.txt
 ```
@@ -94,6 +97,21 @@ Then open:
 ```text
 http://127.0.0.1:8000
 ```
+
+## Rocket Jump Leaderboard
+
+The mini game reads and posts scores to `api/leaderboard` when the site is deployed with serverless API support. The API stores scores in `data/rocket-jump-leaderboard.json` through the GitHub Contents API.
+
+Set these environment variables on the host:
+
+```text
+GITHUB_TOKEN=github fine-grained token with Contents read/write access
+GITHUB_OWNER=blackaporia
+GITHUB_REPO=starknet-gaming
+GITHUB_BRANCH=main
+```
+
+If the API is unavailable, the game automatically falls back to a local leaderboard in the browser.
 
 ## GitHub Pages Setup
 
@@ -142,8 +160,3 @@ docs/project-links.txt
 - [Official X](https://x.com/StarknetGaming)
 - [Telegram Group](https://t.me/Starknet_Gaming)
 - [Starknet Ecosystem](https://starknet-ecosystem.com/)
-
-## Support
-
-- [BlackAporia on X](https://x.com/BlackAporia)
-- [BlackAporia on Telegram](https://t.me/BlackAporia)
