@@ -77,12 +77,16 @@
   .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:800;letter-spacing:-.03em;}
   .brand-mark{
-    width:38px;height:38px;border-radius:12px;
+    width:48px;height:48px;border-radius:16px;
     display:grid;place-items:center;
-    color:#140f0b;
-    background:linear-gradient(135deg,var(--ember),var(--violet));
-    box-shadow:0 12px 36px rgba(157,77,255,.32);
+    background:linear-gradient(135deg,rgba(9,8,22,.94),rgba(25,19,58,.9));
+    border:1px solid rgba(157,77,255,.36);
+    box-shadow:0 12px 36px rgba(157,77,255,.26),inset 0 0 0 1px rgba(255,255,255,.05);
+    overflow:hidden;
+    transition:transform .18s,box-shadow .18s;
   }
+  .brand:hover .brand-mark{transform:translateY(-1px) scale(1.04);box-shadow:0 14px 40px rgba(157,77,255,.44),0 0 0 1px rgba(214,60,255,.28),inset 0 0 0 1px rgba(255,255,255,.08);}
+  .brand-mark img{display:block;width:100%;height:100%;object-fit:contain;padding:1px;}
   .brand span:last-child{font-size:15px;}
   .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
   .nav-links a{
@@ -95,6 +99,10 @@
     transition:background .15s,color .15s;
   }
   .nav-links a:hover{background:rgba(255,244,223,.08);color:var(--paper);}
+  .nav-links .social-link{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(157,77,255,.3);background:rgba(157,77,255,.1);color:#f3dcff;box-shadow:0 0 18px rgba(157,77,255,.12);}
+  .nav-links .social-link:hover{background:rgba(157,77,255,.2);border-color:rgba(214,60,255,.68);color:#fff;box-shadow:0 0 24px rgba(157,77,255,.28);}
+  .social-icon{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:7px;background:linear-gradient(135deg,var(--violet),var(--magenta));color:#fff;line-height:1;box-shadow:0 0 14px rgba(157,77,255,.28);}
+  .social-icon svg{display:block;width:13px;height:13px;fill:currentColor;}
   .nav-links .cta{background:var(--paper);color:#15120f;}
   .nav-links .cta:hover{background:#fff;color:#15120f;}
 
@@ -135,28 +143,26 @@
   .terminal-card{
     position:relative;
     overflow:hidden;
-    border:1px solid var(--line-strong);
+    border:1px solid rgba(157,77,255,.28);
     border-radius:28px;
-    background:linear-gradient(180deg,rgba(28,22,33,.9),rgba(13,11,17,.94));
+    background:linear-gradient(180deg,rgba(17,19,43,.86),rgba(9,10,24,.94));
     backdrop-filter:blur(14px);
-    box-shadow:var(--shadow);
+    box-shadow:0 28px 90px rgba(0,0,0,.48),0 0 58px rgba(157,77,255,.12);
   }
-  .terminal-card::before{content:"";position:absolute;inset:auto -30% -45% -30%;height:260px;background:radial-gradient(circle,rgba(255,90,54,.22),transparent 64%);}
-  .terminal-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);}
-  .dots{display:flex;gap:7px;}
-  .dots span{width:10px;height:10px;border-radius:50%;background:var(--muted-soft);}
-  .dots span:nth-child(1){background:var(--ember);}.dots span:nth-child(2){background:var(--amber);}.dots span:nth-child(3){background:var(--sage);}
-  .terminal-label{font-size:11px;color:var(--muted-soft);}
+  .terminal-card::before{content:"";position:absolute;inset:-20% -18% auto auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(157,77,255,.2),transparent 66%);pointer-events:none;}
   .terminal-body{position:relative;padding:24px;}
-  .brand-visual{position:relative;overflow:hidden;border:1px solid rgba(255,106,0,.28);border-radius:22px;margin-bottom:16px;background:#070816;box-shadow:0 18px 50px rgba(157,77,255,.16);}
+  .hub-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;}
+  .hub-title h2{margin:0;font-size:26px;line-height:1;letter-spacing:-.045em;}
+  .hub-title span{color:var(--sage);font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;}
+  .brand-visual{position:relative;overflow:hidden;border:1px solid rgba(157,77,255,.28);border-radius:22px;margin-bottom:16px;background:#070816;box-shadow:0 18px 50px rgba(157,77,255,.16);}
   .brand-visual img{display:block;width:100%;height:auto;aspect-ratio:3.7/1;object-fit:cover;}
   .brand-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,18,.08),rgba(5,7,18,.5));pointer-events:none;}
   .hub-card{display:grid;gap:12px;margin-bottom:18px;}
-  .hub-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,244,223,.045);}
+  .hub-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 14px;border:1px solid rgba(157,77,255,.18);border-radius:16px;background:rgba(157,77,255,.055);}
   .hub-row strong{font-size:13px;}
   .hub-row span{color:var(--muted-soft);font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
-  .scan-line{margin:0 0 18px;color:var(--sage);font-size:12px;}
-  .scan-line span{color:var(--muted-soft);}
+  .featured-title{display:flex;align-items:center;gap:10px;margin:0 0 14px;color:var(--paper);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
+  .featured-title::before{content:"";width:8px;height:8px;border-radius:99px;background:var(--sage);box-shadow:0 0 0 6px rgba(73,240,255,.1);}
   .featured-stack{display:grid;gap:12px;}
   .featured-game{
     display:grid;
@@ -166,15 +172,18 @@
     padding:13px;
     border:1px solid var(--line);
     border-radius:16px;
-    background:rgba(17,16,13,.42);
+    background:rgba(157,77,255,.055);
+    transition:transform .18s,border-color .18s,background .18s,box-shadow .18s;
   }
+  .featured-game:hover{transform:translateY(-2px);border-color:rgba(157,77,255,.52);background:rgba(157,77,255,.11);box-shadow:0 14px 36px rgba(157,77,255,.18);}
   .game-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:#11100d;}
   .game-icon img{display:block;width:100%;height:100%;object-fit:contain;padding:4px;}
   .featured-game strong{display:block;font-size:14px;}
   .featured-game small{display:block;color:var(--muted-soft);font-size:12px;margin-top:2px;}
   .status-chip{font-size:10px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:6px 8px;}
-  .status-chip.live{color:var(--ember);background:rgba(255,90,54,.12);}
+  .status-chip.live{color:var(--sage);background:rgba(73,240,255,.1);}
   .status-chip.new{color:var(--amber);background:rgba(255,189,61,.12);}
+  .status-chip.soon{color:var(--sky);background:rgba(106,168,255,.12);}
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px;}
   .stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(12,10,16,.62);backdrop-filter:blur(10px);}
@@ -197,10 +206,11 @@
   .mission-card h3{margin:0 0 12px;font-size:26px;line-height:1.05;letter-spacing:-.04em;}
   .mission-card p{margin:0;color:var(--muted);font-size:15px;}
   .mission-list{display:grid;gap:12px;}
-  .mission-item{display:grid;grid-template-columns:42px 1fr;gap:13px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,244,223,.04);}
-  .mission-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:rgba(255,189,61,.12);color:var(--amber);font-weight:900;}
+  .mission-item{display:grid;grid-template-columns:42px 1fr;gap:13px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,244,223,.04);transition:transform .18s,border-color .18s,background .18s,box-shadow .18s;}
+  .mission-item:hover{transform:translateY(-2px);border-color:rgba(157,77,255,.48);background:rgba(157,77,255,.08);box-shadow:0 16px 36px rgba(157,77,255,.16);}
+  .mission-icon{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(255,189,61,.13);color:var(--amber);font-size:14px;font-weight:900;letter-spacing:0;box-shadow:none;}
   .mission-item strong{display:block;margin-bottom:4px;font-size:15px;}
-  .mission-item span{display:block;color:var(--muted);font-size:13px;}
+  .mission-item div span{display:block;color:var(--muted);font-size:13px;}
 
   .world-strip{position:relative;overflow:hidden;border:1px solid rgba(157,77,255,.36);border-radius:30px;min-height:260px;margin-top:18px;background:#070816;box-shadow:var(--shadow);}
   .world-strip img{display:block;width:100%;height:100%;min-height:260px;object-fit:cover;}
@@ -235,25 +245,33 @@
   .category-line{height:1px;background:var(--line);flex:1;}
   .category-count{color:var(--muted-soft);font-size:12px;}
   .game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  .game-card{position:relative;min-height:220px;padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(31,24,39,.9),rgba(13,11,17,.94));overflow:hidden;transition:transform .16s,border-color .16s,background .16s;}
-  .game-card::after{content:"";position:absolute;inset:auto -24px -54px auto;width:140px;height:140px;border-radius:50%;background:var(--accent);opacity:.1;pointer-events:none;}
-  .game-card:hover{transform:translateY(-3px);border-color:rgba(157,77,255,.68);background:linear-gradient(180deg,rgba(59,32,95,.95),rgba(19,13,38,.96));box-shadow:0 18px 48px rgba(157,77,255,.26),0 0 0 1px rgba(214,60,255,.14) inset;}
+  .game-card{position:relative;min-height:220px;padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(31,24,39,.9),rgba(13,11,17,.94));overflow:hidden;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;animation:card-rise .55s ease both;}
+  .game-card::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(214,60,255,.16) 35%,rgba(73,240,255,.13) 50%,transparent 66%);transform:translateX(-120%);transition:transform .55s ease;pointer-events:none;}
+  .game-card::after{content:"";position:absolute;inset:auto -24px -54px auto;width:140px;height:140px;border-radius:50%;background:var(--accent);opacity:.1;pointer-events:none;transition:opacity .2s,transform .2s;}
+  .game-card:hover{transform:translateY(-5px);border-color:rgba(157,77,255,.75);background:linear-gradient(180deg,rgba(59,32,95,.95),rgba(19,13,38,.96));box-shadow:0 22px 58px rgba(157,77,255,.32),0 0 0 1px rgba(214,60,255,.18) inset;}
+  .game-card:hover::before{transform:translateX(120%);}
+  .game-card:hover::after{opacity:.2;transform:scale(1.18);}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px;}
-  .badge{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-weight:900;overflow:hidden;}
-  .badge img{display:block;width:100%;height:100%;object-fit:contain;padding:4px;}
+  .badge{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-weight:900;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+  .badge img{display:block;width:100%;height:100%;object-fit:contain;padding:4px;transition:transform .2s;}
+  .game-card:hover .badge{transform:rotate(-2deg) scale(1.06);box-shadow:0 0 26px color-mix(in srgb,var(--accent) 32%,transparent);}
+  .game-card:hover .badge img{transform:scale(1.08);}
   .led{display:inline-flex;align-items:center;gap:7px;color:var(--muted-soft);font-size:10px;font-weight:900;letter-spacing:.09em;}
   .led-dot{width:8px;height:8px;border-radius:99px;background:var(--muted-soft);}
   .led.live{color:var(--ember);}.led.live .led-dot{background:var(--ember);box-shadow:0 0 0 6px rgba(255,90,54,.1);}
   .led.new{color:var(--amber);}.led.new .led-dot{background:var(--amber);box-shadow:0 0 0 6px rgba(255,189,61,.1);}
   .led.soon{color:var(--sky);}.led.soon .led-dot{background:var(--sky);box-shadow:0 0 0 6px rgba(140,167,255,.1);}
-  .game-card h4{margin:0 0 8px;font-size:20px;line-height:1.12;letter-spacing:-.035em;}
-  .game-card p{margin:0;color:var(--muted);font-size:14px;min-height:66px;}
+  .game-card h4{position:relative;z-index:1;margin:0 0 8px;font-size:20px;line-height:1.12;letter-spacing:-.035em;transition:color .2s,text-shadow .2s,transform .2s;}
+  .game-card p{position:relative;z-index:1;margin:0;color:var(--muted);font-size:14px;min-height:66px;transition:color .2s;}
+  .game-card:hover h4{color:#fff;text-shadow:0 0 18px rgba(214,60,255,.62);transform:translateX(2px);}
+  .game-card:hover p{color:rgba(247,242,255,.86);}
   .card-foot{position:relative;z-index:2;display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
-  .tag{font-size:10px;color:var(--muted-soft);letter-spacing:.08em;text-transform:uppercase;}
+  .tag{font-size:10px;color:var(--muted-soft);letter-spacing:.08em;text-transform:uppercase;transition:color .2s,text-shadow .2s;}
+  .game-card:hover .tag{color:var(--sage);text-shadow:0 0 14px rgba(73,240,255,.45);}
   .project-links{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8px;width:100%;}
   .project-link{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 10px;border:1px solid rgba(247,242,255,.18);border-radius:999px;background:rgba(247,242,255,.06);font-size:11px;text-decoration:none;color:var(--paper);font-weight:900;letter-spacing:.02em;line-height:1;transition:background .15s,border-color .15s,transform .15s;}
   .project-link.site-link{justify-self:end;}
-  .project-link:hover{background:rgba(157,77,255,.18);border-color:rgba(157,77,255,.72);transform:translateY(-1px);}
+  .project-link:hover{background:rgba(157,77,255,.18);border-color:rgba(157,77,255,.72);transform:translateY(-1px);box-shadow:0 0 18px rgba(157,77,255,.22);}
   .x-icon{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:6px;background:var(--paper);color:#11100d;font-size:10px;font-weight:900;line-height:1;}
   .site-icon{position:relative;display:inline-grid;place-items:center;width:18px;height:18px;border:1.8px solid currentColor;border-radius:50%;color:var(--sage);}
   .site-icon::before{content:"";position:absolute;width:6px;height:14px;border:1px solid currentColor;border-radius:50%;}
@@ -276,6 +294,11 @@
   .footer-links{display:flex;gap:10px;flex-wrap:wrap;}
   .footer-links a{color:var(--paper);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:13px;font-weight:800;}
   .footer-links a:hover{background:rgba(255,244,223,.08);}
+
+  @keyframes card-rise{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
@@ -307,7 +330,7 @@
   <header class="topbar">
     <nav class="wrap nav" aria-label="Primary navigation">
       <a class="brand display" href="#top" aria-label="Starknet Gaming home">
-        <span class="brand-mark">SG</span>
+        <span class="brand-mark"><img src="assets/logos/starknet-gaming.png" alt="" aria-hidden="true"></span>
         <span>Starknet Gaming</span>
       </a>
       <div class="nav-links">
@@ -315,9 +338,9 @@
         <a href="#community">Community</a>
         <a href="#updates">Updates</a>
         <a href="#registry">Registry</a>
-        <a href="https://t.me/channel_starknet_gaming" target="_blank" rel="noopener">Telegram Channel</a>
-        <a href="https://x.com/StarknetGaming" target="_blank" rel="noopener">Official X</a>
-        <a href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener" class="cta">Telegram Group</a>
+        <a class="social-link" href="https://t.me/channel_starknet_gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Channel</span></a>
+        <a class="social-link" href="https://x.com/StarknetGaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.8l4.7 6.2L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z"/></svg></span><span>Official X</span></a>
+        <a class="social-link" href="https://t.me/Starknet_Gaming" target="_blank" rel="noopener"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 4.1 18.5 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.5c.4-.4-.1-.6-.6-.3L5.8 13.5.8 12c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.3 1.1Z"/></svg></span><span>Telegram Group</span></a>
       </div>
     </nav>
   </header>
@@ -349,13 +372,13 @@
         </div>
 
         <aside class="terminal-card" aria-label="Starknet Gaming hub overview">
-          <div class="terminal-top">
-            <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-            <span class="terminal-label mono">ecosystem hub</span>
-          </div>
           <div class="terminal-body">
+            <div class="hub-title">
+              <h2 class="display">Ecosystem Hub</h2>
+              <span class="mono">Starknet Gaming</span>
+            </div>
             <div class="brand-visual" aria-label="Web3 gaming on Starknet visual">
-              <img src="assets/brand/hero-brand.png" alt="Web3 gaming on Starknet banner with orange gaming headset logo">
+              <img src="assets/brand/hero-brand.png" alt="Web3 gaming on Starknet banner">
             </div>
             <div class="hub-card">
               <div class="hub-row"><strong>Players</strong><span>discover + compete</span></div>
@@ -363,7 +386,7 @@
               <div class="hub-row"><strong>Projects</strong><span>visibility + playtests</span></div>
               <div class="hub-row"><strong>Community</strong><span>news + recaps</span></div>
             </div>
-            <p class="scan-line mono">$ hub.featured_games <span>--status live --limit 4</span></p>
+            <p class="featured-title mono">Featured games</p>
             <div class="featured-stack" id="featured-stack"></div>
           </div>
         </aside>
@@ -411,19 +434,19 @@
         </article>
         <div class="mission-list" aria-label="Community plans">
           <div class="mission-item">
-            <span class="mission-icon mono">01</span>
+            <span class="mission-icon mono" aria-hidden="true">01</span>
             <div><strong>Centralize activity</strong><span>A single hub for Starknet game news, communities, project announcements, and player conversations.</span></div>
           </div>
           <div class="mission-item">
-            <span class="mission-icon mono">02</span>
+            <span class="mission-icon mono" aria-hidden="true">02</span>
             <div><strong>Help projects find players</strong><span>Teams can share updates, request playtesters, collect feedback, and build real community momentum.</span></div>
           </div>
           <div class="mission-item">
-            <span class="mission-icon mono">03</span>
+            <span class="mission-icon mono" aria-hidden="true">03</span>
             <div><strong>Make onboarding easier</strong><span>Newcomers get one clear place to understand what to play, who to follow, and where to ask questions.</span></div>
           </div>
           <div class="mission-item">
-            <span class="mission-icon mono">04</span>
+            <span class="mission-icon mono" aria-hidden="true">04</span>
             <div><strong>Grow ecosystem media</strong><span>The outlook includes X recaps, project reviews, weekly or monthly gaming digests, and broader ecosystem support.</span></div>
           </div>
         </div>
@@ -557,18 +580,17 @@
 
 <script>
 const GAMES = [
-  {name:"ZAP Football", cat:"Strategy / MMO", status:"live", desc:"Football strategy game with real onchain gameplay and squad-level decisions.", twitter:"playzapfc", website:"https://playzap.vercel.app/", logo:"assets/logos/zap-football.jpg"},
+  {name:"ZAP Football", cat:"Strategy / MMO", status:"new", desc:"Football strategy game with real onchain gameplay and squad-level decisions.", twitter:"playzapfc", website:"https://playzap.vercel.app/", logo:"assets/logos/zap-football.jpg"},
   {name:"Realms Blitz", cat:"Strategy / MMO", status:"new", desc:"Fast two-hour matches running on the same mechanics as Realms Eternum.", twitter:"LootRealms", website:"https://realms.world/blitz", logo:"assets/logos/realms-blitz.svg"},
   {name:"Ponziland", cat:"Strategy / MMO", status:"live", desc:"Land, neighbors, taxes, and a nuclear button. Pure onchain chaos.", twitter:"ponzidotland", website:"https://play.ponzi.land/", logo:"assets/logos/ponziland.jpg"},
   {name:"Influence", cat:"Strategy / MMO", status:"live", desc:"Strategic MMO set across 250,000 procedurally generated asteroids.", twitter:"influenceth", website:"https://www.influenceth.io/", logo:"assets/logos/influence.jpg"},
   {name:"Loot Survivor", cat:"Roguelike / Dungeon", status:"live", desc:"Rogue-like dungeon crawler with real permadeath and no respawns.", twitter:"LootSurvivor", website:"https://www.deathmountain.gg/", logo:"assets/logos/loot-survivor.png"},
   {name:"Dark Shuffle", cat:"Roguelike / Dungeon", status:"live", desc:"Deck-building roguelike fought across procedurally generated maps.", twitter:"darkshuffle_gg", website:"https://darkshuffle.gg/", logo:"assets/logos/dark-shuffle.png"},
-  {name:"Abyss", cat:"Roguelike / Dungeon", status:"soon", desc:"Dungeon crawler from an independent Starknet-native team.", twitter:"abyssdotfun", website:"https://play.abyssgame.fun/", logo:"assets/logos/abyss.jpg"},
   {name:"Jokers of Neon", cat:"Card Games", status:"live", desc:"Poker-driven strategy with a combo system and weekly leagues.", twitter:"jokers_of_neon", website:"https://jokersofneon.com/", logo:"assets/logos/jokers-of-neon.jpg"},
   {name:"Dope Wars", cat:"Card Games", status:"live", desc:"Street trading and empire-building, fully onchain.", twitter:"Dopewarsx", website:"https://dopewars.game/", logo:"assets/logos/dope-wars.jpg"},
   {name:"Blob Arena", cat:"Action / PvP", status:"live", desc:"Pokemon-style creature battles with real community tournaments.", twitter:"Blobarena", website:"https://onelink.to/5bhgdh", logo:"assets/logos/blob-arena.jpg"},
   {name:"Pistols at Dawn", cat:"Action / PvP", status:"live", desc:"Commit-reveal PvP duels: pistol and sabre, your choice.", twitter:"Pistols_gg", website:"https://pistols.gg/", logo:"assets/logos/pistols-at-dawn.jpg"},
-  {name:"Corsair", cat:"Action / PvP", status:"live", desc:"Sea-faring adventure with daily challenges from its creator.", twitter:"PlayCorsair", website:"https://reemjie.github.io/corsair/", logo:"assets/logos/corsair.jpg"},
+  {name:"Corsair", cat:"Action / PvP", status:"new", desc:"Sea-faring adventure with daily challenges from its creator.", twitter:"PlayCorsair", website:"https://reemjie.github.io/corsair/", logo:"assets/logos/corsair.jpg"},
   {name:"Brove Royale", cat:"Action / PvP", status:"new", desc:"Battle royale built by an independent team in the community.", twitter:"just_brove_it", website:"https://brove.io/brove-royale", logo:"assets/logos/brove-royale.jpg"},
   {name:"zKube", cat:"Puzzle / Casual", status:"live", desc:"Onchain Tetris with special abilities and combo bonuses.", twitter:"zKube_game", website:"https://app.zkube.xyz/", logo:"assets/logos/zkube.png"},
   {name:"GM NFT", cat:"Puzzle / Casual", status:"live", desc:"Casual guessing game built around the community's own NFTs.", twitter:"GuessmyNft", website:"https://www.guessmynft.com/", logo:"assets/logos/gm-nft.jpg"},
@@ -648,12 +670,13 @@ function renderRegistry(filter = "all", term = ""){
 }
 
 function renderFeatured(){
-  const featured = GAMES.filter(game => game.status === "live").slice(0, 4);
+  const featuredNames = ["Brove Royale", "ZAP Football", "Corsair", "Loot Survivor", "GM NFT"];
+  const featured = featuredNames.map(name => GAMES.find(game => game.name === name)).filter(Boolean);
   document.getElementById("featured-stack").innerHTML = featured.map((game, index) => `
     <div class="featured-game">
       <span class="game-icon display" style="background:${accents[index % accents.length]}">${game.logo ? `<img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async">` : initials(game.name)}</span>
       <span><strong>${escapeHTML(game.name)}</strong><small>${escapeHTML(game.cat)}</small></span>
-      <span class="status-chip live mono">LIVE</span>
+      <span class="status-chip ${game.status} mono">${statusLabel(game.status).toUpperCase()}</span>
     </div>
   `).join("");
 }
