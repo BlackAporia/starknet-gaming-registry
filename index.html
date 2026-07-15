@@ -211,6 +211,9 @@
     border:1px solid var(--line);
     border-radius:16px;
     background:rgba(157,77,255,.055);
+    color:inherit;
+    text-decoration:none;
+    cursor:pointer;
     transition:transform .18s,border-color .18s,background .18s,box-shadow .18s;
   }
   .featured-game:hover{transform:translateY(-2px);border-color:rgba(157,77,255,.52);background:rgba(157,77,255,.11);box-shadow:0 14px 36px rgba(157,77,255,.18);}
@@ -285,10 +288,11 @@
   .category-line{height:1px;background:var(--line);flex:1;}
   .category-count{color:var(--muted-soft);font-size:12px;}
   .game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-  .game-card{position:relative;min-height:220px;padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(31,24,39,.9),rgba(13,11,17,.94));overflow:hidden;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;animation:card-rise .55s ease both;}
+  .game-card{position:relative;min-height:220px;padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(31,24,39,.9),rgba(13,11,17,.94));overflow:hidden;scroll-margin-top:96px;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;animation:card-rise .55s ease both;}
   .game-card::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(214,60,255,.16) 35%,rgba(73,240,255,.13) 50%,transparent 66%);transform:translateX(-120%);transition:transform .55s ease;pointer-events:none;}
   .game-card::after{content:"";position:absolute;inset:auto -24px -54px auto;width:140px;height:140px;border-radius:50%;background:var(--accent);opacity:.1;pointer-events:none;transition:opacity .2s,transform .2s;}
   .game-card:hover{transform:translateY(-5px);border-color:rgba(157,77,255,.75);background:linear-gradient(180deg,rgba(59,32,95,.95),rgba(19,13,38,.96));box-shadow:0 22px 58px rgba(157,77,255,.32),0 0 0 1px rgba(214,60,255,.18) inset;}
+  .game-card:target{border-color:rgba(255,189,61,.8);box-shadow:0 22px 58px rgba(255,189,61,.16),0 0 0 1px rgba(255,189,61,.32) inset;}
   .game-card:hover::before{transform:translateX(120%);}
   .game-card:hover::after{opacity:.2;transform:scale(1.18);}
   .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px;}
@@ -1307,6 +1311,7 @@ const PENDING = [];
 const accents = ["#ff5a36", "#ffbd3d", "#74b694", "#8ca7ff", "#c68cff"];
 const initials = name => name.split(" ").map(part => part[0]).slice(0, 2).join("").toUpperCase();
 const escapeHTML = value => value.replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+const gameAnchorId = game => `game-${game.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
 
 function statusLabel(status){
   return t(status === "live" ? "Live" : status === "new" ? "New" : "Soon");
@@ -1315,6 +1320,7 @@ function statusLabel(status){
 function projectCard(game, index){
   const accent = accents[(index + game.cat.length) % accents.length];
   const safeName = escapeHTML(game.name);
+  const anchorId = gameAnchorId(game);
   const badge = game.logo
     ? `<div class="badge" aria-hidden="true"><img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async"></div>`
     : `<div class="badge display" aria-hidden="true">${initials(game.name)}</div>`;
@@ -1326,7 +1332,7 @@ function projectCard(game, index){
     : "";
 
   return `
-    <article class="game-card" style="--accent:${accent}">
+    <article class="game-card" id="${anchorId}" tabindex="-1" style="--accent:${accent}">
       <div class="card-top">
         ${badge}
         <span class="led ${game.status} mono"><span class="led-dot"></span>${statusLabel(game.status)}</span>
@@ -1377,11 +1383,11 @@ function renderFeatured(){
   const featuredNames = ["Brove Royale", "ZAP Football", "Corsair", "Loot Survivor", "GM NFT"];
   const featured = featuredNames.map(name => GAMES.find(game => game.name === name)).filter(Boolean);
   document.getElementById("featured-stack").innerHTML = featured.map((game, index) => `
-    <div class="featured-game" style="--accent:${accents[index % accents.length]}">
+    <a class="featured-game" href="#${gameAnchorId(game)}" data-game-target="${gameAnchorId(game)}" style="--accent:${accents[index % accents.length]}">
       <span class="game-icon display">${game.logo ? `<img src="${escapeHTML(game.logo)}" alt="" loading="lazy" decoding="async">` : initials(game.name)}</span>
       <span><strong>${escapeHTML(game.name)}</strong><small>${escapeHTML(t(game.cat))}</small></span>
       <span class="status-chip ${game.status} mono">${statusLabel(game.status).toUpperCase()}</span>
-    </div>
+    </a>
   `).join("");
 }
 
@@ -1415,10 +1421,39 @@ function updateStats(){
 let activeFilter = "all";
 const search = document.getElementById("search");
 
+function setActiveFilter(filter){
+  activeFilter = filter;
+  document.querySelectorAll(".pill").forEach(item => {
+    item.setAttribute("aria-pressed", String(item.dataset.filter === filter));
+  });
+}
+
+document.getElementById("featured-stack").addEventListener("click", event => {
+  const link = event.target.closest("[data-game-target]");
+  if(!link) return;
+
+  event.preventDefault();
+  const targetId = link.dataset.gameTarget;
+  setActiveFilter("all");
+  search.value = "";
+  renderRegistry(activeFilter, search.value);
+  applyLanguage(document.getElementById("language-select").value);
+
+  const target = document.getElementById(targetId);
+  if(!target) return;
+
+  history.pushState(null, "", `#${targetId}`);
+  target.scrollIntoView({behavior:"smooth", block:"center"});
+  try{
+    target.focus({preventScroll:true});
+  }catch(error){
+    target.focus();
+  }
+});
+
 document.querySelectorAll(".pill").forEach(button => {
   button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    document.querySelectorAll(".pill").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+    setActiveFilter(button.dataset.filter);
     renderRegistry(activeFilter, search.value);
     applyLanguage(document.getElementById("language-select").value);
   });
