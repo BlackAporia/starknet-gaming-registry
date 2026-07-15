@@ -56,6 +56,7 @@
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  html,body{overflow-x:hidden;}
   body{
     margin:0;
     background:
@@ -84,7 +85,7 @@
     background-size:44px 44px;
     mask-image:linear-gradient(to bottom, #000 0%, transparent 70%);
   }
-  body.game-open{overflow:hidden;}
+  html.game-open,body.game-open{overflow:hidden;overscroll-behavior:none;}
   a{color:inherit;}
   button,input{font:inherit;}
   :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px;}
@@ -114,7 +115,7 @@
   .brand:hover .brand-mark{transform:translateY(-1px) scale(1.04);box-shadow:0 14px 40px rgba(157,77,255,.44),0 0 0 1px rgba(214,60,255,.28),inset 0 0 0 1px rgba(255,255,255,.08);}
   .brand-mark img{display:block;width:100%;height:100%;object-fit:contain;padding:1px;}
   .brand span:last-child{font-size:15px;}
-  .nav-links{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;justify-content:flex-end;}
+  .nav-links{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end;min-width:0;}
   .nav-links a{
     color:var(--muted);
     text-decoration:none;
@@ -360,12 +361,12 @@
   .rocket-button:hover{transform:scale(1.08) rotate(-6deg);border-color:rgba(73,240,255,.72);box-shadow:0 0 34px rgba(73,240,255,.34),0 18px 46px rgba(157,77,255,.32);}
   .rocket-button span{display:block;font-size:30px;filter:drop-shadow(0 0 12px rgba(73,240,255,.72));}
   .rocket-button::after{content:"Play";position:absolute;left:50%;top:calc(100% + 7px);transform:translateX(-50%);padding:4px 8px;border-radius:999px;background:rgba(5,7,18,.82);color:var(--sage);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;}
-  .game-overlay{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:clamp(10px,2vw,28px);overflow:hidden;background:radial-gradient(circle at 50% 20%,rgba(157,77,255,.34),transparent 34rem),rgba(3,4,12,.92);backdrop-filter:blur(18px);}
+  .game-overlay{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:clamp(10px,2vw,28px);overflow:hidden;overscroll-behavior:none;background:radial-gradient(circle at 50% 20%,rgba(157,77,255,.34),transparent 34rem),rgba(3,4,12,.92);backdrop-filter:blur(18px);}
   .game-overlay.is-open{display:grid;}
   .game-shell{width:min(94vw,1760px);height:min(90dvh,1080px);min-width:0;min-height:0;display:grid;grid-template-columns:minmax(440px,1fr) clamp(290px,22vw,390px);gap:clamp(10px,1.2vw,18px);}
   .game-stage{position:relative;min-width:0;min-height:0;overflow:hidden;border:1px solid rgba(157,77,255,.38);border-radius:28px;background:linear-gradient(180deg,#090d28,#110c2d 58%,#080912);box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 70px rgba(157,77,255,.16);}
   .game-stage::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.38) 1px,transparent 1px);background-size:34px 34px;opacity:.22;animation:stars-drift 16s linear infinite;pointer-events:none;}
-  #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;}
+  #jump-game{position:relative;z-index:1;display:block;width:100%;height:100%;touch-action:none;user-select:none;cursor:crosshair;}
   .game-result{position:absolute;z-index:3;left:50%;top:50%;display:none;width:min(320px,calc(100% - 32px));transform:translate(-50%,-50%);padding:20px;border:1px solid rgba(255,106,0,.42);border-radius:20px;background:rgba(8,8,18,.92);box-shadow:0 24px 70px rgba(0,0,0,.5),0 0 38px rgba(255,106,0,.22);text-align:center;backdrop-filter:blur(12px);}
   .game-result.is-visible{display:grid;gap:10px;}
   .game-result strong{font-size:32px;line-height:1;color:#fff;letter-spacing:-.05em;}
@@ -446,9 +447,9 @@
     .contact-strip{align-items:flex-start;flex-direction:column;}
     .contact-actions{justify-content:flex-start;}
     .game-overlay{align-items:start;padding:8px;}
-    .game-shell{width:100%;height:calc(100dvh - 16px);grid-template-columns:1fr;grid-template-rows:minmax(300px,1fr) auto;gap:10px;}
+    .game-shell{width:100%;height:calc(100dvh - 16px);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(300px,1fr) minmax(0,auto);gap:10px;}
     .game-stage{border-radius:18px;}
-    .game-panel{max-height:44dvh;padding:12px;border-radius:18px;gap:9px;}
+    .game-panel{max-height:46dvh;padding:12px;border-radius:18px;gap:9px;}
     .game-panel h2{font-size:22px;}
     .game-profile{padding:10px;}
     .game-stats{grid-template-columns:repeat(3,1fr);gap:6px;}
@@ -461,7 +462,7 @@
     .leaderboard{gap:6px;}
   }
   @media (max-width:520px){
-    .game-shell{grid-template-rows:minmax(260px,1fr) auto;}
+    .game-shell{grid-template-rows:minmax(280px,1fr) minmax(0,auto);}
     .game-panel{max-height:48dvh;}
     .game-name-row{grid-template-columns:1fr;}
     .leaderboard ol{max-height:120px;overflow:auto;}
@@ -1571,8 +1572,8 @@ function resizeGameCanvas(){
   const previousWidth = gameCanvas.width || 760;
   const previousHeight = gameCanvas.height || 680;
   const rect = gameCanvas.getBoundingClientRect();
-  gameCanvas.width = Math.max(320, Math.floor(rect.width));
-  gameCanvas.height = Math.max(420, Math.floor(rect.height));
+  gameCanvas.width = Math.max(1, Math.floor(rect.width));
+  gameCanvas.height = Math.max(1, Math.floor(rect.height));
   if(jumpGame.platforms.length){
     const scaleX = gameCanvas.width / previousWidth;
     const scaleY = gameCanvas.height / previousHeight;
@@ -1771,8 +1772,12 @@ function collectReward(platform){
   }
 }
 
+function canStartAudio(){
+  return !navigator.userActivation || navigator.userActivation.isActive || navigator.userActivation.hasBeenActive;
+}
+
 function playTone(freq, duration = .08, type = "sine", gain = .035){
-  if(jumpGame.muted) return;
+  if(jumpGame.muted || !canStartAudio()) return;
   const AudioEngine = window.AudioContext || window.webkitAudioContext;
   if(!AudioEngine) return;
   if(!jumpGame.audio) jumpGame.audio = new AudioEngine();
@@ -2160,6 +2165,7 @@ function endGame(reason){
 }
 
 function openGame(){
+  document.documentElement.classList.add("game-open");
   document.body.classList.add("game-open");
   gameOverlay.classList.add("is-open");
   gameOverlay.setAttribute("aria-hidden", "false");
@@ -2168,7 +2174,8 @@ function openGame(){
   updatePlayerStatus();
   loadLeaderboard();
   drawGame();
-  if(!jumpGame.playerName) requestAnimationFrame(() => playerNameInput.focus());
+  const canAutoFocusName = window.matchMedia("(pointer:fine) and (min-width:721px)").matches;
+  if(!jumpGame.playerName && canAutoFocusName) requestAnimationFrame(() => playerNameInput.focus());
 }
 
 function closeGame(){
@@ -2176,6 +2183,7 @@ function closeGame(){
   jumpGame.running = false;
   jumpGame.keys.clear();
   jumpGame.pointerDirection = null;
+  document.documentElement.classList.remove("game-open");
   document.body.classList.remove("game-open");
   gameOverlay.classList.remove("is-open");
   gameOverlay.setAttribute("aria-hidden", "true");
