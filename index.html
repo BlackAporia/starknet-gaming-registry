@@ -446,6 +446,8 @@
     .world-copy h3{font-size:26px;}
     .contact-strip{align-items:flex-start;flex-direction:column;}
     .contact-actions{justify-content:flex-start;}
+    .rocket-button{display:none;}
+    .game-overlay,.game-overlay.is-open{display:none!important;}
     .game-overlay{align-items:start;padding:8px;}
     .game-shell{width:100%;height:calc(100dvh - 16px);grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(300px,1fr) minmax(0,auto);gap:10px;}
     .game-stage{border-radius:18px;}
@@ -1530,6 +1532,7 @@ const gameResult = document.getElementById("game-result");
 const gameResultTitle = document.getElementById("game-result-title");
 const gameResultCopy = document.getElementById("game-result-copy");
 const gameResultRestart = document.getElementById("game-result-restart");
+const gameMobileQuery = window.matchMedia("(max-width:720px)");
 
 const LEADERBOARD_ENDPOINT = window.ROCKET_LEADERBOARD_ENDPOINT || "api/leaderboard";
 const LEADERBOARD_LIMIT = 10;
@@ -2164,7 +2167,12 @@ function endGame(reason){
   drawGame();
 }
 
+function isGameDisabledOnMobile(){
+  return gameMobileQuery.matches;
+}
+
 function openGame(){
+  if(isGameDisabledOnMobile()) return;
   document.documentElement.classList.add("game-open");
   document.body.classList.add("game-open");
   gameOverlay.classList.add("is-open");
@@ -2188,6 +2196,10 @@ function closeGame(){
   gameOverlay.classList.remove("is-open");
   gameOverlay.setAttribute("aria-hidden", "true");
   if(document.fullscreenElement === gameOverlay) document.exitFullscreen?.();
+}
+
+function syncGameAvailability(){
+  if(isGameDisabledOnMobile() && gameOverlay.classList.contains("is-open")) closeGame();
 }
 
 rocketButton.addEventListener("click", openGame);
@@ -2236,13 +2248,22 @@ gameCanvas.addEventListener("pointerup", clearPointerInput);
 gameCanvas.addEventListener("pointercancel", clearPointerInput);
 gameCanvas.addEventListener("pointerleave", clearPointerInput);
 window.addEventListener("resize", () => {
+  syncGameAvailability();
   if(!gameOverlay.classList.contains("is-open")) return;
   redrawGameAfterLayout();
 });
 window.addEventListener("orientationchange", () => {
-  if(!gameOverlay.classList.contains("is-open")) return;
-  setTimeout(redrawGameAfterLayout, 120);
+  setTimeout(() => {
+    syncGameAvailability();
+    if(!gameOverlay.classList.contains("is-open")) return;
+    redrawGameAfterLayout();
+  }, 120);
 });
+if(gameMobileQuery.addEventListener){
+  gameMobileQuery.addEventListener("change", syncGameAvailability);
+}else{
+  gameMobileQuery.addListener(syncGameAvailability);
+}
 document.addEventListener("fullscreenchange", () => {
   updateFullscreenButton();
   if(!gameOverlay.classList.contains("is-open")) return;
